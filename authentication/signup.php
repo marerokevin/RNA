@@ -50,8 +50,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   <head>
     <meta charset=UTF-8>
     <title>Register - Directory</title>
-    <link rel="stylesheet" type="text/css" href="/DNA/resources/styles/create.css">
-    <link rel="stylesheet" type="text/css" href="/DNA/resources/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/RNA/resources/styles/create.css">
+    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/styles.css">
 </head>
 
 <meta name="viewport" content=

@@ -2,7 +2,7 @@
 session_start();
  
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: /DNA/function/create.php");
+    header("location: /RNA/function/create.php");
     exit;
     
 }
@@ -49,7 +49,7 @@ if(empty(trim($_POST["username"]))){
                             $_SESSION["username"] = $username;
                             $_SESSION["first_name"] = $first_name;
                             $_SESSION["last_name"] = $last_name;
-                            header("location: /DNA/index.php");
+                            header("location: /RNA/K/index.php");
                         }else{
                             $login_err = "Invalid username or password.";
                         }
@@ -80,11 +80,11 @@ if(empty(trim($_POST["username"]))){
 </head>
 <body>
     <div class="title">
-            <a href="/DNA/index.php" class="header_logo">
+            <a href="/RNA/index.php" class="header_logo">
                 <img src="../resources/images/glorylogo.svg" alt="GPI-BCP">
             </a>
         <h1 class="text-center">Glory Philippines Inc.</h1>
-        <h2 class="system_title">wew</h2>
+        <h2 class="system_title">Business Continuity Plan System</h2>
     </div>
     <div name="login_form" class="login">
         <h2 class="Login-title">Login</h2>
@@ -92,7 +92,7 @@ if(empty(trim($_POST["username"]))){
         if(!empty($login_err)){
             echo '<div class="alert alert-danger 
             alert-dismissible fade show" role="alert">' . $login_err . '</div>';
-        }        
+        }
         ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form">

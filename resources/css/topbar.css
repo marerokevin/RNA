@@ -99,6 +99,7 @@
 }
 
 .modal-wrapper {
+  display: none;
   float: right;
   position: absolute;
   transform: translate(0px, 48px);
