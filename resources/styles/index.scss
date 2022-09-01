@@ -40,63 +40,75 @@ body {
         z-index: 3;
     }
 
-    .systemtime {
-        float: right;
-        position: fixed;
-        display: flex;
+    .roomcontainer {
+        margin-top: 57px;
         width: 100%;
-        height: 20px;
-        font-size:15px;
-        padding-top: 57px;
-    }
-
-    .datepickercontainer {
-        float: right;
-        position: fixed;
+        background-color: rgb(182, 234, 250);
+        position: relative;
         display: flex;
-        width: 100%;
-        height: 20px;
-        font-size:15px;
-        padding-top: 79px;
 
-        .dateselect {
+        .bedsidetable {
+            height: 20px;
+            background-color: rgb(255, 255, 255);
             float: right;
-            position: fixed;
+            display: block;
+            padding-right: 10px;
+
+            .systemtime {
+                float: right;
+                display: block;
+                width: 100%;
+                height: 20px;
+                font-size:15px;
+            }
+        }
+
+        .wallhanger {
+            float: right;
+            position: relative;
             display: flex;
             width: 100%;
             height: 20px;
             font-size:15px;
+            background-color: rgb(255, 255, 255);
 
-            .dateLabel {
-                font-size: 13px;
+            .dateselect {
+                float: right;
+                position: fixed;
+                display: block;
+                width: 100%;
                 height: 20px;
-                margin-right: 7px;
-                margin-left: 7px;
-            }
+                font-size:15px;
 
-            .datepicker {
-                width: 120px;
-                height: 20px;
-                margin-right: 7px;
-            }
+                .dateLabel {
+                    font-size: 13px;
+                    height: 20px;
+                    margin-right: 7px;
+                    margin-left: 7px;
+                }
 
-            .datebutton {
-                width: 40px;
-                height: 20px;
-                margin-right: 7px;
+                .datepicker {
+                    width: 120px;
+                    height: 20px;
+                    margin-right: 7px;
+                }
+
+                .datebutton {
+                    width: 40px;
+                    height: 20px;
+                    margin-right: 7px;
+                }
             }
         }
     }
 
     .chart_container{
-        margin-top: 79px;
-        position: fixed;
         display: flex;
         flex-direction: row;
         align-items: center;
         text-transform: uppercase;
         overflow: hidden;
-        width: inherit;
+        width: 100%;
         height: calc(100% - 48px);
         background-color: rgb(250, 182, 182);
         padding: 20px;
@@ -110,9 +122,7 @@ body {
             border-radius: 5px;
             background-color: #d1d1d1;
             font-size: auto;
-            margin-top: 53px;
-            margin-left: 10px;
-            margin-right: 10px;
+            margin: 10px;
     
             .cardTitle {
                 position: relative;

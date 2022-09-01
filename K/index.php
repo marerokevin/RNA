@@ -74,15 +74,20 @@ $search_count = mysqli_num_rows($search_query);
     <?php include "../includes/sidebar.php"; ?>
     <div class="main_content_wsb" id="main_content">
       <div class="header">Dashboard</div>
-      <div class="systemtime" type="currenttime" id="currentTime"></div>
-    <!--Date Selector-->
-    <div class="datepickercontainer">
-        <form class="dateselect" method="POST">
-            <label class="dateLabel" type="date">Date: </label>
-            <input class="datepicker" type="date" name="selectdate" id="today2">
-            <button class="datebutton" type="submit" value="View" name="submit" id="submit">View</button>
-        </form>
-    </div>
+      <div class="roomcontainer">
+        <!--Date Selector-->
+        <div class="wallhanger">
+            <form class="dateselect" method="POST">
+                <label class="dateLabel" type="date">Date: </label>
+                <input class="datepicker" type="date" name="selectdate" id="today2">
+                <button class="datebutton" type="submit" value="View" name="submit" id="submit">View</button>
+            </form>
+        </div>
+        <div class="bedsidetable">
+        <!--System Time-->
+          <div class="systemtime" type="currenttime" id="currentTime"></div>
+        </div>
+      </div>
     <!--Bar Chart Display-->
       <div class="chart_container">
         <canvas class="test" id="myChart"></canvas>
@@ -218,7 +223,7 @@ $search_count = mysqli_num_rows($search_query);
               if(one_day < 12) {
                 mid = 'am';
               }     
-            document.getElementById('currentTime').innerHTML = hour+':'+min+':'+sec +' '+mid ; setTimeout(clock, 1000);
+            document.getElementById('currentTime').innerHTML = hour+':'+min+':'+sec +''+mid ; setTimeout(clock, 1000);
           }
         }
       </script>
