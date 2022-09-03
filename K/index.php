@@ -93,7 +93,7 @@ $search_count = mysqli_num_rows($search_query);
         <canvas class="test" id="myChart"></canvas>
       </div>
     <!--Table Display - Total-->
-    <div class=table-total>
+    <div class=table_container>
       <table class="total">
         <h2>Total Manpower - Summary</h2>
         <tr>
@@ -113,6 +113,7 @@ $search_count = mysqli_num_rows($search_query);
           <td class="no"><?php echo $row['sum_no'];?></td>
           <td class="info"><?php echo $row['sum_info'];?></td>
         </tr>
+        </table>
       <?php }}}?>
     </div>
     <!--Table Display - Per Department-->

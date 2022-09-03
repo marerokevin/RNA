@@ -44,6 +44,7 @@ body {
   background-color: rgb(182, 234, 250);
   position: relative;
   display: flex;
+  align-items: center;
 }
 .main_content_wsb .roomcontainer .bedsidetable {
   height: 20px;
@@ -70,11 +71,13 @@ body {
 }
 .main_content_wsb .roomcontainer .wallhanger .dateselect {
   float: right;
-  position: fixed;
-  display: block;
+  position: relative;
+  display: flex;
   width: 100%;
-  height: 20px;
+  height: 30px;
+  background-color: rgb(255, 255, 255);
   font-size: 15px;
+  align-items: center;
 }
 .main_content_wsb .roomcontainer .wallhanger .dateselect .dateLabel {
   font-size: 13px;
@@ -95,12 +98,11 @@ body {
 .main_content_wsb .chart_container {
   display: flex;
   flex-direction: row;
-  align-items: center;
   text-transform: uppercase;
   overflow: hidden;
   width: 100%;
   height: calc(100% - 48px);
-  background-color: rgb(250, 182, 182);
+  background-color: rgb(255, 255, 255);
   padding: 20px;
 }
 .main_content_wsb .chart_container .test {
@@ -165,6 +167,24 @@ body {
   background-color: rgb(11, 1, 105);
   height: 100%;
   width: 100%;
+}
+.main_content_wsb .table_container {
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  overflow: hidden;
+  width: 100%;
+  height: calc(100% - 48px);
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+}
+.main_content_wsb .table_container .total {
+  align-items: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+  padding-top: 4px;
+  width: 100%;
+  border: 1px solid #ddd;
 }
 
 .main_content_wosb {
