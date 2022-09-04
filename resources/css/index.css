@@ -50,8 +50,9 @@ body {
   height: 20px;
   background-color: rgb(255, 255, 255);
   float: right;
-  display: block;
+  display: flex;
   padding-right: 10px;
+  align-items: center;
 }
 .main_content_wsb .roomcontainer .bedsidetable .systemtime {
   float: right;
@@ -65,7 +66,7 @@ body {
   position: relative;
   display: flex;
   width: 100%;
-  height: 20px;
+  height: 40px;
   font-size: 15px;
   background-color: rgb(255, 255, 255);
 }
@@ -74,7 +75,7 @@ body {
   position: relative;
   display: flex;
   width: 100%;
-  height: 30px;
+  height: 40px;
   background-color: rgb(255, 255, 255);
   font-size: 15px;
   align-items: center;
@@ -168,7 +169,7 @@ body {
   height: 100%;
   width: 100%;
 }
-.main_content_wsb .table_container {
+.main_content_wsb .tablecontainer {
   display: flex;
   flex-direction: row;
   text-transform: uppercase;
@@ -178,7 +179,7 @@ body {
   background-color: rgb(255, 255, 255);
   padding: 20px;
 }
-.main_content_wsb .table_container .total {
+.main_content_wsb .tablecontainer .total {
   align-items: center;
   border-collapse: collapse;
   border-spacing: 0;
