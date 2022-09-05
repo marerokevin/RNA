@@ -34,21 +34,8 @@ include ("../includes/sess.php");
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GPI-BCP Request</title>
-        <link rel="stylesheet" type="text/css" href="./resources/css/create.php">
-    </head>
-    <body>
-    <!-- Top Nav -->
-    <?php include 'topnav.php'; ?>
         <div class="Form">
-            <form class="disaster_form" action="create_dis.php" method="post">
+            <form class="disaster_form" action="/RNA/F/create.php" method="post">
                 <h2 class="text-center">BCP - Emergency Distress Form</h2>
                 <h3 class="text-center">Disasater Details</h3>
 
@@ -122,56 +109,4 @@ include ("../includes/sess.php");
                 </div>
             </form>
         </div>
-    <!--Burger Script-->   
-    <script>
-    function Burjer() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-        x.className += " responsive";
-        } else {
-        x.className = "topnav";
-        }
-    }
-    </script>
-    <!--Automatic Date Script-->
-    <script>
-        let today = new Date().toISOString().substr(0, 10);
-        document.querySelector("#Sdate").valueAsDate = new Date();
-        document.querySelector("#Edate").valueAsDate = new Date();
-    </script>
-
-    <script>
-        function getInitials(firstName, lastName) {
-            return (firstName[0] + lastName[0]).toUpperCase()
-        }
-
-        function getYear() {
-            return (new Date).getFullYear() % 100
-        }
-
-        function paddedNumber(number) {
-            var result = ""
-            for(var i = 4 - number.toString().length; i > 0; i--) {
-            result += "0"
-            }
-            return result + number
-        }
-
-        function makeStudentID(firstName, lastName, studentNumber) {
-            return getInitials(firstName, lastName) + paddedNumber(studentNumber) + getYear()
-        }
-
-        var sequenceNumber = 1
-        function gatherDataAndOutput() {
-            var firstName = document.getElementById("disaster_desc").value
-            var lastName = document.getElementById("disaster_type").value
-            var outputElement = document.getElementById("dis_control_number")
-
-            outputElement.value = makeStudentID(firstName, lastName, sequenceNumber)
-
-            sequenceNumber++; // make a different ID for the next student.
-        }
-    
-    </script>
-    </body>
-</html>
+<script src="/DNA/resources/scripts/control-number.js"></script>

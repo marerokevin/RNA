@@ -15,7 +15,7 @@ $search_count = mysqli_num_rows($search_query);
     <link rel="stylesheet" href="../resources/css/topbar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../resources/css/sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../resources/css/ticket.css?v=<?php echo time(); ?>">
-    <title>Home - SupportUS</title>
+    <title>Home - Risk Mitigation</title>
   </head>
   <body>
     <div>
@@ -24,18 +24,18 @@ $search_count = mysqli_num_rows($search_query);
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <?php include "../includes/sidebar.php"; ?>
     <div class="main_content_wsb" id="main_content">
-	    <div class="header">Support US</div>
+	    <div class="header">Risk Mitigation</div>
       <div class="topnavticket">
         <li class="navholder">
-          <a class="navticket" href="/RNA/ticket.php?action=create">Create</a>
-          <a class="navticket" href="/RNA/ticket.php?action=approval">Approval</a>
-          <a class="navticket" href="/RNA/ticket.php?action=confirm">Confirmation</a>
-          <a class="navticket" href="/RNA/ticket.php?action=status">Status</a>
+          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=create">Create</a>
+          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=approval">Approval</a>
+          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=confirm">Confirmation</a>
+          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=status">Status</a>
         </li>
       </div>
       <div class="tabContainer">
           <?php if ( isset($_GET['action']) && $_GET['action']=="create") {
-            include('../includes/ticket/create.php');
+            include('../F/create.php');
         } else {
             include('login.php');
         } ?>
