@@ -10,19 +10,19 @@ $search_count = mysqli_num_rows($search_query);
 <?php
   if (isset($_POST['selectdate'])){
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-      include_once("dbconnect.php");
+      include ("../includes/config.php");
 
       $from=date('Y-m-d 00:00:00',strtotime($_POST['selectdate']));
       $to=date('Y-m-d 23:59:59',strtotime($_POST['selectdate']));
 
       $sum_yeses = "SELECT date_encoded, user_department, SUM(bcp_yes) AS sum_yes FROM workinfo where date_encoded between '$from' AND '$to' GROUP BY user_department";
-      $sum_yes = mysqli_query($conn, $sum_yeses) or die("error to fetch data");
+      $sum_yes = mysqli_query($db_conn, $sum_yeses) or die("error to fetch data");
 
       $sum_nos = "SELECT date_encoded, user_department, SUM(bcp_no) AS sum_no FROM workinfo where date_encoded between '$from' AND '$to' GROUP BY user_department";      
-      $sum_no = mysqli_query($conn, $sum_nos) or die("error to fetch data");
+      $sum_no = mysqli_query($db_conn, $sum_nos) or die("error to fetch data");
         
       $sum_infos = "SELECT date_encoded, user_department, SUM(bcp_info) AS sum_info FROM workinfo where date_encoded between '$from' AND '$to' GROUP BY user_department";
-      $sum_info = mysqli_query($conn, $sum_infos) or die("error to fetch data");
+      $sum_info = mysqli_query($db_conn, $sum_infos) or die("error to fetch data");
 
       if ($sum_yes->num_rows > 0) {
         $labels = $yes = '';
@@ -93,59 +93,61 @@ $search_count = mysqli_num_rows($search_query);
         <canvas class="test" id="myChart"></canvas>
       </div>
     <!--Table Display - Total-->
-    <div class=tablecontainer>
-      <table class="total">
-        <h2 class="title">Total Manpower - Summary</h2>
-        <tr>
-          <th class="yes">Yes</th>
-          <th class="no">No</th>
-          <th class="info">No Information</th>
+    <div class="table-container">
+      <div class="table-summary">
+        <table class="total">
+            <h2 class="table-title-head">Total Manpower - Summary</h2>
+          <tr class="table-head-summary">
+            <th class="yes-head">Yes</th>
+            <th class="no-head">No</th>
+            <th class="info-head">No Information</th>
+          </tr>
+          <?php
+            if (isset($_POST['selectdate'])){
+              if($_SERVER["REQUEST_METHOD"] == "POST") {
+                include ("../includes/config.php");
+                $sql = "SELECT date_encoded, user_department, SUM(bcp_yes) AS sum_yes, SUM(bcp_no) AS sum_no, SUM(bcp_info) AS sum_info FROM workinfo where date_encoded between '$from' AND '$to'";
+                $result = mysqli_query($db_conn,$sql);
+                while($row=mysqli_fetch_array($result)){ ?>
+                <tr class="table-body">
+                  <td class="yes-body"><?php echo $row['sum_yes'];?></td>
+                  <td class="no-body"><?php echo $row['sum_no'];?></td>
+                  <td class="info-body"><?php echo $row['sum_info'];?></td>
+                </tr>
+              </table>
+            </div>
+    <?php       }
+              }
+            }?>
+    <!--Table Display - Per Department-->
+    <div class="table-perdept">
+      <table class="perdept">
+        <h2 class="table-title-perdept-head">Total per Department</h2>
+        <tr class="table-head-perdept">
+          <th class="depart-head">Department</th>
+          <th class="date-head">Date Encoded</th>
+          <th class="yes_per-head">Yes</th>
+          <th class="no_per-head">No</th>
+          <th class="info_per-head">No Information</th>
         </tr>
         <?php
-          if (isset($_POST['selectdate'])){
-            if($_SERVER["REQUEST_METHOD"] == "POST") {
-        include 'dbconnect.php'; 
-        $sql = "SELECT date_encoded, user_department, SUM(bcp_yes) AS sum_yes, SUM(bcp_no) AS sum_no, SUM(bcp_info) AS sum_info FROM workinfo where date_encoded between '$from' AND '$to'";
-        $result = mysqli_query($conn,$sql);
+        if (isset($_POST['selectdate'])){
+          if($_SERVER["REQUEST_METHOD"] == "POST") {
+          include ("../includes/config.php");
+        $sql = "SELECT date_encoded, user_department, SUM(bcp_yes) AS sum_yes, SUM(bcp_no) AS sum_no, SUM(bcp_info) AS sum_info FROM workinfo where date_encoded between '$from' AND '$to' GROUP BY user_department";
+        $result = mysqli_query($db_conn, $sql);
         while($row=mysqli_fetch_array($result)){ ?>
-        <tr>
-          <td class="yes"><?php echo $row['sum_yes'];?></td>
-          <td class="no"><?php echo $row['sum_no'];?></td>
-          <td class="info"><?php echo $row['sum_info'];?></td>
+        <tr class="table-body-perdept">
+          <td class="depart-body"><?php echo $row['user_department'];?></td>
+          <td class="date-body"><?php echo $row['date_encoded'];?></td>
+          <td class="yes_per-body"><?php echo $row['sum_yes'];?></td>
+          <td class="no_per-body"><?php echo $row['sum_no'];?></td>
+          <td class="info_per-body"><?php echo $row['sum_info'];?></td>
         </tr>
-        </table>
-      <?php }}}?>
+      </table>
     </div>
-    <!--Table Display - Per Department-->
-    <div class="tablecontainer">
-    <table class="perdept">
-    <h2>Total per Department</h2>
-    <tr>
-    <th class="depart">Department</th>
-    <th class="date">Date Encoded</th>
-    <th class="yes_per">Yes</th>
-    <th class="no_per">No</th>
-    <th class="info_per">No Information</th>
-    </tr>
-    <?php
-    if (isset($_POST['selectdate'])){
-      if($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'dbconnect.php'; 
-    $sql = "SELECT date_encoded, user_department, SUM(bcp_yes) AS sum_yes, SUM(bcp_no) AS sum_no, SUM(bcp_info) AS sum_info FROM workinfo where date_encoded between '$from' AND '$to' GROUP BY user_department";
-    $result = mysqli_query($conn,$sql);
-    while($row=mysqli_fetch_array($result)){ ?>
-    <tr>
-    <td class="depart"><?php echo $row['user_department'];?></td>
-    <td class="date"><?php echo $row['date_encoded'];?></td>
-    <td class="yes_per"><?php echo $row['sum_yes'];?></td>
-    <td class="no_per"><?php echo $row['sum_no'];?></td>
-    <td class="info_per"><?php echo $row['sum_info'];?></td>
-    </tr>
     <?php }}}?>
-    </div>
-    </div>
-</div>
-</body>
+  </body>
 </html>
     <!--Bar Chart Script-->
       <script>
