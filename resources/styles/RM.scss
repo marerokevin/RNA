@@ -68,59 +68,140 @@ body {
         width: 100%;
         padding-left: 48px;
         padding-right: 48px;
-
+        
         .createForm {
             padding: 10px;
             height: 100%;
 
-            .SectionSelect {
-                padding-top: 10px;
-                padding-bottom: 10px;
+            .input-container {
+                width: 100%;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                text-align: center;
 
-                .formInputLabel {
-                    font-size: 15px;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                    padding: 0;
+                .input-label {
+                    font-size: 20px;
+                    margin-right: 15px;
                 }
 
-                .formRadioButton {
-                    font-size: 15px;
-                    margin-top: 0;
-                    margin-bottom: 0;
-                    padding: 0;
-                }
-
-                .formInput {
-                    height: 30px;
+                .input-main {
+                    height: 100%;
                     width: 100%;
+                    font-size: 15px;
                 }
             }
 
-            .formSelectCont {
-                display: none;
-                font-size: 15px;
-                width: 100%;
+            .start-title {
+                font-size: 20px;
+                margin-right: 15px;
             }
 
-            .inp8t {
+            .start-container {
+                width: 100%;
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: center;
+                border: 2px solid #aeaeae;
+                border-radius: 5px;
                 padding-top: 5px;
                 padding-bottom: 5px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                display: none;
-                font-size: 15x;
-                width: 100%;
+
+                
+                .start-date-container {
+                    width: 50%;
+                    height: 30px;
+                    display: flex;
+                    flex-direction: row;
+
+                    .start-date-label {
+                        margin-left: 10px;
+                        font-size: 20px;
+                    }
+
+                    .start-date {
+                        width: 100%;
+                        margin-right: 10px;
+                        margin-left: 10px;
+                        height: 30px;
+                    }
+                }
+
+                .start-time-container {
+                    width: 50%;
+                    height: 30px;
+                    display: flex;
+                    flex-direction: row;
+
+                    .start-time-label {
+                        margin-right: 10px;
+                        font-size: 20px;
+                    }
+
+                    .start-time {
+                        width: 100%;
+                        margin-right: 10px;
+                        height: 30px;
+                    }
+                }
             }
 
-            .Relay {
+            .end-title {
+                font-size: 20px;
+                margin-right: 15px;
+            }
+
+            .end-container {
+                width: 100%;
+                height: 40px;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                text-align: center;
+                border: 2px solid #aeaeae;
+                border-radius: 5px;
                 padding-top: 5px;
                 padding-bottom: 5px;
-                margin-top: 20px;
-                margin-bottom: 20px;
-                display: none;
-                font-size: 15x;
-                width: 100%;
+
+                
+                .end-date-container {
+                    width: 50%;
+                    height: 30px;
+                    display: flex;
+                    flex-direction: row;
+
+                    .end-date-label {
+                        margin-left: 10px;
+                        font-size: 20px;
+                    }
+
+                    .end-date {
+                        width: 100%;
+                        margin-right: 10px;
+                        margin-left: 10px;
+                        height: 30px;
+                    }
+                }
+
+                .end-time-container {
+                    width: 50%;
+                    height: 30px;
+                    display: flex;
+                    flex-direction: row;
+
+                    .end-time-label {
+                        margin-right: 10px;
+                        font-size: 20px;
+                    }
+
+                    .end-time {
+                        width: 100%;
+                        margin-right: 10px;
+                        height: 30px;
+                    }
+                }
             }
         }
     }

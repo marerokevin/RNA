@@ -14,7 +14,7 @@ $search_count = mysqli_num_rows($search_query);
     <link rel="stylesheet" href="../resources/images/fontawesome/css/all.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../resources/css/topbar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../resources/css/sidebar.css?v=<?php echo time(); ?>">
-    <link rel="stylesheet" href="../resources/css/ticket.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../resources/css/RM.css?v=<?php echo time(); ?>">
     <title>Home - Risk Mitigation</title>
   </head>
   <body>

@@ -34,51 +34,61 @@ include ("../includes/sess.php");
     }
 }
 ?>
-        <div class="Form">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../resources/css/ticket.css?v=<?php echo time(); ?>">
+</head>
+<body>
+    
+        <div class="createForm">
             <form class="disaster_form" action="/RNA/F/create.php" method="post">
                 <h2 class="text-center">BCP - Emergency Distress Form</h2>
                 <h3 class="text-center">Disasater Details</h3>
 
                 <!-- Disaster Description-->
-                <div class="form-group"> 
-                    <label for="disaster_desc">Description</label> 
-                    <input type="text" class="form-control" id="disaster_desc"
+                <div class="input-container"> 
+                    <label for="disaster_desc" class="input-label">Description</label> 
+                    <input type="text" class="input-main" id="disaster_desc"
                     name="disaster_desc" required>
                 </div>
 
                 <!--Time_Start-->        
-                <label for="start-grid">Start</label>
-                <div class="start-grid" id="start-grid">
-        
-                    <div class="form-group">    
-                        <label for="Sdate">Date</label>
-                        <input type="date" class="start-date" id="Sdate" name="Sdate" required>
-                    </div>
+                <label for="start-grid" class="start-title">Start</label>
+                    <div class="start-container" id="start-grid">
+                        <div class="start-date-container">    
+                            <label for="Sdate" class="start-date-label">Date</label>
+                            <input type="date" class="start-date" id="Sdate" name="Sdate" required>
+                        </div>
 
-                    <div class="form-group">    
-                        <label for="Etime">Time</label>
-                        <input type="time" class="start-time" id="Etime" name="Stime" required>
+                        <div class="start-time-container">    
+                            <label for="Etime" class="start-time-label">Time</label>
+                            <input type="time" class="start-time" id="Etime" name="Stime" required>
+                        </div>
                     </div>
-                </div>
 
                 <!--Time_End-->
-                <label for="timestart">End</label>
-                <div class="end-grid">
-                    <div class="form-group">    
-                        <label for="Edate">Date</label>
+                <label for="end-grid" class="end-title">End</label>
+                <div class="end-container" id="end-grid">
+                    <div class="end-date-container">    
+                        <label for="Edate" class="end-date-label">Date</label>
                         <input type="date" class="end-date" id="Edate" name="Edate" required>
                     </div>
 
-                    <div class="form-group">    
-                        <label for="Etime">Time</label>
-                        <input type="time" class="start-time" id="Etime" name="Etime" required>
+                    <div class="end-time-container">    
+                        <label for="Etime" class="end-time-label">Time</label>
+                        <input type="time" class="end-time" id="Etime" name="Etime" required>
                     </div>
                 </div>
                 
                 <!--Disaster Type-->
-                <div class="form-group">
-                    <label for="disaster_type">Disaster Type</label> 
-                    <input type="text" class="form-control" id="disaster_type"
+                <div class="input-container">
+                    <label for="disaster_type" class="input-label">Disaster Type</label> 
+                    <input type="text" class="input-main" id="disaster_type"
                     name="disaster_type" required>
                 </div>
                 
@@ -109,4 +119,5 @@ include ("../includes/sess.php");
                 </div>
             </form>
         </div>
+    </body>
 <script src="/DNA/resources/scripts/control-number.js"></script>
