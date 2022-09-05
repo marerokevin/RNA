@@ -47,6 +47,7 @@ if(empty(trim($_POST["username"]))){
                             $_SESSION["user_level"] = $user_level;
                             $_SESSION["email_address"] = $email_address;
                             $_SESSION["username"] = $username;
+                            $_SESSION["user_level"] = $user_level;
                             $_SESSION["first_name"] = $first_name;
                             $_SESSION["last_name"] = $last_name;
                             header("location: /RNA/K/index.php");
