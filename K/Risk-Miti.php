@@ -11,7 +11,6 @@ $search_count = mysqli_num_rows($search_query);
 <html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../resources/images/fontawesome/css/all.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../resources/css/topbar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../resources/css/sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../resources/css/RM.css?v=<?php echo time(); ?>">
@@ -27,18 +26,23 @@ $search_count = mysqli_num_rows($search_query);
 	    <div class="header">Risk Mitigation</div>
       <div class="topnavticket">
         <li class="navholder">
-          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=create">Create</a>
-          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=approval">Approval</a>
-          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=confirm">Confirmation</a>
-          <a class="navticket" href="/RNA/K/Risk-Miti.php?action=status">Status</a>
+          <a onload="tablet1()" id="create" class="navticket-off" href="/RNA/K/Risk-Miti.php?action=create">Create</a>
+          <a onclick="tablet2()" id="approval" class="navticket-off" href="/RNA/K/Risk-Miti.php?action=approval">Approval</a>
+          <a onclick="tablet3()" id="confirm" class="navticket-off" href="/RNA/K/Risk-Miti.php?action=confirm">Confirmation</a>
+          <a onclick="tablet4()" id="status" class="navticket-off" href="/RNA/K/Risk-Miti.php?action=status">Status</a>
         </li>
       </div>
       <div class="tabContainer">
-          <?php if ( isset($_GET['action']) && $_GET['action']=="create") {
+        <?php if ( isset($_GET['action']) && $_GET['action']=="create") {
             include('../F/create.php');
-        } else {
-            include('login.php');
-        } ?>
+          } else if ( isset($_GET['action']) && $_GET['action']=="approval") {
+            include('../F/approval.php');
+          } else if ( isset($_GET['action']) && $_GET['action']=="confirm") {
+            include('../F/confirm.php');
+          } else if ( isset($_GET['action']) && $_GET['action']=="status") {
+            include('../F/status.php');
+          }
+        ?>
       </div>
     </div>
   </div>
@@ -47,3 +51,4 @@ $search_count = mysqli_num_rows($search_query);
 </html>
 <script src="/RNA/resources/scripts/sidebar.js"></script>
 <script src="/RNA/resources/scripts/searchbar.js"></script>
+<script src="/RNA/resources/scripts/tablets.js"></script>

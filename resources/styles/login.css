@@ -13,7 +13,7 @@ html, body {
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
-
+ 
 h1{
 	margin: 0 auto;
 	padding-top: 20px;
@@ -145,6 +145,10 @@ input:hover {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#cf0404',GradientType=0 ); /* IE6-9 */
 }
 
+div[class=createaccount] {
+	margin-top: 10px;
+}
+
 p{
 	font-size:13px;
 }
@@ -262,4 +266,5 @@ label, span{
 		outline: none;
 	}
 }
+
 

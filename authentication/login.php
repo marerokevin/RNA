@@ -76,40 +76,45 @@ if(empty(trim($_POST["username"]))){
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Employee Directory</title>
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="../resources/styles/login.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/login.css">
     <!--FONT-->
 </head>
 <body>
-    <div class="title">
+    <div class="titlecontainer">
             <a href="/RNA/index.php" class="header_logo">
                 <img src="../resources/images/glorylogo.svg" alt="GPI-BCP">
             </a>
-        <h1 class="text-center">Glory Philippines Inc.</h1>
-        <h2 class="system_title">Business Continuity Plan System</h2>
+        <h1 class="company-name">Glory Philippines Inc.</h1>
+        <h2 class="system-name">Business Continuity Plan System</h2>
     </div>
-    <div name="login_form" class="login">
-        <h2 class="Login-title">Login</h2>
+    <div name="login_form" class="login-container">
+        <h2 class="login-title">Login</h2>
         <?php 
         if(!empty($login_err)){
             echo '<div class="alert alert-danger 
             alert-dismissible fade show" role="alert">' . $login_err . '</div>';
         }
         ?>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form">
-                <input type="text" name="username" class="username<?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" placeholder="Username" required oninvalid="this.setCustomValidity('Enter your username here')"
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login-form">
+            <div class="username-container">
+                <input type="text" name="username" class="username-input"<?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" placeholder="Username" required oninvalid="this.setCustomValidity('Enter your username here')"
                 oninput="this.setCustomValidity('')"/><br>
                 <span class="invalid-feedback"><?php echo $username_err; ?></span>
             </div>
-            <div class="form">
-                <input type="password" name="password" class="password<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" Placeholder="Password" required oninvalid="this.setCustomValidity('Enter your password here')" oninput="this.setCustomValidity('')"/><br>
+            <div class="password-container">
+                <input type="password" name="password" class="password-input<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" Placeholder="Password" required oninvalid="this.setCustomValidity('Enter your password here')" oninput="this.setCustomValidity('')"/><br>
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
-            <div class="form">
-                <input type="submit" class="loginbtn" value="Login">
+            <div class="login-container">
+                <input type="submit" class="login-button" value="Login">
             </div>
+
+            <div class="createaccount">Need an account?
+                <a href="/RNA/authentication/signup.php">Signup</a>
+            </div>
+
             <label>
-                <input class="rmbr" type="checkbox" checked="checked" name="remember"> Remember me
+                <input class="remeber" type="checkbox" checked="checked" name="remember"> Remember me
             </label>
         </form>
     </div>  

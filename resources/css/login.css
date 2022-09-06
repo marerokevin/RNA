@@ -1,0 +1,119 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-size: 16px;
+  align-items: center;
+  align-content: center;
+  font-family: Helvetica;
+  background: #f0f2f5;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.titlecontainer {
+  padding: 20px;
+}
+.titlecontainer .company-name {
+  margin: 0 auto;
+  padding-top: 20px;
+  text-transform: uppercase;
+  font-size: 30px;
+  color: black;
+}
+.titlecontainer .system-name {
+  margin: 0 auto;
+  padding-top: 20px;
+  text-transform: uppercase;
+  font-size: 20px;
+  color: black;
+}
+
+.login-container {
+  padding: 20px;
+  height: 300px;
+  width: 280px;
+  margin-right: 80px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+.login-container .login-title {
+  margin: 0 auto;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-transform: uppercase;
+  font-size: 30px;
+  text-align: center;
+  color: black;
+}
+.login-container .login-form {
+  height: 136px;
+}
+.login-container .login-form .username-container {
+  width: 280px;
+  height: 68px;
+  padding: 0px;
+  align-items: center;
+}
+.login-container .login-form .username-container .username-input {
+  width: 258px;
+  height: 26px;
+  padding: 9px;
+  font-size: 13px;
+}
+.login-container .login-form .username-container .invalid-feedback {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.login-container .login-form .password-container {
+  width: 280px;
+  height: 68px;
+  padding: 0px;
+  align-items: center;
+}
+.login-container .login-form .password-container .password-input {
+  width: 258px;
+  height: 26px;
+  padding: 9px;
+  font-size: 13px;
+}
+.login-container .login-form .password-container .invalid-feedback {
+  font-size: 10px;
+  margin-bottom: 10px;
+}
+.login-container .login-form .login-container {
+  width: 280px;
+  height: 60px;
+  padding: 0px;
+  text-align: center;
+}
+.login-container .login-form .login-container .login-button {
+  color: #fff;
+  font-size: 20px;
+  border: 1px solid #a6a6a6;
+  width: 100%;
+  height: 43px;
+  border-radius: 6px;
+  margin-top: 3px;
+  margin-right: 6px;
+  outline: none;
+  background: #166fe5; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+  background: linear-gradient(to bottom, #166fe5 0%, rgb(42, 109, 140) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#ff3019", endColorstr="#cf0404",GradientType=0 ); /* IE6-9 */
+}
+.login-container .login-form .login-container .login-button:hover {
+  background: #124d9b; /* Old browsers */ /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+  background: linear-gradient(to bottom, #124d9b 0%, #124d9b 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#cc0000", endColorstr="#cc0000",GradientType=0 ); /* IE6-9 */
+}
+.login-container .login-form .createaccount {
+  font-size: 13px;
+}
+.login-container .login-form .remeber {
+  font-size: 13px;
+}/*# sourceMappingURL=login.css.map */

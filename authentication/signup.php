@@ -50,8 +50,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   <head>
     <meta charset=UTF-8>
     <title>Register - Directory</title>
-    <link rel="stylesheet" type="text/css" href="/RNA/resources/styles/create.css">
-    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/signup.css">
+    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/topbar.css">
+    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/sidebar.css">
 </head>
 
 <meta name="viewport" content=
@@ -92,59 +93,69 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>'; 
     }
 ?>
-   <div>
-    <?php include "../includes/navbar.php"; ?>
+  <div>
+    	<?php include "../includes/navbar.php"; ?>
     </div>
-    <h1 class="text-center">Sign Up</h1> 
-    <form action="signup.php" method="POST">
-        <div class="form-group"> 
-        <label for="user_uid">Username:</label>
-        <input type="text" class="form-control" id="user_uid"
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+    <?php include "../includes/sidebar.php"; ?>
+    <div class="main_content_wsb" id="main_content">
+    <form class="signup-container" action="signup.php" method="POST">
+    <h1 class="title">Sign Up</h1> 
+        <div class="input-container"> 
+        <label for="user_uid" class="input-label">Username:</label>
+        <input type="text" class="input-main" id="user_uid"
             name="user_uid" aria-describedby="emailHelp" placeholder="Username" onkeyup="stoppedTyping()" required>    
         </div>
-
-        <label for="user_level">User Level:</label>
-            <select type="text" class="form-control"
+        <div class="input-container"> 
+        <label for="user_level" class="input-label">User Level:</label>
+            <select type="text" class="input-main"
             id="user_level" name="user_level" placeholder="Select user level" onkeyup="stoppedTyping()" required>
-            <option value="" disabled selected>Select user level</option>
-            <option value="Administrator">Administrator</option>
-            <option value="User">User</option>
-        </select>
+                <option value="" disabled selected>Select user level</option>
+                <option value="Administrator">Administrator</option>
+                <option value="Head">Head</option>
+                <option value="User">User</option>
+            </select>
+        </div>
 
-        <div class="form-group"> 
-        <label for="first_name">First Name:</label>
-        <input type="text" class="form-control" id="first_name"
+        <div class="input-container"> 
+        <label for="first_name" class="input-label">First Name:</label>
+        <input type="text" class="input-main" id="first_name"
             name="first_name" aria-describedby="emailHelp" placeholder="First Name" onkeyup="stoppedTyping()" required>    
         </div>
 
-        <div class="form-group"> 
-        <label for="last_name">last Name:</label>
-        <input type="text" class="form-control" id="last_name"
+        <div class="input-container"> 
+        <label for="last_name" class="input-label">last Name:</label>
+        <input type="text" class="input-main" id="last_name"
             name="last_name" aria-describedby="emailHelp" placeholder="Last Name" onkeyup="stoppedTyping()" required>    
         </div>
 
-        <div class="form-group">
-        <label for="email_address">E-mail Address:</label>
-            <input type="text" class="form-control"
+        <div class="input-container">
+        <label for="email_address" class="input-label">E-mail Address:</label>
+            <input type="text" class="input-main"
             id="email_address" name="email_address" placeholder="E-mail Address" onkeyup="stoppedTyping()" required> 
         </div>
 
-        <label for="user_pwd">Password:</label>
-        <div class="form-group"> 
-            <input type="password" class="form-control"
+        <div class="input-container"> 
+        <label for="user_pwd" class="input-label">Password:</label>
+            <input type="password" class="input-main"
             id="user_pwd" name="user_pwd" placeholder="Password" onkeyup="stoppedTyping()" required> 
         </div>
-        <div class="form-group">
-        <label for="user_cpwd">Confirm your password:</label>
-            <input type="password" class="form-control"
+
+        <div class="input-container">
+        <label for="user_cpwd" class="input-label">Confirm your password:</label>
+            <input type="password" class="input-main"
                 id="user_cpwd" name="user_cpwd" placeholder="Confirm Password" onkeyup="stoppedTyping()" required>
-            <small id="emailHelp" class="form-text text-muted">
-            Make sure to complete all of the fields
-            </small> 
-        </div>      
+        </div>
+
+            <small id="emailHelp" class="reminder">Make sure to fill up all fields properly <small>      
+
         <div>
-        <input type="submit" class="reg-btn" Value="Register"id="reg_btn">
+            <input type="submit" class="regbutton" Value="Register"id="reg_btn">
+        </div>
+        <div class="haveaccount">Already have an account?
+            <a href="/RNA/authentication/login.php">Login</a>
         </div>
     </form> 
+    </div>
 </body>
 </html>

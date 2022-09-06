@@ -88,3 +88,71 @@ User
     -read Guides
 
     change include on click of <a>
+
+    bullshit
+
+// var x = 0;
+// function tablet1() {
+//   function xchange(){
+//       x = 1;
+//     xchange();
+//     if (x == 1) {
+//       document.getElementById("create").className = "navticket-on";
+//       document.getElementById("approval").className = "navticket-off";
+//       document.getElementById("confirm").className = "navticket-off";
+//       document.getElementById("status").className = "navticket-off";
+//       console.log(x);
+//     } else {
+//       document.getElementById("create").className = "navticket-on";
+//       document.getElementById("approval").className = "navticket-off";
+//       document.getElementById("confirm").className = "navticket-off";
+//       document.getElementById("status").className = "navticket-off";
+//       console.log(x+1);
+//     }
+//   }
+// }
+
+var x = 0;
+function tablet2() {
+  function xchange(){
+    x = 2;
+    y = document.getElementById("approval");
+  }
+  xchange();
+  document.getElementById("create").className = "navticket-off";
+  document.getElementById("approval").className = "navticket-on";
+  document.getElementById("confirm").className = "navticket-off";
+  document.getElementById("status").className = "navticket-off";
+  console.log(x);
+  console.log(y);
+}
+
+// var x = 0;
+// function tablet3() {
+//   function xchange(){
+//     x = 3;
+//   }
+//   xchange();
+//   if (x == 3){
+//     console.log(x);
+//     document.getElementById("create").className = "navticket-off";
+//     document.getElementById("approval").className = "navticket-off";
+//     document.getElementById("confirm").className = "navticket-on";
+//     document.getElementById("status").className = "navticket-off";
+//   }
+// }
+
+// var x = 0;
+// function tablet4() {
+//   function xchange(){
+//     x = 4;
+//   }
+//   xchange();
+//   if (x == 3){
+//     console.log(x);
+//     document.getElementById("create").className = "navticket-off";
+//     document.getElementById("approval").className = "navticket-off";
+//     document.getElementById("confirm").className = "navticket-off";
+//     document.getElementById("status").className = "navticket-on";
+//   }
+// }
