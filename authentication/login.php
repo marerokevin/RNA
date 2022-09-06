@@ -76,7 +76,7 @@ if(empty(trim($_POST["username"]))){
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Employee Directory</title>
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="../resources/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../resources/css/login.css?v=<?php echo time(); ?>">
     <!--FONT-->
 </head>
 <body>
@@ -88,7 +88,6 @@ if(empty(trim($_POST["username"]))){
         <h2 class="system-name">Business Continuity Plan System</h2>
     </div>
     <div name="login_form" class="login-container">
-        <h2 class="login-title">Login</h2>
         <?php 
         if(!empty($login_err)){
             echo '<div class="alert alert-danger 
@@ -106,11 +105,16 @@ if(empty(trim($_POST["username"]))){
                 <span class="invalid-feedback"><?php echo $password_err; ?></span>
             </div>
             <div class="login-container">
-                <input type="submit" class="login-button" value="Login">
+                <input type="submit" class="login-button" value="Log In">
+            </div>
+            <div class="forgot-container">
+                <a class="forgot" href="#">Forgot password?</a>
             </div>
 
-            <div class="createaccount">Need an account?
-                <a href="/RNA/authentication/signup.php">Signup</a>
+            <div class="divider"></div>
+
+            <div class="createaccount-container">
+                <a class="createaccount" href="/RNA/authentication/signup.php">Create new account</a>
             </div>
 
             <label>
