@@ -50,9 +50,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
   <head>
     <meta charset=UTF-8>
     <title>Register - Directory</title>
-    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/signup.css">
-    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/topbar.css">
-    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/sidebar.css">
+    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/signup.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="/RNA/resources/css/topbarsignup.css?v=<?php echo time(); ?>">
 </head>
 
 <meta name="viewport" content=
@@ -94,10 +93,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 ?>
   <div>
-    	<?php include "../includes/navbar.php"; ?>
+  <nav class="navigationWrapper">
+    <div class="logoWrapper">
+        <a href="../K/index.php" class="logolink"><img class="logo" src="/RNA/resources/images/glorylogo.svg"></a>
+        <li class="home">
+            <a class="link" href="/RNA/K/index.php">GPI MIS-HelpDesk</a>
+        </li>
+    </div>
+</nav>
+
     </div>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <?php include "../includes/sidebar.php"; ?>
     <div class="main_content_wsb" id="main_content">
     <form class="signup-container" action="signup.php" method="POST">
     <h1 class="title">Sign Up</h1> 

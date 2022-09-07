@@ -1,6 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 100%;
+  height: 100%;
 }
 
 *,
@@ -14,26 +15,25 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  background-color: hsl(0deg, 0%, 100%);
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 .main_content_wsb {
-  background: rgb(234, 233, 233);
-  width: calc(100% - 280px);
+  background: #111986;
+  width: 40%;
   height: 100%;
   float: right;
-  margin-left: 280px;
+  margin-left: 60%;
   margin-top: 20px;
   padding-top: 48px;
-  transition: all 0.5s;
   z-index: 1;
 }
 .main_content_wsb .title {
   white-space: nowrap;
   text-align: left;
   text-align: center;
+  color: #ffffff;
 }
 .main_content_wsb .signup-container {
   height: 100%;
@@ -54,6 +54,7 @@ body {
   font-size: 15px;
   margin-right: 15px;
   white-space: nowrap;
+  color: #ffffff;
   text-align: left;
 }
 .main_content_wsb .input-container .input-main {
@@ -70,6 +71,7 @@ body {
   background-color: #d8d8d8;
 }
 .main_content_wsb .reminder {
+  color: #ffffff;
   text-align: right;
 }
 .main_content_wsb .regbutton {
@@ -93,5 +95,6 @@ body {
 }
 .main_content_wsb .haveaccount {
   margin-top: 10px;
-  font-size: 5px;
+  color: #ffffff;
+  font-size: 10px;
 }/*# sourceMappingURL=signup.css.map */
