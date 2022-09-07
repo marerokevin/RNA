@@ -57,12 +57,14 @@ html, body {
 }
 
 .dual-function-container {
+    float:right;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 50%;
     height: 100%;
     margin: 0 40px;
+    transition: width 500ms ease-in-out;
 
     .login-container {
         padding: 20px;
@@ -222,6 +224,7 @@ html, body {
     width: 0;
     height: 100%;
     margin: 0 40px;
+    transition: width 500ms ease-in-out;
 
     .login-container {
         width: 0;
@@ -232,7 +235,7 @@ html, body {
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
         display: none;
-        transition: width 300ms linear;
+        transition: width 300ms ease-in-out;
 
         .login-form {
             width: inherit;
@@ -375,6 +378,7 @@ html, body {
 }
 
 .register-container{
+    position: relative;
     background: #111986;
     width:  50%;
     height: 100%;
@@ -383,7 +387,7 @@ html, body {
     padding-top: 48px;
     z-index: 1;
     display: none;
-    transition: width 300ms linear;
+    transition: width 500ms ease-in-out;
 
     .title {
         white-space: nowrap;
@@ -395,7 +399,7 @@ html, body {
     .signup-container {
         height: 100%;
         margin-left: 100px;
-        margin-right: 100px;
+        padding-right: 100px;
         display: flex;
         flex-direction: column;
     }
@@ -422,11 +426,11 @@ html, body {
             font-size: 15px;
             border: 2px solid #aeaeae;
             border-radius: 2px;
-            transition:all .5s linear;
+            transition:all .5s ease-in-out;
 
             &:hover {
                 border: 2px solid #525252;
-                transition:all .5s linear;
+                transition:all .5s ease-in-out;
                 background-color: #d8d8d8;
             }
         }
@@ -445,7 +449,7 @@ html, body {
         height: 60px;
         font-size: 25px;
         background-color: #2364d2;
-        transition:all .5s linear;
+        transition:all .5s ease-in-out;
         border-radius: 10px;
         font-weight: 1000;
         color: rgb(182, 182, 182);
@@ -453,7 +457,7 @@ html, body {
         &:hover {
             border: 1px solid rgb(11, 148, 141);
             background-color: #1a4ca3;
-            transition:all .5s linear;
+            transition:all .5s ease-in-out;
             color: rgb(211, 211, 211);
         }
     }
@@ -467,6 +471,7 @@ html, body {
 
 .register-container-hidden{
     background: #111986;
+    position: relative;
     width:  0;
     height: 100%;
     float: right;
@@ -474,7 +479,7 @@ html, body {
     padding-top: 48px;
     z-index: 1;
     display: none;
-    transition: width 300ms linear;
+    transition: width 500ms ease-in-out;
 
     .title {
         white-space: nowrap;
@@ -487,7 +492,7 @@ html, body {
         height: 100%;
         margin-left: 100px;
         margin-right: 100px;
-        display: flex;
+        display: none;
         flex-direction: column;
     }
 
@@ -513,11 +518,11 @@ html, body {
             font-size: 15px;
             border: 2px solid #aeaeae;
             border-radius: 2px;
-            transition:all .5s linear;
+            transition:all .5s ease-in-out;
 
             &:hover {
                 border: 2px solid #525252;
-                transition:all .5s linear;
+                transition:all .5s ease-in-out;
                 background-color: #d8d8d8;
             }
         }
@@ -536,7 +541,7 @@ html, body {
         height: 60px;
         font-size: 25px;
         background-color: #2364d2;
-        transition:all .5s linear;
+        transition:all .5s ease-in-out;
         border-radius: 10px;
         font-weight: 1000;
         color: rgb(182, 182, 182);
@@ -544,7 +549,7 @@ html, body {
         &:hover {
             border: 1px solid rgb(11, 148, 141);
             background-color: #1a4ca3;
-            transition:all .5s linear;
+            transition:all .5s ease-in-out;
             color: rgb(211, 211, 211);
         }
     }

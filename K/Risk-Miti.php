@@ -33,7 +33,9 @@ $search_count = mysqli_num_rows($search_query);
         </li>
       </div>
       <div class="tabContainer">
-        <?php if ( isset($_GET['action']) && $_GET['action']=="create") {
+        <?php 
+        if ($_SESSION["user_level"]!="Administrator") {
+          }if ( isset($_GET['action']) && $_GET['action']=="create") {
             include('../F/create.php');
           } else if ( isset($_GET['action']) && $_GET['action']=="approval") {
             include('../F/approval.php');
@@ -41,6 +43,9 @@ $search_count = mysqli_num_rows($search_query);
             include('../F/confirm.php');
           } else if ( isset($_GET['action']) && $_GET['action']=="status") {
             include('../F/status.php');
+          } else {
+            echo '<script type="text/javascript"> alert("Error 401, Unauthorized Access, please contact your Systems Administrator.") </script>';
+            echo '<script type="text/javascript"> window.location.href="./dashboard.php"; </script>'; 
           }
         ?>
       </div>
