@@ -45,7 +45,7 @@ $search_count = mysqli_num_rows($search_query);
             include('../F/status.php');
           } else {
             echo '<script type="text/javascript"> alert("Error 401, Unauthorized Access, please contact your Systems Administrator.") </script>';
-            echo '<script type="text/javascript"> window.location.href="./dashboard.php"; </script>'; 
+            echo '<script type="text/javascript"> window.location.href="./K/Risk-Miti.php"; </script>'; 
           }
         ?>
       </div>

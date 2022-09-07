@@ -4,7 +4,7 @@ include ("../includes/sess.php");
 
     if ($_SESSION["user_level"]!="Administrator") {
         echo '<script type="text/javascript"> alert("Error 401, Unauthorized Access, please contact your Systems Administrator.") </script>';
-        echo '<script type="text/javascript"> window.location.href="./K/dashboard.php"; </script>';
+        echo '<script type="text/javascript"> window.location.href="/RNA/K/index.php"; </script>';
 } else {
     include ("../includes/config.php");
     if($_SERVER["REQUEST_METHOD"] == "POST") {
