@@ -80,6 +80,9 @@ if(empty(trim($_POST["username"]))){
     <!--FONT-->
 </head>
 <body>
+<?php
+    include_once ("signup.php");
+?>
     <div class="overall-container">
         <div class="titlecontainer-login">
                 <a href="/RNA/index.php" class="header_logo">
@@ -131,7 +134,7 @@ if(empty(trim($_POST["username"]))){
     </div>
 
     <div class="register-container-hidden" id="register">
-    <form class="signup-container" action="signup.php" method="POST">
+    <form class="signup-container" action="login.php" method="POST">
     <h1 class="title">Sign Up</h1> 
         <div class="input-container"> 
         <input type="text" class="input-main" id="user_uid"
