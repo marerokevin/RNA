@@ -37,6 +37,8 @@ CREATE TABLE accounts (
     t.ozawa@glory.com.ph
     6l0ry810
 
+xrandr --output HDMI-A-0 --mode 1920x1080 --primary --output eDP --mode 1366x768 --left-of HDMI-A-0
+
     count connected 
     netstat -ntu|awk '{print $5}'|cut -d: -f1 -s |cut -f1,2,3 -d'.'|sed 's/$/.0/'|sort|uniq -c|sort -nk1 -r
 
