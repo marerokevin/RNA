@@ -5,7 +5,7 @@
                 <i class="fa fa-bars fa-2x" ></i>
             </a>
         </li>
-        <a href="../K/index.php" class="logolink"><img class="logo" src="/RNA/resources/images/frog.jpg"></a>
+        <a href="../K/index.php" class="logolink"><img class="logo" src="/RNA/S/images/frog.jpg"></a>
         <li class="home">
             <a class="link" href="/RNA/K/index.php">GPI MIS-HelpDesk</a>
         </li>
@@ -13,7 +13,7 @@
         <ul class="navigation">
             <li class="parent" id="button">
                 <button class='trigger' onclick="usermodal()">
-                    <img src='/RNA/resources/images/frog.jpg'>
+                    <img src='/RNA/S/images/frog.jpg'>
                 </button>
             </li>
         </ul>
@@ -35,5 +35,5 @@
         </li>
     </div>
 </div>
-<script src="/RNA/resources/scripts/sidebar.js"></script>
-<script src="/RNA/resources/scripts/navbar-modal.js"></script>
+<script src="/RNA/S/scripts/sidebar.js"></script>
+<script src="/RNA/S/scripts/navbar-modal.js"></script>

@@ -10,23 +10,67 @@ html, body {
 	font-family: Helvetica;
 	background: #f0f2f5;
 	display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
+.notification-container {
+    width: 100%;
+    height: 47px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    
+    .alert-success {
+        width: 100%;
+        height: 100%;
+    
+        .closebtn-success {
+            width: 100%;
+            height: 100%;
+            background-color: #188401;
+            color: #F0F0F0;
+        }
+    }
+
+    .alert-danger {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #441818;
+    
+        .closebtn-error {
+            width: inherit;
+            height: inherit;
+            background-color: #a00;
+            color: #F0F0F0;
+        }
+    }
+}
 
 .overall-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     height: 100%;
     margin: 0 40px;
+    flex-direction: row;
 
     .titlecontainer-login {
         float: left;
         padding: 20px;
         width: 50%;
         text-align: center;
+        height: 100%;
+        justify-content: center;
+        display: inherit;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
 
         .header_logo {
             width: 106px;
@@ -383,7 +427,6 @@ html, body {
     width:  50%;
     height: 100%;
     float: right;
-    margin-top: 20px;
     padding-top: 48px;
     z-index: 1;
     display: none;
@@ -425,7 +468,7 @@ html, body {
             }
         }
     }
-    
+
     .title {
         white-space: nowrap;
         text-align: left;
@@ -592,13 +635,50 @@ html, body {
     background: #111986;
     position: relative;
     width:  0;
-    height: 100%;
+    height: 0;
     float: right;
     margin-top: 20px;
     padding-top: 48px;
     z-index: 1;
     display: none;
     transition: width 500ms ease-in-out;
+
+    .notification-container {
+        width: inherit;
+        height: inherit;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        background-color: #6CAE5A;
+        
+        .alert-success {
+            width: 50%;
+            height: 50%;
+        
+            .closebtn-success {
+                width: 100%;
+                height: 100%;
+                background-color: #188401;
+                color: #F0F0F0;
+                border: 2px solid #000;
+                border-radius: 40px;
+            }
+        }
+    
+        .alert-danger {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #441818;
+        
+            .closebtn-error {
+                width: inherit;
+                height: inherit;
+            }
+        }
+    }
 
     .title {
         white-space: nowrap;

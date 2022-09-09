@@ -13,4 +13,15 @@ function register() {
     document.getElementById("login").style.display = "flex";
     x = 1;
   }
+
+  var y = 0;
+function reg_btn() {
+  if (y == 1) {
+    document.getElementById("notification").style.height = "47px";
+    y = 0;
+  } else {
+    document.getElementById("notification").style.height = "0px";
+    y = 1;
+  }
+}
 }

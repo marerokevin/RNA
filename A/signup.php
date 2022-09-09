@@ -4,9 +4,9 @@ $showAlert = false;
 $showError = false; 
 $exists=false;
     
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if(isset($_POST["register"])){
       
-    include ("../includes/config.php");
+    include_once ("../includes/D/config.php");
 
     $user_uid = $_POST["user_uid"];
     $first_name = $_POST["first_name"];
