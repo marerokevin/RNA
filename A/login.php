@@ -76,17 +76,17 @@ if(empty(trim($_POST["username"]))){
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Employee Directory</title>
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="../resources/css/login.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="../S/css/login.css?v=<?php echo time(); ?>">
     <!--FONT-->
 </head>
 <body>
     <div class="overall-container">
         <div class="titlecontainer-login">
                 <a href="/RNA/index.php" class="header_logo">
-                    <img src="../resources/images/glorylogo.svg" alt="GPI-BCP" class="glory-logo">
+                    <img src="../S/images/frog.jpg" alt="GPI-BCP" class="glory-logo">
                 </a>
-            <h1 class="company-name">Glory Philippines Inc.</h1>
-            <h2 class="system-name">Business Continuity Plan System</h2>
+            <h1 class="company-name">Frogitty Frog</h1>
+            <h2 class="system-name">Frog System</h2>
         </div>
     </div>
     <div class="dual-function-container" id="login">
@@ -130,51 +130,14 @@ if(empty(trim($_POST["username"]))){
         </div>  
     </div>
 
-    <?php
-    if($showAlert) {
-    
-        echo '<div class="alert-success" role="alert">
-        <button type="button" class="closebtn-success"
-            data-dismiss="alert" aria-label="Close">
-            <strong>Success!</strong> Your account is 
-        now created and you can login.  
-            <span aria-hidden="true">×</span> 
-        </button> 
-    </div>'; 
-    }
-    
-    if($showError) {
-    
-        echo '<div class="alert-danger" role="alert"> 
-        <button type="button" class="closebtn-error" 
-            data-dismiss="alert" aria-label="Close">
-            <strong>Error!</strong> '. $showError.'
-            <span aria-hidden="true">×</span> 
-        </button> 
-    </div>'; 
-   }
-        
-    if($exists) {
-        echo '<div class="alert-danger" role="alert">
-        <button type="button" class="closebtn-error" 
-            data-dismiss="alert" aria-label="Close">
-            <strong>Error!</strong> '. $exists.' 
-            <span aria-hidden="true">×</span> 
-        </button>
-    </div>'; 
-    }
-    ?>
-
     <div class="register-container-hidden" id="register">
     <form class="signup-container" action="signup.php" method="POST">
     <h1 class="title">Sign Up</h1> 
         <div class="input-container"> 
-        <label for="user_uid" class="input-label">Username:</label>
         <input type="text" class="input-main" id="user_uid"
-            name="user_uid" aria-describedby="emailHelp" placeholder="Username" onkeyup="stoppedTyping()" required>    
+            name="user_uid" aria-describedby="emailHelp" placeholder="ID Number" onkeyup="stoppedTyping()" required>    
         </div>
         <div class="input-container"> 
-        <label for="user_level" class="input-label">User Level:</label>
             <select type="text" class="input-main"
             id="user_level" name="user_level" placeholder="Select user level" onkeyup="stoppedTyping()" required>
                 <option value="" disabled selected>Select user level</option>
@@ -183,33 +146,43 @@ if(empty(trim($_POST["username"]))){
                 <option value="User">User</option>
             </select>
         </div>
+        <div class="full-name-container">
+            <div class="input-first-name-container"> 
+            <input type="text" class="input-name-main" id="first_name"
+                name="first_name" aria-describedby="emailHelp" placeholder="First Name" onkeyup="stoppedTyping()" required>    
+            </div>
 
+            <div class="input-last-name-container"> 
+            <input type="text" class="input-name-main" id="last_name"
+                name="last_name" aria-describedby="emailHelp" placeholder="Last Name" onkeyup="stoppedTyping()" required>    
+            </div>
+
+            <div class="input-suffix-name-container"> 
+            <input type="text" class="input-name-main" id="suffix"
+                name="suffix" aria-describedby="emailHelp" placeholder="Suffix (If any)" onkeyup="stoppedTyping()">    
+            </div>
+        </div>
         <div class="input-container"> 
-        <label for="first_name" class="input-label">First Name:</label>
-        <input type="text" class="input-main" id="first_name"
-            name="first_name" aria-describedby="emailHelp" placeholder="First Name" onkeyup="stoppedTyping()" required>    
+        <input type="text" class="input-main" id="section"
+            name="section" aria-describedby="emailHelp" placeholder="Section" onkeyup="stoppedTyping()">    
         </div>
 
         <div class="input-container"> 
-        <label for="last_name" class="input-label">last Name:</label>
-        <input type="text" class="input-main" id="last_name"
-            name="last_name" aria-describedby="emailHelp" placeholder="Last Name" onkeyup="stoppedTyping()" required>    
+        <input type="text" class="input-main" id="department"
+            name="department" aria-describedby="emailHelp" placeholder="Department" onkeyup="stoppedTyping()">    
         </div>
 
         <div class="input-container">
-        <label for="email_address" class="input-label">E-mail Address:</label>
             <input type="text" class="input-main"
             id="email_address" name="email_address" placeholder="E-mail Address" onkeyup="stoppedTyping()" required> 
         </div>
 
         <div class="input-container"> 
-        <label for="user_pwd" class="input-label">Password:</label>
             <input type="password" class="input-main"
             id="user_pwd" name="user_pwd" placeholder="Password" onkeyup="stoppedTyping()" required> 
         </div>
 
         <div class="input-container">
-        <label for="user_cpwd" class="input-label">Confirm your password:</label>
             <input type="password" class="input-main"
                 id="user_cpwd" name="user_cpwd" placeholder="Confirm Password" onkeyup="stoppedTyping()" required>
         </div>
@@ -226,4 +199,4 @@ if(empty(trim($_POST["username"]))){
     </div>
 </body>
 </html>
-<script src="/RNA/resources/scripts/register-r_side.js"></script>
+<script src="/RNA/S/scripts/register-r_side.js"></script>

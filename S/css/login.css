@@ -339,6 +339,78 @@ html, body {
   display: flex;
   flex-direction: column;
 }
+.register-container .full-name-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.register-container .full-name-container .input-first-name-container {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+.register-container .full-name-container .input-first-name-container .input-name-main {
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  border: 2px solid #aeaeae;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+.register-container .full-name-container .input-first-name-container .input-name-main:hover {
+  border: 2px solid #525252;
+  transition: all 0.5s ease-in-out;
+  background-color: #d8d8d8;
+}
+.register-container .full-name-container .input-last-name-container {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 20px;
+}
+.register-container .full-name-container .input-last-name-container .input-name-main {
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  border: 2px solid #aeaeae;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+.register-container .full-name-container .input-last-name-container .input-name-main:hover {
+  border: 2px solid #525252;
+  transition: all 0.5s ease-in-out;
+  background-color: #d8d8d8;
+}
+.register-container .full-name-container .input-suffix-name-container {
+  width: 70%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.register-container .full-name-container .input-suffix-name-container .input-name-main {
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  border: 2px solid #aeaeae;
+  border-radius: 5px;
+  transition: all 0.5s ease-in-out;
+}
+.register-container .full-name-container .input-suffix-name-container .input-name-main:hover {
+  border: 2px solid #525252;
+  transition: all 0.5s ease-in-out;
+  background-color: #d8d8d8;
+}
 .register-container .input-container {
   width: 100%;
   height: 30px;

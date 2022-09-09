@@ -5,7 +5,7 @@
                 <i class="fa fa-bars fa-2x" ></i>
             </a>
         </li>
-        <a href="../K/index.php" class="logolink"><img class="logo" src="/RNA/resources/images/glorylogo.svg"></a>
+        <a href="../K/index.php" class="logolink"><img class="logo" src="/RNA/resources/images/frog.jpg"></a>
         <li class="home">
             <a class="link" href="/RNA/K/index.php">GPI MIS-HelpDesk</a>
         </li>
@@ -13,7 +13,7 @@
         <ul class="navigation">
             <li class="parent" id="button">
                 <button class='trigger' onclick="usermodal()">
-                    <img src='/RNA/resources/images/glorylogo.svg'>
+                    <img src='/RNA/resources/images/frog.jpg'>
                 </button>
             </li>
         </ul>
@@ -22,7 +22,7 @@
     <div class="modal-content" id="modal-content">
         <li class="parent" id="button">
             <button class='trigger2'>
-                <img src='/RNA/resources/images/glorylogo.svg'>
+                <img src='/RNA/resources/images/frog.jpg'>
             </button>
             <div class="usercontainer">
                 <div class="user"><?php echo $_SESSION["last_name"]?> <?php echo $_SESSION["first_name"]?></div>
