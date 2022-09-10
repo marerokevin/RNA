@@ -19,9 +19,9 @@
   height: calc(100% - 8px);
   background: #0c366b;
   position: fixed;
-  transition: width 300ms linear;
   float: left;
   margin-top: 48px;
+  transition: all 300ms linear;
 }
 
 .sidebar-wrapper .sidebar h2 {
@@ -82,6 +82,8 @@
 
 .sidebar-wrapper .sidebar ul li:hover {
   background-color: #2b00ff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: all 300ms linear;
 }
 
 .sidebar-wrapper .sidebar ul li:hover a {
