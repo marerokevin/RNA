@@ -76,7 +76,7 @@ if(empty(trim($_POST["username"]))){
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Employee Directory</title>
     <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="../S/css/login2.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="../S/css/login.css?v=<?php echo time(); ?>">
     <!--FONT-->
 </head>
 <body>
@@ -122,15 +122,16 @@ if(empty(trim($_POST["username"]))){
     ?>
     </div>
     <div class="overall-container">
-    <div class="dual-function-container" id="login">
-        <div name="login_form" class="login-container" >
+
         <div class="titlecontainer-login">
-                <a href="/RNA/K/index.php" class="header_logo">
-                    <img src="../S/images/30189013.jpg" alt="GPI-BCP" class="glory-logo">
+                <a href="/RNA/index.php" class="header_logo">
+                    <img src="../S/images/frog.jpg" alt="GPI-BCP" class="glory-logo">
                 </a>
             <h1 class="company-name">Frogitty Frog</h1>
             <h2 class="system-name">Frog System</h2>
         </div>
+    <div class="dual-function-container" id="login">
+        <div name="login_form" class="login-container" id="login">
             <?php 
             if(!empty($login_err)){
                 echo '<div class="alert alert-danger 
@@ -139,18 +140,13 @@ if(empty(trim($_POST["username"]))){
             ?>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login-form">
                 <div class="username-container">
-                    <label class="username-label" for="username">EMAIL or USERNAME</label>
                     <input type="text" name="username" class="username-input"<?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>" placeholder="Username" required oninvalid="this.setCustomValidity('Enter your username here')"
                     oninput="this.setCustomValidity('')"/><br>
                     <span class="invalid-feedback"><?php echo $username_err; ?></span>
                 </div>
                 <div class="password-container">
-                    <label class="password-label" for="Password">PASSWORD</label>
                     <input type="password" name="password" class="password-input<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" Placeholder="Password" required oninvalid="this.setCustomValidity('Enter your password here')" oninput="this.setCustomValidity('')"/><br>
                     <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                </div>
-                <div class="forgot-container">
-                    <a class="forgot" href="#">Forgot password?</a>
                 </div>
                 <div class="login-button-container">
                     <input type="submit" name="login" class="login-button" value="Log In">
@@ -160,10 +156,14 @@ if(empty(trim($_POST["username"]))){
                     <input class="remeber" type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
 
+                <div class="forgot-container">
+                    <a class="forgot" href="#">Forgot password?</a>
+                </div>
+
                 <div class="divider"></div>
 
                 <div class="createaccount-container">
-                    Need an account? <a class="createaccount" onclick="register()" href=#>Register</a>
+                    <a class="createaccount" onclick="register()" href=#>Create new account</a>
                 </div>
 
 
@@ -175,14 +175,12 @@ if(empty(trim($_POST["username"]))){
         <form class="signup-container" action="login.php" method="POST">
         <h1 class="title">Sign Up</h1> 
             <div class="input-container"> 
-            <label class="input-label" for="Password">ID Number *</label>
             <input type="text" class="input-main" id="user_uid"
-                name="user_uid" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
+                name="user_uid" aria-describedby="emailHelp" placeholder="ID Number" onkeyup="stoppedTyping()" required>    
             </div>
             <div class="input-container"> 
-            <label class="input-label" for="Password">User Designation *</label>
                 <select type="text" class="input-main"
-                id="user_level" name="user_level" onkeyup="stoppedTyping()" required>
+                id="user_level" name="user_level" placeholder="Select user level" onkeyup="stoppedTyping()" required>
                     <option value="" disabled selected>Select user level</option>
                     <option value="Administrator">Administrator</option>
                     <option value="Head">Head</option>
@@ -191,51 +189,43 @@ if(empty(trim($_POST["username"]))){
             </div>
             <div class="full-name-container">
                 <div class="input-first-name-container"> 
-            <label class="input-label" for="Password">First Name *</label>
                 <input type="text" class="input-name-main" id="first_name"
-                    name="first_name" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
+                    name="first_name" aria-describedby="emailHelp" placeholder="First Name" onkeyup="stoppedTyping()" required>    
                 </div>
 
                 <div class="input-last-name-container"> 
-            <label class="input-label" for="Password">Last Name *</label>
                 <input type="text" class="input-name-main" id="last_name"
-                    name="last_name" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
+                    name="last_name" aria-describedby="emailHelp" placeholder="Last Name" onkeyup="stoppedTyping()" required>    
                 </div>
 
                 <div class="input-suffix-name-container"> 
-            <label class="input-label" for="Password">Suffix</label>
                 <input type="text" class="input-name-main" id="suffix"
-                    name="suffix" aria-describedby="emailHelp" onkeyup="stoppedTyping()">    
+                    name="suffix" aria-describedby="emailHelp" placeholder="Suffix (If any)" onkeyup="stoppedTyping()">    
                 </div>
             </div>
             <div class="input-container"> 
-            <label class="input-label" for="Password">Section *</label>
             <input type="text" class="input-main" id="section"
-                name="section" aria-describedby="emailHelp" onkeyup="stoppedTyping()">    
+                name="section" aria-describedby="emailHelp" placeholder="Section" onkeyup="stoppedTyping()">    
             </div>
 
             <div class="input-container"> 
-            <label class="input-label" for="Password">Department *</label>
             <input type="text" class="input-main" id="department"
-                name="department" aria-describedby="emailHelp" onkeyup="stoppedTyping()">    
+                name="department" aria-describedby="emailHelp" placeholder="Department" onkeyup="stoppedTyping()">    
             </div>
 
             <div class="input-container">
-            <label class="input-label" for="Password">E-mail Address</label>
                 <input type="text" class="input-main"
-                id="email_address" name="email_address" onkeyup="stoppedTyping()" required> 
+                id="email_address" name="email_address" placeholder="E-mail Address" onkeyup="stoppedTyping()" required> 
             </div>
 
             <div class="input-container"> 
-            <label class="input-label" for="Password">Password *</label>
                 <input type="password" class="input-main"
-                id="user_pwd" name="user_pwd" onkeyup="stoppedTyping()" required> 
+                id="user_pwd" name="user_pwd" placeholder="Password" onkeyup="stoppedTyping()" required> 
             </div>
 
             <div class="input-container">
-            <label class="input-label" for="Password">Confirm Password *</label>
                 <input type="password" class="input-main"
-                    id="user_cpwd" name="user_cpwd" onkeyup="stoppedTyping()" required>
+                    id="user_cpwd" name="user_cpwd" placeholder="Confirm Password" onkeyup="stoppedTyping()" required>
             </div>
 
                 <small id="emailHelp" class="reminder">Make sure to fill up all fields properly <small>      
