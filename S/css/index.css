@@ -199,7 +199,6 @@ body {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  background-color: #000;
 }
 .main_content_wsb .table-container .table-frame .table-head-container {
   border: 1px solid #ffdc52;
@@ -212,6 +211,7 @@ body {
   background-color: rgb(255, 255, 255);
   position: -webkit-sticky;
   position: sticky;
+  top: 0;
 }
 .main_content_wsb .table-container .table-frame .table-head-container .table-head-row .head-data {
   text-transform: uppercase;
