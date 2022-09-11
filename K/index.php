@@ -75,6 +75,50 @@ include "../includes/con/sess.php";
               <td class="body-data">Antonio James Domo</td>
               <td class="body-data"><a href="../F/status.php">Pending</a></td>
             </tr>
+            <tr class="table-body-row">
+              <td class="body-data">1</td>
+              <td class="body-data">San Miguel Corp.</td>
+              <td class="body-data">Alcohol</td>
+              <td class="body-data">Ginebra San Miguel</td>
+              <td class="body-data">Bottle</td>
+              <td class="body-data">140.00</td>
+              <td class="body-data">January 1, 1970</td>
+              <td class="body-data">Antonio James Domo</td>
+              <td class="body-data"><a href="../F/status.php">Pending</a></td>
+            </tr>
+            <tr class="table-body-row">
+              <td class="body-data">1</td>
+              <td class="body-data">San Miguel Corp.</td>
+              <td class="body-data">Alcohol</td>
+              <td class="body-data">Ginebra San Miguel</td>
+              <td class="body-data">Bottle</td>
+              <td class="body-data">140.00</td>
+              <td class="body-data">January 1, 1970</td>
+              <td class="body-data">Antonio James Domo</td>
+              <td class="body-data"><a href="../F/status.php">Pending</a></td>
+            </tr>
+            <tr class="table-body-row">
+              <td class="body-data">1</td>
+              <td class="body-data">San Miguel Corp.</td>
+              <td class="body-data">Alcohol</td>
+              <td class="body-data">Ginebra San Miguel</td>
+              <td class="body-data">Bottle</td>
+              <td class="body-data">140.00</td>
+              <td class="body-data">January 1, 1970</td>
+              <td class="body-data">Antonio James Domo</td>
+              <td class="body-data"><a href="../F/status.php">Pending</a></td>
+            </tr>
+            <tr class="table-body-row">
+              <td class="body-data">1</td>
+              <td class="body-data">San Miguel Corp.</td>
+              <td class="body-data">Alcohol</td>
+              <td class="body-data">Ginebra San Miguel</td>
+              <td class="body-data">Bottle</td>
+              <td class="body-data">140.00</td>
+              <td class="body-data">January 1, 1970</td>
+              <td class="body-data">Antonio James Domo</td>
+              <td class="body-data"><a href="../F/status.php">Pending</a></td>
+            </tr>
           </tbody>
         </table>
       </div>

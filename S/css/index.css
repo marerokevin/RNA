@@ -118,7 +118,8 @@ body {
 }
 .main_content_wsb .graphcard-container .card-container .card .card-img {
   width: 50%;
-  height: 100%;
+  margin: 10px;
+  height: auto;
 }
 .main_content_wsb .graphcard-container .card-container .card .card-inner {
   border: 1px solid rgb(192, 192, 192);
@@ -133,7 +134,7 @@ body {
 }
 .main_content_wsb .graphcard-container .card-container .card .card-inner .card-title {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: auto;
   color: rgb(54, 54, 54);
   padding: 5px;
 }
@@ -176,6 +177,7 @@ body {
 .main_content_wsb .table-container {
   width: calc(100% - 20px);
   padding: 10px;
+  height: 22%;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -187,12 +189,16 @@ body {
   box-shadow: 0 8px 16px rgb(94, 94, 94), 0 8px 16px rgb(81, 81, 81);
   flex-direction: row-reverse;
   transition: all 300ms linear;
+  overflow-y: scroll;
 }
 .main_content_wsb .table-container .table-container > * {
   width: 100%;
 }
 .main_content_wsb .table-container .table-frame {
   width: 100%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   background-color: #000;
 }
 .main_content_wsb .table-container .table-frame .table-head-container {
@@ -204,12 +210,18 @@ body {
   text-align: center;
   font-weight: 900;
   background-color: rgb(255, 255, 255);
+  position: -webkit-sticky;
+  position: sticky;
 }
 .main_content_wsb .table-container .table-frame .table-head-container .table-head-row .head-data {
   text-transform: uppercase;
 }
 .main_content_wsb .table-container .table-frame .table-body-container {
   border: 1px solid #ffdc52;
+  overflow-y: scroll;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .main_content_wsb .table-container .table-frame .table-body-container .table-body-row {
   color: rgb(0, 0, 0);
