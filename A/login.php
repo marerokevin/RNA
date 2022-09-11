@@ -119,11 +119,12 @@ if(empty(trim($_POST["username"]))){
             </button>
         </div>'; 
         }
+
+        if(!empty($login_err)){
+            echo '<div class="alert-danger" role="alert">' . $login_err . '</div>';
+        }
     ?>
     </div>
-
-
-
     <div class="overall-container">
     <div class="dual-function-container" id="login">
         <div name="login_form" class="login-container" >
@@ -134,12 +135,7 @@ if(empty(trim($_POST["username"]))){
             <h1 class="company-name">Frogitty Frog</h1>
             <h2 class="system-name">Frog System</h2>
         </div>
-            <?php 
-            if(!empty($login_err)){
-                echo '<div class="alert alert-danger 
-                alert-dismissible fade show" role="alert">' . $login_err . '</div>';
-            }
-            ?>
+
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" class="login-form">
                 <div class="username-container">
                     <label class="username-label" for="username">EMAIL or USERNAME</label>

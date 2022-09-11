@@ -25,16 +25,26 @@ include "../includes/con/sess.php";
         </div>
         <div class="card-container">
           <div class="card">
+            <img class="card-img" src="/RNA/S/images/frog.jpg" alt="">
+            <div class="card-inner">
 
+              <a href="#" class="card-title">pending</a>
+            </div>
           </div>
           <div class="card">
-            
+            <div class="card-inner">
+              <a href="#" class="card-title">Received</a>
+            </div>
           </div>
           <div class="card">
-          
+            <div class="card-inner">
+              <a href="#" class="card-title">Meow moew</a>
+            </div>
           </div>
           <div class="card">
-          
+            <div class="card-inner">
+              <a href="#" class="card-title">Arf ARf</a>
+            </div>
           </div>
         </div>
       </div>

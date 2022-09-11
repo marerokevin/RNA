@@ -15,7 +15,7 @@ body {
     margin-top: 48px;
     z-index: 1;
     transition:all .5s;
-    background-color: #0d0d0d;
+    background-color: #000;
     overflow: hidden;
 
     .header{
@@ -36,25 +36,26 @@ body {
         margin-right: 10px;
         margin-bottom: 10px;
         margin-top: 60px;
-        background: #6a6a6a40;
+        background: #363636;
         display: flex;
         color: #c9c9be; 
         border: none;
         border-radius: 8px;
-        box-shadow: 0 0 0 rgba(255, 255, 255, 0.2), 0 8px 16px rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 16px rgb(94, 94, 94), 0 8px 16px rgb(81, 81, 81);
         flex-direction: row-reverse;
         transition: all 300ms linear;
 
         .table-frame {
             width: 100%;
             margin: 0 20px;
+            background-color: #ffffff;
 
             .table-head-container {
                 border: 1px solid #ffdc52;
                 height: 20px;
 
                 .table-head-row {
-                    height: 20px;
+                    height: 10px;
                     color: #7c2ba1;
                     font-size: 16px;
                     text-align: center;
@@ -62,7 +63,7 @@ body {
                     background-color: rgb(0, 0, 0);
 
                     .head-data {
-                        text-transform: capitalize;
+                        text-transform:uppercase;
                     }
                 }
             }
@@ -83,6 +84,17 @@ body {
                     }
 
                     .body-data {
+                        text-transform: Namecase;
+
+                        .data-action {
+                            color:rgb(124, 39, 124);
+                            transition: color 1s linear;
+
+                            &:hover {
+                                color: #ffc400;
+                                transition: color 1s linear;
+                            }
+                        }
                     }
                 }
             }
