@@ -27,23 +27,24 @@ include "../includes/con/sess.php";
           <div class="card">
             <img class="card-img" src="/RNA/S/images/frog.jpg" alt="">
             <div class="card-inner">
-
-              <a href="#" class="card-title">pending</a>
+              <a href="#" class="card-title">Completed</a>
             </div>
           </div>
           <div class="card">
             <div class="card-inner">
-              <a href="#" class="card-title">Received</a>
+              <a href="#" class="card-title">Short stock</a>
             </div>
           </div>
           <div class="card">
             <div class="card-inner">
-              <a href="#" class="card-title">Meow moew</a>
+              <a href="#" class="card-title">Waiting for Delivery</a>
+            <!-- Users -->
             </div>
           </div>
           <div class="card">
             <div class="card-inner">
-              <a href="#" class="card-title">Arf ARf</a>
+              <a href="#" class="card-title">Pending Requests</a>
+              <!-- Total Sales -->
             </div>
           </div>
         </div>
