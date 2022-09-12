@@ -121,7 +121,7 @@ body {
                 }
 
                 .card-img {
-                    width: 50%;
+                    width: 100%;
                     margin: 10px;
                     height: auto;
                 }
@@ -192,11 +192,11 @@ body {
 
     .table-container {
         width: calc(100% - 20px);
-        padding: 10px;
-        height: 22%;
+        height: 28%;
         margin-left: 10px;
         margin-right: 10px;
         margin-bottom: 10px;
+        margin-top: 10px;
         background: #fff;
         display: flex;
         color: #c9c9be; 
