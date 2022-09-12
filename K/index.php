@@ -17,8 +17,8 @@ include "../includes/con/sess.php";
     </div>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <?php include "../includes/bar/sidebar.php"; ?>
+    <div class="header">Dashboard</div>
     <div class="main_content_wsb" id="main_content">
-      <div class="header">Dashboard</div>
       <div class="graphcard-container">
         <div class="graph-container">
 
