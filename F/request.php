@@ -5,36 +5,37 @@ include ("../includes/con/sess.php");
     if ($_SESSION["user_level"]!="Administrator") {
         echo '<script type="text/javascript"> alert("Error 401, Unauthorized Access, please contact your Systems Administrator.") </script>';
         echo '<script type="text/javascript"> window.location.href="/RNA/K/index.php"; </script>';
-} else {
-    include ("../includes/d/config.php");
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $disaster_desc = $_POST["disaster_desc"]; 
-        $dis_control_number = $_POST["dis_control_number"];  
-        $disaster_type = $_POST["disaster_type"];
-        $AreaofEffect = $_POST["AreaofEffect"];
-        $encoded_by = $_POST["encoded_by"];
-        $Sdate = date('M d Y', strtotime($_POST["Sdate"]));
-        $Edate = date('M d Y', strtotime($_POST["Edate"]));
-        $Stime = $_POST["Stime"];
-        $Etime = $_POST["Etime"];
+    } else {
+        include ("../includes/d/config.php");
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $disaster_desc = $_POST["disaster_desc"]; 
+            $dis_control_number = $_POST["dis_control_number"];  
+            $disaster_type = $_POST["disaster_type"];
+            $AreaofEffect = $_POST["AreaofEffect"];
+            $encoded_by = $_POST["encoded_by"];
+            $Sdate = date('M d Y', strtotime($_POST["Sdate"]));
+            $Edate = date('M d Y', strtotime($_POST["Edate"]));
+            $Stime = $_POST["Stime"];
+            $Etime = $_POST["Etime"];
 
-        $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disaster_type`, `AreaofEffect`, `encoded_by`, `date_log`, `Sdate`, `Edate`, `Stime`, `Etime`) 
-        VALUES ('$disaster_desc', '$dis_control_number', '$disaster_type', '$AreaofEffect', '$encoded_by', current_timestamp(), '$Sdate', '$Edate', '$Stime', '$Etime')";
+            $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disaster_type`, `AreaofEffect`, `encoded_by`, `date_log`, `Sdate`, `Edate`, `Stime`, `Etime`) 
+            VALUES ('$disaster_desc', '$dis_control_number', '$disaster_type', '$AreaofEffect', '$encoded_by', current_timestamp(), '$Sdate', '$Edate', '$Stime', '$Etime')";
 
-        $result = mysqli_query($db_conn, $sql);
+            $result = mysqli_query($db_conn, $sql);
 
-        if($result)
-        {
-            echo '<script type="text/javascript"> alert("Done!") </script>';
+            if($result)
+            {
+                header("location: RNA/K/Function.php?action=request");
+                echo '<script type="text/javascript"> alert("Done!") </script>';
+            }
+            else
+            {
+                header("location: RNA/K/Function.php?action=request");
+                echo '<script type="text/javascript"> alert("Information not updated") </script>';
+            }
+
         }
-        else
-        {
-            echo '<script type="text/javascript"> alert("Information not updated") </script>';
-        }
-
-        header("location: /RNA/K/index.php");
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -104,7 +105,12 @@ include ("../includes/con/sess.php");
                     <div class="page">
                         <label for="start-grid" class="start-title">Start</label>
                             <div class="start-container" id="start-grid">
-                                <div class="start-date-container">    
+                                <div class="input-container"> 
+                                    <label for="disaster_desc" class="input-label">Aasd</label> 
+                                    <input type="text" class="input-main" id="disaster_desc"
+                                    name="disaster_desc" required>
+                                </div>
+                                <!-- <div class="start-date-container">    
                                     <label for="Sdate" class="start-date-label">Date</label>
                                     <input type="date" class="start-date" id="Sdate" name="Sdate" required>
                                 </div>
@@ -112,13 +118,18 @@ include ("../includes/con/sess.php");
                                 <div class="start-time-container">    
                                     <label for="Stime" class="start-time-label">Time</label>
                                     <input type="time" class="start-time" id="Stime" name="Stime" required>
-                                </div>
+                                </div> -->
                             </div>
 
                         <!--Time_End-->
                         <label for="end-grid" class="end-title">End</label>
                         <div class="end-container" id="end-grid">
-                            <div class="end-date-container">    
+                            <div class="input-container"> 
+                                <label for="disaster_desc" class="input-label">Aasd</label> 
+                                <input type="text" class="input-main" id="disaster_desc"
+                                name="disaster_desc" required>
+                            </div>
+                            <!-- <div class="end-date-container">    
                                 <label for="Edate" class="end-date-label">Date</label>
                                 <input type="date" class="end-date" id="Edate" name="Edate" required>
                             </div>
@@ -126,7 +137,7 @@ include ("../includes/con/sess.php");
                             <div class="end-time-container">    
                                 <label for="Etime" class="end-time-label">Time</label>
                                 <input type="time" class="end-time" id="Etime" name="Etime" required>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
