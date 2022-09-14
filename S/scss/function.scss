@@ -7,14 +7,14 @@ body {
 }
 
 .main_content_wsb{
+    background: rgb(234, 233, 233);
     width: calc(100% - 280px);
     height: 100%;
     float: right;
     margin-left: 280px;
-    margin-right: 20px;
+    padding-top: 48px;
     transition:all .5s;
-    background-color: rgb(255, 255, 255);
-    overflow: scroll;
+    z-index: 1;
 
     .header{
         width: inherit;
@@ -27,13 +27,83 @@ body {
         z-index: 3;
     }
 
-    .request-table-container {
+    .inventorynav {
+        background-color: white;
+        margin-top: 57px;
+        width: 100%;
+        height: 57px;
+        position: fixed;
+
+        .navholder {
+            width: 100%;
+            border-bottom: 2px solid rgb(105, 105, 105);
+            padding-top: 25px;
+            display: flex;
+            margin-bottom: 5px;
+
+            .navticket-on {
+                background: rgb(255, 145, 0);
+                border: 1px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                border-left: 2px solid rgb(105, 105, 105);
+                border-right: 2px solid rgb(105, 105, 105);
+                border-top: 2px solid rgb(105, 105, 105);
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-left: 1px;
+                margin-right: 1px;
+                text-decoration: none;                
+                transition:all .5s linear;
+                color: black;
+                
+                &:hover {
+                    transition:all .5s linear;
+                    background: rgb(105, 105, 105);
+                    border-left: 2px solid rgb(105, 105, 105);
+                    border-right: 2px solid rgb(105, 105, 105);
+                    border-top: 2px solid rgb(105, 105, 105);
+                    color: rgb(255, 255, 255);
+                }
+            }
+
+            .navticket-off {
+                background: rgb(234, 233, 233);
+                border: 1px;
+                border-top-left-radius: 4px;
+                border-top-right-radius: 4px;
+                border-left: 2px solid rgb(105, 105, 105);
+                border-right: 2px solid rgb(105, 105, 105);
+                border-top: 2px solid rgb(105, 105, 105);
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-right: 5px;
+                margin-left: 1px;
+                margin-right: 1px;
+                text-decoration: none;                
+                transition:all .5s linear;
+                color: black;
+                
+                &:hover {
+                    transition:all .5s linear;
+                    background: rgb(255, 145, 0);
+                    border-left: 2px solid rgb(255, 145, 0);
+                    border-right: 2px solid rgb(255, 145, 0);
+                    border-top: 2px solid rgb(255, 145, 0);
+                    color: rgb(59, 59, 59);
+                }
+            }
+        }
+    }
+
+    .table-container {
         width: calc(100% - 20px);
-        height: calc(100% - 77px);
+        height: calc(100% - 140px);
         margin-left: 10px;
         margin-right: 10px;
         margin-bottom: 10px;
-        margin-top: 67px;
+        margin-top: 130px;
         background: #fff;
         display: flex;
         color: #0b0b0b;
@@ -45,15 +115,15 @@ body {
         overflow-y: scroll;
         text-align: center;
 
-    .request-table-container > * {
+    .table-container > * {
         width: 100%;
     }
 
-        .request-table-frame {
+        .table-frame {
             background-color: rgb(255, 255, 255);
             width: 100%;
             
-            .request-table {
+            .table {
                 width: 100%;
                 height: fit-content;
                 padding: 10px;
@@ -61,10 +131,10 @@ body {
                 table-layout: fixed;
                 border-collapse: collapse;
 
-                .request-table-head-container {
+                .table-head-container {
                     border: 1px solid #000000;
 
-                    .request-table-head-row {
+                    .table-head-row {
                         color: #1e0a27;
                         font-size: auto;
                         text-align: center;
@@ -74,7 +144,7 @@ body {
                         border-radius: 8px;
                         top: 0;
 
-                        .request-head-data {
+                        .head-data {
                             text-transform: uppercase;
                             border: 1px solid black;
                         }
