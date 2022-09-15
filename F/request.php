@@ -2,10 +2,6 @@
 include ("../includes/d/config.php");
 include ("../includes/con/sess.php");
 
-    if ($_SESSION["user_level"]!="Administrator") {
-        echo '<script type="text/javascript"> alert("Error 401, Unauthorized Access, please contact your Systems Administrator.") </script>';
-        echo '<script type="text/javascript"> window.location.href="/RNA/K/index.php"; </script>';
-    } else {
         include ("../includes/d/config.php");
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $disaster_desc = $_POST["disaster_desc"]; 
@@ -33,9 +29,7 @@ include ("../includes/con/sess.php");
                 header("location: RNA/K/Function.php?action=request");
                 echo '<script type="text/javascript"> alert("Information not updated") </script>';
             }
-
         }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -46,48 +40,162 @@ include ("../includes/con/sess.php");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../S/css/request.css?v=<?php echo time(); ?>">
     </head>
+    <div class="createForm">
+            <form class="create-form" action="/RNA/F/request.php" method="post">
+                <h2 class="Main-title">Update Item</h2>
+                <h3 class="SMD">Administrator</h3>
+                <!-- Page 1 -->
+                <div class="page">
+                    <!-- Page 1 -->
+                    <label for="start-grid" class="start-title">Item Description</label>
+                    <div class="start-container" id="start-grid">
+                        <!-- Item Name -->
+                        <div class="input-container"> 
+                            <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
+                                <option value="" disabled selected>Select Item</option>
+                                <option value="Administrator">Unit</option>
+                                <option value="Head">Head</option>
+                                <option value="User">User</option>
+                            </select>
+                        </div>
+                        <!-- Supplier -->
+                        <div class="input-container"> 
+                            <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
+                                <option value="" disabled selected>Select Supplier</option>
+                                <option value="Administrator">Unit</option>
+                                <option value="Head">Head</option>
+                                <option value="User">User</option>
+                            </select>
+                        </div>
+                    </div>
 
-    <h2 class="Main-title">Delete Item</h2>
-    <h3 class="SMD">Administrator</h3>
-    <div class="request-table-container">
-        <div class="request-table-frame">
-          <table class="request-table">
-          <thead class="request-table-head-container">
-            <tr class="request-table-head-row">
-              <th class="request-head-data">Request ID</td>
-              <th class="request-head-data">Item</td>
-              <th class="request-head-data">Supplier</td>
-              <th class="request-head-data">Description</td>
-              <th class="request-head-data">Current Stock</td>
-              <th class="request-head-data">Available Forcasted Stock</td>
-              <th class="request-head-data">Requested Quantity</td>
-              <th class="request-head-data">Unit Price</td>
-              <th class="request-head-data">Total Amount</td>
-              <th class="request-head-data">Requested by</td>
-              <th class="request-head-data">Department</td>
-              <th class="request-head-data">Section</td>
-              <th class="request-head-data">Date Requested</td>
-              <th class="request-head-data">Status</td>
-            </tr>
-          </thead>
-          <tbody class="table-body-container">
-            <tr class="table-body-row">
-              <th class="body-data">PNGE-XXX</td>
-              <th class="body-data">Alcohol</td>
-              <th class="body-data">San Miguel Corp.</td>
-              <th class="body-data">Ginebra San Miguel</td>
-              <th class="body-data">500</td>
-              <th class="body-data">20</td>
-              <th class="body-data">5</td>
-              <th class="body-data">200PHP</td>
-              <th class="body-data">1000PHP</td>
-              <th class="body-data">Antonio James Domo</td>
-              <th class="body-data">Administration</td>
-              <th class="body-data">FEMMIS</td>
-              <th class="body-data">January 1, 1970</td>
-              <th class="body-data">For pickup</td>
-            </tr>
-            
-          </tbody>
-        </table>
-      </div>
+                    <label for="start-grid" class="start-title">Current Stock:</label>
+                    <div class="start-container" id="start-grid">
+                        <!-- Initial Quantity -->
+                        <div class="input-container"> 
+                            <p class="input-main">500 Bottles</p>
+                        </div>
+                    </div>
+
+                    <label for="start-grid" class="start-title">Price per Unit</label>
+                    <div class="start-container" id="start-grid">
+                        <!-- Price -->
+                        <div class="input-container"> 
+                            <input type="text" class="input-main" id="disaster_desc" name="disaster_desc" placeholder="Price" required>
+                        </div>
+
+                        <!-- Unit -->
+                        <div class="input-container"> 
+                            <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
+                                <option value="" disabled selected>Select Unit</option>
+                                <option value="Administrator">Unit</option>
+                                <option value="Head">Head</option>
+                                <option value="User">User</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- Page 2 -->
+                <div class="page">
+                    <!-- Department -->
+                    <div class="department-input-container"> 
+                        <div class="department-container">
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Administration" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="administration" class="checkbox-label">Administration</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Accounting" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Accounting" class="checkbox-label">Accounting</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Purchasing" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Purchasing" class="checkbox-label">Purchasing</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Prod-Tecnology" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Prod-Tecnology" class="checkbox-label">Production Tecnology</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Quality-Control" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Quality-Control" class="checkbox-label">Quality Control</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Quality-Assurance" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Quality-Assurance" class="checkbox-label">Quality Assurance</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Prod1" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Prod1" class="checkbox-label">Production 1</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Prod2" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Prod2" class="checkbox-label">Production 2</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Parts-Inspection" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Parts-Inspection" class="checkbox-label">Parts Inspection</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="System-Kaizen" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="System-Kaizen" class="checkbox-label">System Kaizen</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="Prod-Support" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="Prod-Support" class="checkbox-label">Production Support</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="PPD" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="PPD" class="checkbox-label">Parts Production</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="DOK" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="DOK" class="checkbox-label">Direct Operation Kaizen</label>
+                            </div>
+                            <div class="checkbox-container">
+                                <input type="checkbox" class="checkbox-main" id="PPIC" name="select" onkeyup="stoppedTyping()" required>
+                                <label for="PPIC" class="checkbox-label">Production Planning and Inventory Control</label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Section -->
+                    <div class="input-container"> 
+                        <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
+                            <option value="" disabled selected>Select Unit</option>
+                            <option value="Administrator">Unit</option>
+                            <option value="Head">Head</option>
+                            <option value="User">User</option>
+                        </select>
+                    </div>
+
+                    <!-- Encoded By -->      
+                    <div class="input-container"> 
+                        <label for="encoded_by" class="input-label">Encoded by</label>
+                        <input type="text" class="input-main" id="encoded_by"
+                        name="encoded_by" value="<?php echo ($_SESSION["username"]); ?>" readonly required>    
+                    </div>
+
+                    <!-- Submit -->      
+                    <div class="submit">
+                        <input type="submit" class="subbutton" value="Submit" id="button">
+                    </div>
+                </div>
+                <small id="emailHelp" class="reminder">Make sure to answer all the fields properly</small>
+                <div class="next">
+                    <div style="float:left;">
+                        <button class="prev-button" type="button" id="prevBtn" onclick="nextPrev(-1)" placeholder="<"><a class="caret-left" href=""><</a> Prev</button>
+                    </div>
+                    <div style="float:right;">
+                        <button class="next-button" type="button" id="nextBtn" onclick="nextPrev(1)" placeholder=">">></button>
+                    </div>
+                </div>
+                <div style="text-align:center;margin-top:40px;">
+                <span class="step"></span>
+                <span class="step"></span>
+
+                </div>
+
+            </form>
+        </div>
+<script src="/RNA/S/scripts/control-number.js"></script>
+<script src="/RNA/S/scripts/step.js"></script>
