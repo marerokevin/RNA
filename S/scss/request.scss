@@ -190,9 +190,6 @@ body {
                             }
                         }
                     }
-
-
-
                 }
 
                 .page {
@@ -239,7 +236,51 @@ body {
                             font-size: 15px;
                         }
                     }
-                }
+
+                    .add-form {
+                        display: none;
+
+                        .input-container {
+                            width: 100%;
+                            height: 30px;
+                            display: flex;
+                            align-items: center;
+                            margin-top: 20px;
+                            margin-bottom: 20px;
+                            transition: all 300ms linear;
+    
+                            .input-label {
+                                font-size: 15px;
+                                margin-right: 15px;
+                                white-space: nowrap;
+                                text-align: left;
+                            }
+    
+                            .input-main {
+                                margin: 10px;
+                                height: 100%;
+                                width: 100%;
+                                font-size: 15px;
+                                border: 2px solid #aeaeae;
+                                border-radius: 2px;
+                                transition:all .5s linear;
+    
+                                &:hover {
+                                    border: 2px solid #525252;
+                                    transition:all .5s linear;
+                                    background-color: #d8d8d8;
+                                }
+                            }
+    
+                            .mat-desc {
+                                margin: 10px;
+                                height: 100%;
+                                width: 100%;
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                    
                 .start-title {
                     font-size: 15px;
                 }
@@ -393,6 +434,7 @@ body {
                     }
                 }
             }
+        }
 
             .reminder {
                 text-align: right;

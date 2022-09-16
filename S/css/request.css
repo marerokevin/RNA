@@ -214,10 +214,48 @@ body {
   width: 100%;
   font-size: 15px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-title {
+.main_content_wsb .tabContainer .createForm .create-form .page .add-form {
+  display: none;
+}
+.main_content_wsb .tabContainer .createForm .create-form .page .add-form .input-container {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: all 300ms linear;
+}
+.main_content_wsb .tabContainer .createForm .create-form .page .add-form .input-container .input-label {
+  font-size: 15px;
+  margin-right: 15px;
+  white-space: nowrap;
+  text-align: left;
+}
+.main_content_wsb .tabContainer .createForm .create-form .page .add-form .input-container .input-main {
+  margin: 10px;
+  height: 100%;
+  width: 100%;
+  font-size: 15px;
+  border: 2px solid #aeaeae;
+  border-radius: 2px;
+  transition: all 0.5s linear;
+}
+.main_content_wsb .tabContainer .createForm .create-form .page .add-form .input-container .input-main:hover {
+  border: 2px solid #525252;
+  transition: all 0.5s linear;
+  background-color: #d8d8d8;
+}
+.main_content_wsb .tabContainer .createForm .create-form .page .add-form .input-container .mat-desc {
+  margin: 10px;
+  height: 100%;
+  width: 100%;
   font-size: 15px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-title {
+  font-size: 15px;
+}
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container {
   width: 100%;
   height: 70px;
   display: flex;
@@ -227,17 +265,17 @@ body {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-date-container {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-date-container {
   width: 50%;
   height: 30px;
   display: flex;
   flex-direction: column;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-date-container .start-date-label {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-date-container .start-date-label {
   margin-left: 10px;
   font-size: 15px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-date-container .start-date {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-date-container .start-date {
   width: 90%;
   margin-right: 10px;
   margin-left: 10px;
@@ -248,23 +286,23 @@ body {
   padding-bottom: 20px;
   transition: all 0.5s linear;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-date-container .start-date:hover {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-date-container .start-date:hover {
   border: 2px solid #525252;
   transition: all 0.5s linear;
   background-color: #d8d8d8;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-time-container {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-time-container {
   width: 50%;
   height: 30px;
   display: flex;
   flex-direction: column;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-time-container .start-time-label {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-time-container .start-time-label {
   margin-right: 10px;
   font-size: 15px;
   text-align: left;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-time-container .start-time {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-time-container .start-time {
   width: 90%;
   margin-right: 10px;
   margin-left: 10px;
@@ -275,15 +313,15 @@ body {
   padding-bottom: 20px;
   transition: all 0.5s linear;
 }
-.main_content_wsb .tabContainer .createForm .create-form .start-container .start-time-container .start-time:hover {
+.main_content_wsb .tabContainer .createForm .create-form .page .start-container .start-time-container .start-time:hover {
   border: 2px solid #525252;
   transition: all 0.5s linear;
   background-color: #d8d8d8;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-title {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-title {
   font-size: 15px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container {
   width: 100%;
   height: 70px;
   display: flex;
@@ -293,17 +331,17 @@ body {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-date-container {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-date-container {
   width: 50%;
   height: 30px;
   display: flex;
   flex-direction: column;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-date-container .end-date-label {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-date-container .end-date-label {
   margin-left: 10px;
   font-size: 15px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-date-container .end-date {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-date-container .end-date {
   width: 90%;
   margin-right: 10px;
   margin-left: 10px;
@@ -314,22 +352,22 @@ body {
   padding-bottom: 20px;
   transition: all 0.5s linear;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-date-container .end-date:hover {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-date-container .end-date:hover {
   border: 2px solid #525252;
   transition: all 0.5s linear;
   background-color: #d8d8d8;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-time-container {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-time-container {
   width: 50%;
   height: 30px;
   display: flex;
   flex-direction: column;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-time-container .end-time-label {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-time-container .end-time-label {
   margin-right: 10px;
   font-size: 15px;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-time-container .end-time {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-time-container .end-time {
   width: 90%;
   margin-right: 10px;
   margin-left: 10px;
@@ -340,7 +378,7 @@ body {
   padding-bottom: 20px;
   transition: all 0.5s linear;
 }
-.main_content_wsb .tabContainer .createForm .create-form .end-container .end-time-container .end-time:hover {
+.main_content_wsb .tabContainer .createForm .create-form .page .end-container .end-time-container .end-time:hover {
   border: 2px solid #525252;
   transition: all 0.5s linear;
   background-color: #d8d8d8;

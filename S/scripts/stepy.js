@@ -1,10 +1,9 @@
 var x = 0;
 var getId = document.getElementById;
 
-function Burjer() {
+function steppy() {
   if (x == 1) {
-    getId("main_content").className = "main_content_wsb";
-    getId("mySidebar").style.display = "flex";
+    getId("add").style.display = "flex";
     x = 0;
   } else {
     getId("main_content").className = "main_content_wosb";

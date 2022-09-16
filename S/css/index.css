@@ -176,7 +176,7 @@ body {
 }
 .main_content_wsb .table-container {
   width: calc(100% - 20px);
-  height: calc(40% - 77px);
+  height: calc(43% - 77px);
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
@@ -254,6 +254,8 @@ body {
 .main_content_wsb .table-container .table-frame .table .table-body-container .table-body-row .body-data {
   text-transform: namecase;
   border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .main_content_wsb .table-container .table-frame .table .table-body-container .table-body-row .body-data .data-action {
   color: rgb(124, 39, 124);

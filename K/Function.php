@@ -1,6 +1,41 @@
 <?php 
 include "../includes/con/sess.php";
 include ("../includes/D/config.php");
+
+if ($_SESSION["user_level"]!="Administrator") {
+  echo '<script type="text/javascript"> alert("Error 401, Unauthorized Access, please contact your Systems Administrator.") </script>';
+  echo '<script type="text/javascript"> window.location.href="/RNA/K/index.php"; </script>';
+} else {
+  include ("../includes/d/config.php");
+  if($_SERVER["REQUEST_METHOD"] == "POST") {
+      $disaster_desc = $_POST["disaster_desc"]; 
+      $dis_control_number = $_POST["dis_control_number"];  
+      $disaster_type = $_POST["disaster_type"];
+      $AreaofEffect = $_POST["AreaofEffect"];
+      $encoded_by = $_POST["encoded_by"];
+      $Sdate = date('M d Y', strtotime($_POST["Sdate"]));
+      $Edate = date('M d Y', strtotime($_POST["Edate"]));
+      $Stime = $_POST["Stime"];
+      $Etime = $_POST["Etime"];
+
+      $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disaster_type`, `AreaofEffect`, `encoded_by`, `date_log`, `Sdate`, `Edate`, `Stime`, `Etime`) 
+      VALUES ('$disaster_desc', '$dis_control_number', '$disaster_type', '$AreaofEffect', '$encoded_by', current_timestamp(), '$Sdate', '$Edate', '$Stime', '$Etime')";
+
+      $result = mysqli_query($db_conn, $sql);
+
+      if($result)
+      {
+          header("location: RNA/K/Function.php?action=request");
+          echo '<script type="text/javascript"> alert("Done!") </script>';
+      }
+      else
+      {
+          header("location: RNA/K/Function.php?action=request");
+          echo '<script type="text/javascript"> alert("Information not updated") </script>';
+      }
+
+  }
+}
 ?>
 
 <!DOCTYPE html>
