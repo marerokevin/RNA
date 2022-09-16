@@ -47,32 +47,43 @@ include ("../includes/con/sess.php");
                 <!-- Page 1 -->
                 <div class="page">
                     <!-- Page 1 -->
-                    <label for="start-grid" class="start-title">Item Description</label>
-                    <div class="start-container" id="start-grid">
-                        <!-- Item Name -->
-                        <div class="input-container"> 
-                            <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
-                                <option value="" disabled selected>Select Item</option>
-                                <option value="Administrator">Unit</option>
-                                <option value="Head">Head</option>
-                                <option value="User">User</option>
-                            </select>
-                        </div>
-                        <!-- Supplier -->
-                        <div class="input-container"> 
-                            <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
-                                <option value="" disabled selected>Select Supplier</option>
-                                <option value="Administrator">Unit</option>
-                                <option value="Head">Head</option>
-                                <option value="User">User</option>
-                            </select>
-                        </div>
+                  <label for="request-type" class="start-title">Type of Request</label>
+                  <div class="input-container"> 
+                    <select type="text" class="input-main" id="request-type" name="select" onkeyup="stoppedTyping()" required>
+                      <option value="" disabled selected>Select the type of request</option>
+                      <option onclick="steppy()" value="Add">Add</option>
+                      <option value="Update">Update</option>
+                      <option value="Delete">Delete</option>
+                    </select>
+                  </div>
+
+                  <div id="add" class="add-form">
+                  <label for="start-grid" class="start-title">Item Description</label>
+                  <div class="start-container" id="start-grid">
+                    <!-- Item Name -->
+                    <div class="input-container"> 
+                      <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
+                          <option value="" disabled selected>Select the Item</option>
+                          <option value="Administrator">Unit</option>
+                          <option value="Head">Head</option>
+                          <option value="User">User</option>
+                      </select>
                     </div>
+                    <!-- Supplier -->
+                    <div class="input-container"> 
+                      <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
+                          <option value="" disabled selected>Select the Supplier</option>
+                          <option value="Administrator">Unit</option>
+                          <option value="Head">Head</option>
+                          <option value="User">User</option>
+                      </select>
+                    </div>
+                  </div>
 
                     <label for="start-grid" class="start-title">Current Stock:</label>
                     <div class="start-container" id="start-grid">
                         <!-- Initial Quantity -->
-                        <div class="input-container"> 
+                        <div class="input-container">
                             <p class="input-main">500 Bottles</p>
                         </div>
                     </div>
@@ -95,6 +106,7 @@ include ("../includes/con/sess.php");
                         </div>
                     </div>
                 </div>
+              </div>
                 <!-- Page 2 -->
                 <div class="page">
                     <!-- Department -->
@@ -198,4 +210,5 @@ include ("../includes/con/sess.php");
             </form>
         </div>
 <script src="/RNA/S/scripts/control-number.js"></script>
+<script src="/RNA/S/scripts/stepy.js"></script>
 <script src="/RNA/S/scripts/step.js"></script>
