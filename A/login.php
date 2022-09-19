@@ -26,7 +26,7 @@ if(empty(trim($_POST["username"]))){
     }
     
     if(empty($username_err) && empty($password_err)){
-        $sql = "SELECT id, user_uid, user_pwd, first_name, last_name, user_level, email_address FROM accounts WHERE user_uid = ?";
+        $sql = "SELECT id, user_uid, user_pwd, first_name, last_name, user_level, email_address, department, section FROM accounts WHERE user_uid = ?";
         
         if($stmt = mysqli_prepare($db_conn, $sql)){
             mysqli_stmt_bind_param($stmt, "s", $param_username);
@@ -37,7 +37,7 @@ if(empty(trim($_POST["username"]))){
                 mysqli_stmt_store_result($stmt);
                 
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password, $last_name, $first_name, $user_level, $email_address);
+                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password, $last_name, $first_name, $user_level, $email_address, $department, $section);
                     if(mysqli_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             session_start();
@@ -50,6 +50,8 @@ if(empty(trim($_POST["username"]))){
                             $_SESSION["user_level"] = $user_level;
                             $_SESSION["first_name"] = $first_name;
                             $_SESSION["last_name"] = $last_name;
+                            $_SESSION["department"] = $department;
+                            $_SESSION["section"] = $section;
                             header("location: /RNA/K/index.php");
                         }else{
                             $login_err = "Invalid username or password.";

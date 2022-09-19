@@ -28,21 +28,7 @@ function nextPrev(stepNo) {
    }
    showTab(currentTab);
 }
-function checkForm() {
-   var pageEle, inputEle, i, valid = true;
-   pageEle = document.getElementsByClassName("page");
-   inputEle = pageEle[currentTab].getElementsByTagName("input");
-   for (i = 0; i < inputEle.length; i++) {
-      if (inputEle[i].value == "") {
-         inputEle[i].className += " invalid";
-         valid = false;
-      }
-   }
-   if (valid) {
-      document.getElementsByClassName("step")[currentTab].className += " finish";
-   }
-   return valid;
-}
+
 function changeStepIndicator(stepNo) {
    var i, pageEle = document.getElementsByClassName("step");
    for (i = 0; i < pageEle.length; i++) {
