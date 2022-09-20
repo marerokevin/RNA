@@ -3,35 +3,14 @@ include ("../includes/d/config.php");
 include ("../includes/con/sess.php");
 
         include ("../includes/d/config.php");
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $_SESSION["department"] = $dept;
-            $list_item = "SELECT item FROM INVENTORY where department = $dept";
-
-            $disaster_desc = $_POST["disaster_desc"]; 
-            $dis_control_number = $_POST["dis_control_number"];  
-            $disaster_type = $_POST["disaster_type"];
-            $AreaofEffect = $_POST["AreaofEffect"];
-            $encoded_by = $_POST["encoded_by"];
-            $Sdate = date('M d Y', strtotime($_POST["Sdate"]));
-            $Edate = date('M d Y', strtotime($_POST["Edate"]));
-            $Stime = $_POST["Stime"];
-            $Etime = $_POST["Etime"];
-
-            $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disaster_type`, `AreaofEffect`, `encoded_by`, `date_log`, `Sdate`, `Edate`, `Stime`, `Etime`) 
-            VALUES ('$disaster_desc', '$dis_control_number', '$disaster_type', '$AreaofEffect', '$encoded_by', current_timestamp(), '$Sdate', '$Edate', '$Stime', '$Etime')";
-
-            $result = mysqli_query($db_conn, $sql);
-
-            if($result)
-            {
-                header("location: RNA/K/Function.php?action=request");
-                echo '<script type="text/javascript"> alert("Done!") </script>';
-            }
-            else
-            {
-                header("location: RNA/K/Function.php?action=request");
-                echo '<script type="text/javascript"> alert("Information not updated") </script>';
+            $list_item = "select * from inventory where department = '$dept'";
+            $item_access = mysqli_query($conn, $list_item);
+            $item_count = mysqli_num_rows($item_access);
+            if($item_count > 0){
+            while  ($tableData = mysqli_fetch_array($item_access)) {
+                $item_data = '"' .$tableData["item"]. '",';
             }
         }
 ?>
@@ -51,7 +30,7 @@ include ("../includes/con/sess.php");
                 <!-- Page 1 -->
                 <div class="page">
                     <!-- Page 1 -->
-                    <label for="start-grid" class="start-title">Item Description</label>
+                    <label for="start-grid" class="start-title">Item Description <?php echo $item_access; ?></label>
                     <div class="start-container" id="start-grid">
                         <!-- Item Name -->
                         <div class="input-container"> 

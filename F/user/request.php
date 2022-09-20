@@ -3,18 +3,18 @@ include ("../includes/d/config.php");
 include ("../includes/con/sess.php");
 
         include ("../includes/d/config.php");
-        if($_SERVER["REQUEST_METHOD"] == "POST") {
-            $disaster_desc = $_POST["disaster_desc"]; 
-            $dis_control_number = $_POST["dis_control_number"];  
-            $disaster_type = $_POST["disaster_type"];
-            $AreaofEffect = $_POST["AreaofEffect"];
-            $encoded_by = $_POST["encoded_by"];
+        if(isset($_POST["request"])){
+            $item_name = $_POST["item"]; 
+            $supplier = $_POST["supplier"];  
+            $required_amt = $_POST["required_amt"];
+            $price = $_POST["price"];
+            $unit = $_POST["unit"];
             $Sdate = date('M d Y', strtotime($_POST["Sdate"]));
             $Edate = date('M d Y', strtotime($_POST["Edate"]));
             $Stime = $_POST["Stime"];
             $Etime = $_POST["Etime"];
 
-            $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disaster_type`, `AreaofEffect`, `encoded_by`, `date_log`, `Sdate`, `Edate`, `Stime`, `Etime`) 
+$sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disaster_type`, `AreaofEffect`, `encoded_by`, `date_log`, `Sdate`, `Edate`, `Stime`, `Etime`) 
             VALUES ('$disaster_desc', '$dis_control_number', '$disaster_type', '$AreaofEffect', '$encoded_by', current_timestamp(), '$Sdate', '$Edate', '$Stime', '$Etime')";
 
             $result = mysqli_query($db_conn, $sql);
@@ -51,11 +51,11 @@ include ("../includes/con/sess.php");
                     <div class="start-container" id="start-grid">
                         <!-- Item Name -->
                         <div class="input-container"> 
-                          <input type="text" class="input-main" id="disaster_desc" name="disaster_desc" placeholder="Item Name" required>
+                          <input type="text" class="input-main" id="disaster_desc" name="item" placeholder="Item Name" required>
                         </div>
                         <!-- Supplier -->
                         <div class="input-container"> 
-                          <input type="text" class="input-main" id="disaster_desc" name="disaster_desc" placeholder="Supplier" required>
+                          <input type="text" class="input-main" id="disaster_desc" name="supplier" placeholder="Supplier" required>
                         </div>
                     </div>
 
@@ -63,7 +63,7 @@ include ("../includes/con/sess.php");
                     <div class="start-container" id="start-grid">
                         <!-- Initial Quantity -->
                         <div class="input-container"> 
-                          <input type="text" class="input-main" id="disaster_desc" name="disaster_desc" placeholder="Required amount" required>
+                          <input type="text" class="input-main" id="disaster_desc" name="required_amt" placeholder="Required amount" required>
                         </div>
                     </div>
 
@@ -71,17 +71,12 @@ include ("../includes/con/sess.php");
                     <div class="start-container" id="start-grid">
                         <!-- Price -->
                         <div class="input-container"> 
-                            <input type="text" class="input-main" id="disaster_desc" name="disaster_desc" placeholder="Price" required>
+                            <input type="text" class="input-main" id="disaster_desc" name="price" placeholder="Price" required>
                         </div>
 
                         <!-- Unit -->
                         <div class="input-container"> 
-                            <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
-                                <option value="" disabled selected>Select Unit</option>
-                                <option value="Administrator">Unit</option>
-                                <option value="Head">Head</option>
-                                <option value="User">User</option>
-                            </select>
+                            <input type="text" class="input-main" id="disaster_desc" name="unit" placeholder="Unit" required>
                         </div>
                     </div>
                 </div>
@@ -91,27 +86,27 @@ include ("../includes/con/sess.php");
                     <div class="department-input-container"> 
                         <div class="department-container">
                             <div class="checkbox-container">
-                                <input type="checkbox" class="checkbox-main" id="Administration" name="select" onkeyup="stoppedTyping()" required>
+                                <input type="checkbox" class="checkbox-main" id="Administration" name="admin" onkeyup="stoppedTyping()" required>
                                 <label for="administration" class="checkbox-label">Administration</label>
                             </div>
                             <div class="checkbox-container">
-                                <input type="checkbox" class="checkbox-main" id="Accounting" name="select" onkeyup="stoppedTyping()" required>
+                                <input type="checkbox" class="checkbox-main" id="Accounting" name="acct" onkeyup="stoppedTyping()" required>
                                 <label for="Accounting" class="checkbox-label">Accounting</label>
                             </div>
                             <div class="checkbox-container">
-                                <input type="checkbox" class="checkbox-main" id="Purchasing" name="select" onkeyup="stoppedTyping()" required>
+                                <input type="checkbox" class="checkbox-main" id="Purchasing" name="purchasing" onkeyup="stoppedTyping()" required>
                                 <label for="Purchasing" class="checkbox-label">Purchasing</label>
                             </div>
                             <div class="checkbox-container">
-                                <input type="checkbox" class="checkbox-main" id="Prod-Tecnology" name="select" onkeyup="stoppedTyping()" required>
+                                <input type="checkbox" class="checkbox-main" id="Prod-Tecnology" name="prodtech" onkeyup="stoppedTyping()" required>
                                 <label for="Prod-Tecnology" class="checkbox-label">Production Tecnology</label>
                             </div>
                             <div class="checkbox-container">
-                                <input type="checkbox" class="checkbox-main" id="Quality-Control" name="select" onkeyup="stoppedTyping()" required>
+                                <input type="checkbox" class="checkbox-main" id="Quality-Control" name="qc" onkeyup="stoppedTyping()" required>
                                 <label for="Quality-Control" class="checkbox-label">Quality Control</label>
                             </div>
                             <div class="checkbox-container">
-                                <input type="checkbox" class="checkbox-main" id="Quality-Assurance" name="select" onkeyup="stoppedTyping()" required>
+                                <input type="checkbox" class="checkbox-main" id="Quality-Assurance" name="qa" onkeyup="stoppedTyping()" required>
                                 <label for="Quality-Assurance" class="checkbox-label">Quality Assurance</label>
                             </div>
                             <div class="checkbox-container">
@@ -167,7 +162,7 @@ include ("../includes/con/sess.php");
 
                     <!-- Submit -->      
                     <div class="submit">
-                        <input type="submit" class="subbutton" value="Submit" id="button">
+                        <input type="submit" class="subbutton" value="Submit" id="button" name="request">
                     </div>
                 </div>
                 <small id="emailHelp" class="reminder">Make sure to answer all the fields properly</small>

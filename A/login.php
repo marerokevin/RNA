@@ -216,9 +216,49 @@ if(empty(trim($_POST["username"]))){
             </div>
 
             <div class="input-container"> 
-            <label class="input-label" for="Password">Department *</label>
-            <input type="text" class="input-main" id="department"
-                name="department" aria-describedby="emailHelp" onkeyup="stoppedTyping()">    
+                <label class="input-label" for="Password">Department *</label>
+                <select type="text" class="input-main" id="department"
+                    name="department" aria-describedby="emailHelp" onkeyup="stoppedTyping()">
+                    <option value="" disabled selected>Select user level</option>
+                    <option value="admin">Administration</option>
+                    <option value="accounting">Accounting</option>
+                    <option value="qa">Quality Assurance</option>
+                    <option value="qc">Quality Control</option>
+                    <option value="dok">Direct Operation Kaizen</option>
+                    <option value="systemkaizen">System Kaizen</option>
+                    <option value="prodsupport_stafftools">Production Support - Tools</option>
+                    <option value="prodsupport_staffoffice">Production Support - Office</option>
+                    <option value="prodsupport_supplies">Production Support - Supplies</option>
+                    <option value="audittraining">Audit & Training</option>
+                    <option value="prodmgt">Production Management</option>
+                    <option value="impexcrating">Impex/Crating</option>
+                    <option value="fabrication">Fabrication</option>
+                    <option value="whreceiving">Warehouse/Receiving</option>
+                    <option value="saitama">Saitama</option>
+                    <option value="purchasing">Purchasing</option>
+                    <option value="prodtech">Production Technology</option>
+                    <option value="partsinspection">Parts Inspection</option>
+                    <option value="prod1dcmotor">Production 1 - DC Motor</option>
+                    <option value="prod1ud700yud">Production 1 - UD700/YUD</option>
+                    <option value="prod1sdrb260">Production 1 - SDRB260</option>
+                    <option value="prod1rbw10">Production 1 - RBW10</option>
+                    <option value="prod1rbw100">Production 1 - RBW100</option>
+                    <option value="prod1brm">Production 1 - BRM</option>
+                    <option value="prod1technician">Production 1 - Technician</option>
+                    <option value="prod1office">Production 1 - Office</option>
+                    <option value="prod1partsprep">Production 1 - Parts Preparation</option>
+                    <option value="prod2rbw150">Production 1 - RBW150</option>
+                    <option value="prod2glr100">Production 1 - GLR100</option>
+                    <option value="prod2rbg">Production 1 - RBG</option>
+                    <option value="prod2technician">Production 2 - Technician</option>
+                    <option value="prod2partsprep">Production 2 - Parts Preparation</option>
+                    <option value="prod2packaging">Production 2 - Packaging</option>
+                    <option value="prod2office">Production 2 - Office</option>
+                    <option value="g200">G200</option>
+                    <option value="rbw50">RBW50</option>
+                    <option value="rbw100">RBW100</option>
+                    <option value="sdrb100">SDRB100</option>
+                </select>
             </div>
 
             <div class="input-container">

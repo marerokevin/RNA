@@ -39,18 +39,19 @@ CREATE TABLE inventory (
 	initial_inventory int(25) not null,
 	initial_inventory_amount int(25) not null,
 	safety_stock int(25) not null,
-	total_forcast int(25) not null);
+	total_forcast int(25) not null,
+	department varchar(255) not null);
 
 INSERT into itemaccess (admin, accounting, qa ,qc, dok, systemkaizen, prodsupport_stafftools, prodsupport_staffoffice, prodsupport_supplies, audittraining, prodmgt, impexcrating, fabrication, whreceiving, saitama, purchasing, prodtech, partsinspection, prod1dcmotor, prod1ud700yud, prod1sdrb260, prod1rbw10, prod1rbw100, prod1brm, prod1technician, prod1office, prod1partsprep, prod2rbw150, prod2glr100, prod2rbg, prod2technician, prod2partsprep, prod2packaging, prod2office, g200, rbw50, rbw100, sdrb100, item, description) VALUES (false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,'KDDI','test');
 
-INSERT into inventory (supplier, item, description, unit, unit_price, initial_inventory, initial_inventory_amount, safety_stock, total_forcast) VALUES ('KDDI', 'CISCO', 'NETWORK SWITCH', 'pc', '50', '1', '200', '2', '3');
+INSERT into inventory (supplier, item, description, unit, unit_price, initial_inventory, initial_inventory_amount, safety_stock, total_forcast, department) VALUES ('KDDI', 'CISCO', 'NETWORK SWITCH', 'pc', '50', '1', '200', '2', '3', 'Administration');
 
 CREATE TABLE itemaccess (
 	admin boolean not null,
         accounting boolean not null,
         qa boolean not null,
         qc boolean not null,
-        dok boolean not nulldesc ,
+        dok boolean not null,
         systemkaizen boolean not null,
         prodsupport_stafftools boolean not null,
         prodsupport_staffoffice boolean not null,
@@ -84,10 +85,10 @@ CREATE TABLE itemaccess (
         rbw50 boolean not null,
         rbw100 boolean not null,
         sdrb100 boolean not null,
-	item varchar(255) not null,
+	item varchar(255) not null PRIMARY KEY,
         description varchar(1250) not null);
 
-UPDATE inventory (admin, accounting, qa ,qc, dok, systemkaizen, prodsupport_stafftools, prodsupport_staffoffice, prodsupport_supplies,audittraining, promgt, impexcrating, fabrication, whreceiving, saitama, purchasing, prodtech, partsinspection, prod1dcmotor, prod1ud700yud, prod1sdrb260, prod1rbw10, prod1rbw100, prod1brm, prod1technician, prod1office, prod1partsprep, prod2 rbw150, prod2glr100, prod2rbg, prod2technician, prod2partsprep, prod2packaging, prod2office, g200, rbw50,rbw100, sdrb100, item, description) VALUES (false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,KDDI,test);
+UPDATE inventory (admin, accounting, qa ,qc, dok, systemkaizen, prodsupport_stafftools, prodsupport_staffoffice, prodsupport_supplies,audittraining, promgt, impexcrating, fabrication, whreceiving, saitama, purchasing, prodtech, partsinspection, prod1dcmotor, prod1ud700yud, prod1sdrb260, prod1rbw10, prod1rbw100, prod1brm, prod1technician, prod1office, prod1partsprep, prod2 rbw150, prod2glr100, prod2rbg, prod2technician, prod2partsprep, prod2packaging, prod2office, g200, rbw50,rbw100, sdrb100, item, description) VALUES (false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,'network switch','test');
 
 CREATE TABLE forcast (
 	forcast int(25) not null,
@@ -96,6 +97,51 @@ CREATE TABLE forcast (
 	outgoing_amount int(25) not null,
 	overall_forcast int(25) not null
 	overall_outgoing int(25) not null);
+
+CREATE TABLE transaction (
+
+CREATE TABLE forcast (
+        item varchar(255) not null PRIMARY KEY,
+        description varchar(1250) not null,
+        admin int(25) not null,
+        accounting int(25) not null,
+        qa int(25) not null,
+        qc int(25) not null,
+        dok int(25) not null,
+        systemkaizen int(25) not null,
+        prodsupport_stafftools int(25) not null,
+        prodsupport_staffoffice int(25) not null,
+        prodsupport_supplies int(25) not null,
+        audittraining int(25) not null,
+        prodmgt int(25) not null,
+        impexcrating int(25) not null,
+        fabrication int(25) not null,
+        whreceiving int(25) not null,
+        saitama int(25) not null,
+        purchasing int(25) not null,
+        prodtech int(25) not null,
+        partsinspection int(25) not null,
+        prod1dcmotor int(25) not null,
+        prod1ud700yud int(25) not null,
+        prod1sdrb260 int(25) not null,
+        prod1rbw10 int(25) not null,
+        prod1rbw100 int(25) not null,
+        prod1brm int(25) not null,
+        prod1technician int(25) not null,
+        prod1office int(25) not null,
+        prod1partsprep int(25) not null,
+        prod2rbw150 int(25) not null,
+        prod2glr100 int(25) not null,
+        prod2rbg int(25) not null,
+        prod2technician int(25) not null,
+        prod2partsprep int(25) not null,
+        prod2packaging int(25) not null,
+        prod2office int(25) not null,
+        g200 int(25) not null,
+        rbw50 int(25) not null,
+        rbw100 int(25) not null,
+        sdrb100 int(25) not null);
+
 
 CREATE TABLE incoming (
 	id int(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -108,3 +154,14 @@ CREATE TABLE incoming (
 	received_date varchar(100) not null,
 	remarks varchar(1250) not null,
 	received_by varchar(255) not null);
+#other DB
+create table accounts (
+	id int(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	email_address varchar(255) not null,
+	pass varchar(255) not null,
+	contact_number int(20) not null,
+	first_name varchar(255) not null,
+	last_name varchar(255) not null,
+	date datetime not null,
+	access boolean not null);
+
