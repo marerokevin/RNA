@@ -59,7 +59,7 @@ body {
   height: -moz-fit-content;
   height: fit-content;
   padding: 10px;
-  background-color: black;
+  background-color: rgb(255, 255, 255);
   table-layout: fixed;
   border-collapse: collapse;
 }

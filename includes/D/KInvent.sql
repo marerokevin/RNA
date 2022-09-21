@@ -39,12 +39,13 @@ CREATE TABLE inventory (
 	initial_inventory int(25) not null,
 	initial_inventory_amount int(25) not null,
 	safety_stock int(25) not null,
-	total_forcast int(25) not null,
-	department varchar(255) not null);
+	total_forcast int(25) not null);
+
+LOAD DATA LOCAL INFILE '/var/www/html/RNA/inventory.csv' INTO TABLE inventory FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (id,supplier,item,description,unit,unit_price,initial_inventory,initial_inventory_amount,safety_stock,total_forcast);
 
 INSERT into itemaccess (admin, accounting, qa ,qc, dok, systemkaizen, prodsupport_stafftools, prodsupport_staffoffice, prodsupport_supplies, audittraining, prodmgt, impexcrating, fabrication, whreceiving, saitama, purchasing, prodtech, partsinspection, prod1dcmotor, prod1ud700yud, prod1sdrb260, prod1rbw10, prod1rbw100, prod1brm, prod1technician, prod1office, prod1partsprep, prod2rbw150, prod2glr100, prod2rbg, prod2technician, prod2partsprep, prod2packaging, prod2office, g200, rbw50, rbw100, sdrb100, item, description) VALUES (false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,'KDDI','test');
 
-INSERT into inventory (supplier, item, description, unit, unit_price, initial_inventory, initial_inventory_amount, safety_stock, total_forcast, department) VALUES ('KDDI', 'CISCO', 'NETWORK SWITCH', 'pc', '50', '1', '200', '2', '3', 'Administration');
+INSERT into inventory (supplier, item, description, unit, unit_price, initial_inventory, initial_inventory_amount, safety_stock, total_forcast) VALUES ('KDDI', 'CISCO', 'NETWORK SWITCH', 'pc', '50', '1', '200', '2', '3');
 
 CREATE TABLE itemaccess (
 	admin boolean not null,
@@ -101,9 +102,11 @@ CREATE TABLE forcast (
 CREATE TABLE transaction (
 
 CREATE TABLE forcast (
-        item varchar(255) not null PRIMARY KEY,
+	id int(25) PRIMARY KEY not null AUTO_INCREMENT, 
+        item varchar(255) not null,
         description varchar(1250) not null,
-        admin int(25) not null,
+        supplier varchar(255) not null,
+	admin int(25) not null,
         accounting int(25) not null,
         qa int(25) not null,
         qc int(25) not null,
@@ -115,7 +118,8 @@ CREATE TABLE forcast (
         audittraining int(25) not null,
         prodmgt int(25) not null,
         impexcrating int(25) not null,
-        fabrication int(25) not null,
+        molding int(25) not null,
+	fabrication int(25) not null,
         whreceiving int(25) not null,
         saitama int(25) not null,
         purchasing int(25) not null,
@@ -125,7 +129,6 @@ CREATE TABLE forcast (
         prod1ud700yud int(25) not null,
         prod1sdrb260 int(25) not null,
         prod1rbw10 int(25) not null,
-        prod1rbw100 int(25) not null,
         prod1brm int(25) not null,
         prod1technician int(25) not null,
         prod1office int(25) not null,
@@ -142,7 +145,11 @@ CREATE TABLE forcast (
         rbw100 int(25) not null,
         sdrb100 int(25) not null);
 
+not working
+LOAD DATA LOCAL INFILE '/var/www/html/RNA/forcast.csv' INTO TABLE forcast FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (item,description,supplier,admin,accounting,qa,qc,dok,systemkaizen,prodsupport_stafftools,prodsupport_staffoffice,prodsupport_supplies,audittraining,prodmgt,impexcrating,molding,fabrication,whreceiving,saitama,purchasing,prodtech,partsinspection,prod1dcmotor,prod1ud700yud,prod1sdrb260,prod1rbw10,prod1brm,prod1technician,prod1office,prod1partsprep,prod2rbw150,prod2glr100,prod2rbg,prod2technician,prod2partsprep,prod2packaging,prod2office,g200,rbw50,rbw100,sdrb100);
 
+working with 46 warnings,
+LOAD DATA LOCAL INFILE '/var/www/html/RNA/forcast.csv' INTO TABLE forcast FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (item,description,supplier,admin,accounting,qa,qc,dok,systemkaizen,prodsupport_stafftools,prodsupport_staffoffice,prodsupport_supplies,audittraining,prodmgt,impexcrating,molding,fabrication,whreceiving,saitama,purchasing,prodtech,partsinspection,prod1dcmotor,prod1ud700yud,prod1sdrb260,prod1rbw10,prod1brm,prod1technician,prod1office,prod1partsprep,prod2rbw150,prod2glr100,prod2rbg,prod2technician,prod2partsprep,prod2packaging,prod2office,g200,rbw50,rbw100,sdrb100);
 CREATE TABLE incoming (
 	id int(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	invoice_number varchar(255) not null,
