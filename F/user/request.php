@@ -3,23 +3,19 @@ include ("../includes/d/config.php");
 include ("../includes/con/sess.php");
 
         include ("../includes/d/config.php");
-        if(isset($_POST["request"])){
-            $item_name = $_POST["item"]; 
-            $supplier = $_POST["supplier"];  
-            $required_amt = $_POST["required_amt"];
+        if(isset($_POST["request"])) {
+            $item = $_POST["item"];
+            $supplier = $_POST["supplier"];
+            $required_amt = $_POST["required_quantity"];
             $price = $_POST["price"];
             $unit = $_POST["unit"];
-            $Sdate = date('M d Y', strtotime($_POST["Sdate"]));
-            $Edate = date('M d Y', strtotime($_POST["Edate"]));
-            $Stime = $_POST["Stime"];
-            $Etime = $_POST["Etime"];
+            $date_request = date('M d Y', strtotime($_POST["date_request"]));
 
-$sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disaster_type`, `AreaofEffect`, `encoded_by`, `date_log`, `Sdate`, `Edate`, `Stime`, `Etime`) 
-            VALUES ('$disaster_desc', '$dis_control_number', '$disaster_type', '$AreaofEffect', '$encoded_by', current_timestamp(), '$Sdate', '$Edate', '$Stime', '$Etime')";
+            $request_insert = "INSERT INTO `request`(`item`, `supplier`, `required_quantity`, `price`, `unit`, `date`, `date_request`) VALUES ('$item', '$supplier', '$required_amt', '$price', '$unit', current_timestamp(), '$date_request')";
 
-            $result = mysqli_query($db_conn, $sql);
+            $request_insert_query = mysqli_query($db_conn, $request_insert);
 
-            if($result)
+            if($request_insert_query)
             {
                 header("location: RNA/K/Function.php?action=request");
                 echo '<script type="text/javascript"> alert("Done!") </script>';
@@ -31,6 +27,14 @@ $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disas
             }
         }
 ?>
+
+<?php
+    include ("../includes/D/config.php");
+    $item_supplier_select = "select distinct item, supplier from inventory";
+    $item_supplier_query = mysqli_query($db_conn, $item_supplier_select);
+    while ($item_supplier = mysqli_fetch_assoc($item_supplier_query)) {
+        $item_confirm = $item_supplier['item'];
+        $supplier_confirm = $supplier_supplier['supplier'];?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,15 +54,41 @@ $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disas
                     <label for="start-grid" class="start-title">Item Description</label>
                     <div class="start-container" id="start-grid">
                         <!-- Item Name -->
-                        <div class="input-container"> 
-                          <input type="text" class="input-main" id="disaster_desc" name="item" placeholder="Item Name" required>
+                        <div class="input-container">
+                        <select type="text" class="input-main" id="item" name="item" onchange="selectedItem()" required>
+                            <option value="" disabled selected>Select item</option>
+                        <?php include ("../includes/D/config.php");
+                            $list_item = "select distinct item from inventory";
+                            $item_query = mysqli_query($db_conn, $list_item);
+                            while ($items = mysqli_fetch_assoc($item_query)) {
+                        ?>
+                            <option value="<?php echo $items['item']; ?>"><?php echo $items['item']; ?></option>
+                        <?php } ?>
+                        </select>
                         </div>
                         <!-- Supplier -->
                         <div class="input-container"> 
-                          <input type="text" class="input-main" id="disaster_desc" name="supplier" placeholder="Supplier" required>
+                        <select type="text" class="input-main" id="item" name="supplier" onkeyup="stoppedTyping()" required>
+                        <option value="" disabled selected>Select item</option>
+                        <?php include ("../includes/D/config.php");
+                            $list_supplier = "select distinct supplier from inventory";
+                            $supplier_query = mysqli_query($db_conn, $list_supplier);
+                            while ($suppliers = mysqli_fetch_assoc($supplier_query)) {
+                        ?>
+                            <option id="supplier" value="<?php echo $suppliers['supplier']; ?>"><?php echo $suppliers['supplier']; ?></option>
+                        <?php } ?>
+                        </select>
                         </div>
                     </div>
-
+                    <script>
+                    var itemSelect = <?php echo json_encode ("$item_confirm"); ?>;
+                    var supplierSelect= <?php echo json_encode ("$supplier_confirm"); ?>;
+                    //console.log(jsonData);
+                    function selectedItem() {
+                        console.log(itemSelect);
+                    }
+                    </script>
+                    <?php } ?>
                     <label for="start-grid" class="start-title">Required Stock:</label>
                     <div class="start-container" id="start-grid">
                         <!-- Initial Quantity -->
@@ -71,7 +101,7 @@ $sql = "INSERT INTO `disasterinfo`(`disaster_desc`, `dis_control_number`, `disas
                     <div class="start-container" id="start-grid">
                         <!-- Price -->
                         <div class="input-container"> 
-                            <input type="text" class="input-main" id="disaster_desc" name="price" placeholder="Price" required>
+                            <p>12<?php  ?></p>    
                         </div>
 
                         <!-- Unit -->

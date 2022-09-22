@@ -12,10 +12,12 @@ CREATE TABLE accounts (
 	section varchar(256) not null,
 	department varchar(256) not null);
 
-CREATE TABLE REQUEST (
+CREATE TABLE request (
 	id int(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	item varchar(255) not null,
 	date datetime not null,
+	date_request varchar(30) not null,
+	required_quantity varchar(255) not null,
 	supplier varchar(255)not null,
 	requestor varchar(255) NOT NULL,
 	request_id varchar(255) NOT NULL,
@@ -150,6 +152,7 @@ LOAD DATA LOCAL INFILE '/var/www/html/RNA/forcast.csv' INTO TABLE forcast FIELDS
 
 working with 46 warnings,
 LOAD DATA LOCAL INFILE '/var/www/html/RNA/forcast.csv' INTO TABLE forcast FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (item,description,supplier,admin,accounting,qa,qc,dok,systemkaizen,prodsupport_stafftools,prodsupport_staffoffice,prodsupport_supplies,audittraining,prodmgt,impexcrating,molding,fabrication,whreceiving,saitama,purchasing,prodtech,partsinspection,prod1dcmotor,prod1ud700yud,prod1sdrb260,prod1rbw10,prod1brm,prod1technician,prod1office,prod1partsprep,prod2rbw150,prod2glr100,prod2rbg,prod2technician,prod2partsprep,prod2packaging,prod2office,g200,rbw50,rbw100,sdrb100);
+
 CREATE TABLE incoming (
 	id int(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	invoice_number varchar(255) not null,
