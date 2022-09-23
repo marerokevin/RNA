@@ -28,14 +28,6 @@ include ("../includes/con/sess.php");
         }
 ?>
 
-<?php
-    include ("../includes/D/config.php");
-    $item_supplier_select = "select distinct item, supplier from inventory";
-    $item_supplier_query = mysqli_query($db_conn, $item_supplier_select);
-    while ($item_supplier = mysqli_fetch_array($item_supplier_query)) {
-        $item_confirm = $item_supplier['item'];
-        $supplier_confirm = $supplier_supplier['supplier'];?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -43,6 +35,7 @@ include ("../includes/con/sess.php");
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../S/css/update.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
     </head>
     <div class="createForm">
             <form class="create-form" action="/RNA/F/request.php" method="post">
@@ -53,42 +46,33 @@ include ("../includes/con/sess.php");
                     <!-- Page 1 -->
                     <label for="start-grid" class="start-title">Item Description</label>
                     <div class="start-container" id="start-grid">
-                        <!-- Item Name -->
+                        <!-- Supplier -->
                         <div class="input-container">
-                        <select type="text" class="input-main" id="item" name="item" onchange="selectedItem()" required>
-                            <option value="" disabled selected>Select item</option>
+                        <select type="text" class="input-main" id="supplier" name="supplier" required>
+                            <option value="" disabled selected>Select Supplier</option>
                         <?php include ("../includes/D/config.php");
-                            $list_item = "select distinct item from inventory";
-                            $item_query = mysqli_query($db_conn, $list_item);
-                            while ($items = mysqli_fetch_assoc($item_query)) {
+                            $list_item = "select distinct supplier from inventory";
+                            $supplier_query = mysqli_query($db_conn, $list_item);
+                            while ($supplier = mysqli_fetch_assoc($supplier_query)) {
+                                echo '<option value="'.$supplier['supplier'].'">'.$supplier['supplier'].'</option>';
+                            }
                         ?>
-                            <option value="<?php echo $items['item']; ?>"><?php echo $items['item']; ?></option>
-                        <?php } ?>
                         </select>
                         </div>
-                        <!-- Supplier -->
+
+                        <!-- Item Name -->
                         <div class="input-container"> 
-                        <select type="text" class="input-main" id="item" name="supplier" onkeyup="stoppedTyping()" required>
+                        <select type="text" class="input-main" id="item" name="item" onkeyup="stoppedTyping()" required>
                         <option value="" disabled selected>Select item</option>
-                        <?php include ("../includes/D/config.php");
-                            $list_supplier = "select distinct supplier from inventory";
-                            $supplier_query = mysqli_query($db_conn, $list_supplier);
-                            while ($suppliers = mysqli_fetch_assoc($supplier_query)) {
-                        ?>
-                            <option id="supplier" value="<?php echo $suppliers['supplier']; ?>"><?php echo $suppliers['supplier']; ?></option>
-                        <?php } ?>
+                        <?php  
+                            $list_supplier = "select description, item, supplier from inventory";
+                            $item_query = mysqli_query($db_conn, $list_supplier);
+                            while ($items = mysqli_fetch_assoc($item_query)) {
+                                echo '<option value="'.$items["supplier"].'">'.$items["item"].' - '.$items["description"].'</option>';
+                            } ?>
                         </select>
                         </div>
                     </div>
-                    <script>
-                    var itemSelect = <?php echo json_encode ("$item_confirm"); ?>;
-                    var supplierSelect= <?php echo json_encode ("$supplier_confirm"); ?>;
-                    //console.log(jsonData);
-                    function selectedItem() {
-                        console.log(itemSelect);
-                    }
-                    </script>
-                    <?php } ?>
                     <label for="start-grid" class="start-title">Required Stock:</label>
                     <div class="start-container" id="start-grid">
                         <!-- Initial Quantity -->
@@ -101,7 +85,7 @@ include ("../includes/con/sess.php");
                     <div class="start-container" id="start-grid">
                         <!-- Price -->
                         <div class="input-container"> 
-                            <p>12<?php  ?></p>    
+                            <p>12</p>
                         </div>
 
                         <!-- Unit -->
@@ -214,3 +198,18 @@ include ("../includes/con/sess.php");
         </div>
 <script src="/RNA/S/scripts/control-number.js"></script>
 <script src="/RNA/S/scripts/step.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+<script>
+$("#supplier").change(function() {
+  if ($(this).data('options') === undefined) {
+    /*Taking an array of all options-2 and kind of embedding it on the select1*/
+    $(this).data('options', $('#item option').clone());
+  }
+  var id = $(this).val();
+  var options = $(this).data('options').filter('[value=' + id + ']');
+  $('#item').html(options);
+  console.log(id);
+});
+</script>
+

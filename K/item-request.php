@@ -34,7 +34,7 @@ include ("../includes/D/config.php");
             if ( isset($_GET['action']) && $_GET['action']=="status") {
                 include('../F/user/status.php');
               } else if ( isset($_GET['action']) && $_GET['action']=="request") {
-                include('../F/user/request.php');
+                include('../F/user/request2.php');
               } else if ( isset($_GET['action']) && $_GET['action']=="delete") {
                 include('../F/user/delete.php');
               }
