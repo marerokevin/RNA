@@ -86,11 +86,13 @@ include ("../includes/con/sess.php");
                         <div class="input-container"> 
                             <input type="text" class="input-main" name="price" id="price" placeholder="Price" oninput="multiply()" readonly>
                         </div>
+
+                        <!-- Unit -->
+                        <div class="input-container"> 
+                        </div>
                     </div>
 
-                    <!-- Unit -->
-                    <div class="input-container"> 
-                    </div>
+
 
                     <label for="start-grid" class="start-title">Total Amount</label>
                     <div class="start-container" id="start-grid">
