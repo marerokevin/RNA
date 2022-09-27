@@ -11,6 +11,7 @@ function showTab(stepNo) {
    }
    if (stepNo == (pageEle.length - 1)) {
       document.getElementById("nextBtn").innerHTML = "Submit";
+      document.getElementById("nextBtn").value = "Submit";
    }
    else {
       document.getElementById("nextBtn").innerHTML = "Next >";

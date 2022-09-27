@@ -4,8 +4,8 @@ include ("../includes/con/sess.php");
 
         include ("../includes/d/config.php");
         if(isset($_POST["request"])) {
-            $supplier = $_POST["supplier"];
             $item = $_POST["item"];
+            $supplier = $_POST["supplier"];
             $required_amt = $_POST["required_quantity"];
             $price = $_POST["price"];
             $unit = $_POST["unit"];
@@ -38,7 +38,7 @@ include ("../includes/con/sess.php");
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
     </head>
     <div class="createForm">
-            <form class="create-form" action="/RNA/F/user/request2.php" method="post">
+            <form class="create-form" action="/RNA/F/request.php" method="post">
                 <h2 class="Main-title">Request Item</h2>
                 <h3 class="SMD">Administrator</h3>
                 <!-- Page 1 -->
@@ -62,48 +62,42 @@ include ("../includes/con/sess.php");
 
                         <!-- Item Name -->
                         <div class="input-container"> 
-                        <select type="text" class="input-main" id="item" name="item" onchange="itemSelect(this)" required>
-                            <option value="" disabled selected>Select item</option>
-                            <?php  
-                                $list_supplier = "select unit, unit_price, description, item, supplier from inventory";
-                                $item_query = mysqli_query($db_conn, $list_supplier);
-                                while ($items = mysqli_fetch_assoc($item_query)) {
-                                    echo '<option data-val="'.$items["supplier"].'" value="'.$items["unit_price"].'">'.$items["item"].' - '.$items["description"].'</option>';
-                                }
-                            ?>
+                        <select type="text" class="input-main" id="item" name="item" onkeyup="stoppedTyping()" required>
+                        <option value="" disabled selected>Select item</option>
+                        <?php  
+                            $list_supplier = "select description, item, supplier from inventory";
+                            $item_query = mysqli_query($db_conn, $list_supplier);
+                            while ($items = mysqli_fetch_assoc($item_query)) {
+                                echo '<option value="'.$items["supplier"].'">'.$items["item"].' - '.$items["description"].'</option>';
+                            } ?>
                         </select>
                         </div>
                     </div>
+                    <label for="start-grid" class="start-title">Required Stock:</label>
                     <div class="start-container" id="start-grid">
                         <!-- Initial Quantity -->
                         <div class="input-container"> 
-                          <input type="text" class="input-main" id="required_amt" name="required_amt" placeholder="Enter required amount" required oninput="multiply()">
+                          <input type="text" class="input-main" id="disaster_desc" name="required_amt" placeholder="Required amount" required>
                         </div>
                     </div>
 
+                    <label for="start-grid" class="start-title">Price per Unit</label>
                     <div class="start-container" id="start-grid">
                         <!-- Price -->
                         <div class="input-container"> 
-                            <input type="text" class="input-main" name="price" id="price" placeholder="Price" oninput="multiply()" readonly>
+                            <p>12</p>
                         </div>
-                    </div>
 
-                    <!-- Unit -->
-                    <div class="input-container"> 
-                    </div>
-
-                    <label for="start-grid" class="start-title">Total Amount</label>
-                    <div class="start-container" id="start-grid">
-                        <!-- Price -->
-                        <div class="input-container">
-                            <span class="input-main" id="total_amt">Total Amount</span>
+                        <!-- Unit -->
+                        <div class="input-container"> 
+                            <input type="text" class="input-main" id="disaster_desc" name="unit" placeholder="Unit" required>
                         </div>
                     </div>
                 </div>
                 <!-- Page 2 -->
                 <div class="page">
                     <!-- Department -->
-                    <!-- <div class="department-input-container"> 
+                    <div class="department-input-container"> 
                         <div class="department-container">
                             <div class="checkbox-container">
                                 <input type="checkbox" class="checkbox-main" id="Administration" name="admin" onkeyup="stoppedTyping()" required>
@@ -162,19 +156,28 @@ include ("../includes/con/sess.php");
                                 <label for="PPIC" class="checkbox-label">Production Planning and Inventory Control</label>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
+                    <!-- Section -->
+                    <div class="input-container"> 
+                        <select type="text" class="input-main" id="item-select" name="select" onkeyup="stoppedTyping()" required>
+                            <option value="" disabled selected>Select Unit</option>
+                            <option value="Administrator">Unit</option>
+                            <option value="Head">Head</option>
+                            <option value="User">User</option>
+                        </select>
+                    </div>
 
                     <!-- Encoded By -->      
                     <div class="input-container"> 
                         <label for="encoded_by" class="input-label">Encoded by</label>
                         <input type="text" class="input-main" id="encoded_by"
-                        name="encoded_by" value="<?php echo ($_SESSION["last_name"]); ?> <?php echo ($_SESSION["first_name"]); ?>" readonly required>    
+                        name="encoded_by" value="<?php echo ($_SESSION["username"]); ?>" readonly required>    
                     </div>
 
                     <!-- Submit -->      
-                    <!-- <div class="submit">
+                    <div class="submit">
                         <input type="submit" class="subbutton" value="Submit" id="button" name="request">
-                    </div> -->
+                    </div>
                 </div>
                 <small id="emailHelp" class="reminder">Make sure to answer all the fields properly</small>
                 <div class="next">
@@ -188,6 +191,7 @@ include ("../includes/con/sess.php");
                 <div style="text-align:center;margin-top:40px;">
                 <span class="step"></span>
                 <span class="step"></span>
+
                 </div>
 
             </form>
@@ -197,39 +201,15 @@ include ("../includes/con/sess.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 <script>
-$('#supplier').change(function() {
-  var $options = $('#item')
-    .val('')
-    .find('option')
-    .show();
-  if (this.value != '0')
-    $options
-    .not('[data-val="' + this.value + '"],[data-val=""]')
-    .hide();
-})
-
-$('#item').change(function() {
-  var $options = $('#unit')
-    .val('')
-    .find('option')
-    .show();
-  if (this.value != '0')
-    $options
-    .not('[data-val="' + this.value + '"],[data-val=""]')
-    .hide();
-})
-
-function itemSelect(data) {
-document.getElementById("price").value = data.value;
-}
-
-function multiply() { 
-  const multiplicand = document.getElementById('price').value || 0; 
-  const multiplier = document.getElementById('required_amt').value || 0; 
-  const product = parseInt(multiplicand) * parseInt(multiplier);
-  document.getElementById('price').innerHTML = multiplicand; 
-  document.getElementById('required_amt').innerHTML = multiplier; 
-  document.getElementById('total_amt').innerHTML = product; 
-}
+$("#supplier").change(function() {
+  if ($(this).data('options') === undefined) {
+    /*Taking an array of all options-2 and kind of embedding it on the select1*/
+    $(this).data('options', $('#item option').clone());
+  }
+  var id = $(this).val();
+  var options = $(this).data('options').filter('[value=' + id + ']');
+  $('#item').html(options);
+  console.log(options);
+});
 </script>
 
