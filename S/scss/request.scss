@@ -100,11 +100,11 @@ body {
     .tabContainer {
         height: 100%;
         width: 100%;
-        padding-left: 48px;
-        padding-right: 48px;
+
         
         .createForm {
-            padding: 10px;
+            padding-left: 200px;
+            padding-right: 200px;
             height: 100%;
             margin-top: 130px;
 
@@ -212,7 +212,7 @@ body {
                             white-space: nowrap;
                             text-align: left;
                         }
-
+chosen-container chosen-container-single
                         .input-main {
                             margin: 10px;
                             height: 100%;
@@ -368,159 +368,6 @@ body {
                             }
                         }
                     }
-                    
-                .start-title {
-                    font-size: 15px;
-                }
-
-                .start-container {
-                    width: 100%;
-                    height: 70px;
-                    display: flex;
-                    flex-direction: row;
-                    border: 0px solid #aeaeae;
-                    border-radius: 5px;
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-
-                    
-                    .start-date-container {
-                        width: 50%;
-                        height: 30px;
-                        display: flex;
-                        flex-direction: column;
-
-                        .start-date-label {
-                            margin-left: 10px;
-                            font-size: 15px;
-                        }
-
-                        .start-date {
-                            width: 90%;
-                            margin-right: 10px;
-                            margin-left: 10px;
-                            height: 50px;
-                            border: 2px solid #aeaeae;
-                            border-radius: 5px;
-                            padding-top: 6px;
-                            padding-bottom: 20px;
-                            transition:all .5s linear;
-
-                            &:hover {
-                                border: 2px solid #525252;
-                                transition:all .5s linear;
-                                background-color: #d8d8d8;
-                            }
-                        }
-                    }
-
-                    .start-time-container {
-                        width: 50%;
-                        height: 30px;
-                        display: flex;
-                        flex-direction: column;
-
-                        .start-time-label {
-                            margin-right: 10px;
-                            font-size: 15px;
-                            text-align: left;
-                        }
-
-                        .start-time {
-                            width: 90%;
-                            margin-right: 10px;
-                            margin-left: 10px;
-                            height: 30px;
-                            border: 2px solid #aeaeae;
-                            border-radius: 5px;
-                            padding-top: 6px;
-                            padding-bottom: 20px;
-                            transition:all .5s linear;
-
-                            &:hover {
-                                border: 2px solid #525252;
-                                transition:all .5s linear;
-                                background-color: #d8d8d8;
-                            }
-                        }
-                    }
-                }
-
-                .end-title {
-                    font-size: 15px;
-                }
-
-                .end-container {
-                    width: 100%;
-                    height: 70px;
-                    display: flex;
-                    flex-direction: row;
-                    border: 2px solid #aeaeae;
-                    border-radius: 5px;
-                    padding-top: 5px;
-                    padding-bottom: 5px;
-
-                    
-                    .end-date-container {
-                        width: 50%;
-                        height: 30px;
-                        display: flex;
-                        flex-direction: column;
-
-                        .end-date-label {
-                            margin-left: 10px;
-                            font-size: 15px;
-                        }
-
-                        .end-date {
-                            width: 90%;
-                            margin-right: 10px;
-                            margin-left: 10px;
-                            height: 30px;
-                            border: 2px solid #aeaeae;
-                            border-radius: 5px;
-                            padding-top: 6px;
-                            padding-bottom: 20px;
-                            transition:all .5s linear;
-
-                            &:hover {
-                                border: 2px solid #525252;
-                                transition:all .5s linear;
-                                background-color: #d8d8d8;
-                            }
-                        }
-                    }
-
-                    .end-time-container {
-                        width: 50%;
-                        height: 30px;
-                        display: flex;
-                        flex-direction: column;
-
-                        .end-time-label {
-                            margin-right: 10px;
-                            font-size: 15px;
-                        }
-
-                        .end-time {
-                            width: 90%;
-                            margin-right: 10px;
-                            margin-left: 10px;
-                            height: 30px;
-                            border: 2px solid #aeaeae;
-                            border-radius: 5px;
-                            padding-top: 6px;
-                            padding-bottom: 20px;
-                            transition:all .5s linear;
-
-                            &:hover {
-                                border: 2px solid #525252;
-                                transition:all .5s linear;
-                                background-color: #d8d8d8;
-                            }
-                        }
-                    }
-                }
             }
         }
 

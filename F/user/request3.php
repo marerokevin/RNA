@@ -61,7 +61,7 @@ include ("../includes/con/sess.php");
                         </div>
 
                         <!-- Item Name -->
-                        <div class="input-container"> 
+                        <div class="input-container">
                         <select type="text" class="input-main" id="item" name="item" onkeyup="stoppedTyping()" required>
                         <option value="" disabled selected>Select item</option>
                         <?php  

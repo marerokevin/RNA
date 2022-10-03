@@ -10,7 +10,6 @@ include ("../includes/D/config.php");
     <link rel="stylesheet" href="../S/css/topbar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../S/css/sidebar.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../S/css/function.css?v=<?php echo time(); ?>">
-    <title>GSIS - Inventory</title>
   </head>
   <body>
     <div>
@@ -19,7 +18,7 @@ include ("../includes/D/config.php");
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <?php include "../includes/bar/sidebar.php"; ?>
     <div class="main_content_wsb" id="main_content">
-	    <div class="header">Risk Mitigation</div>
+	    <div class="header">GSIS - Item Request</div>
       <div class="inventorynav">
         <li class="navholder">
           <a id="status" class="navticket-off" href="/RNA/K/item-request.php?action=status">Status</a>

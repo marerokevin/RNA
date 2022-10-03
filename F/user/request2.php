@@ -2,30 +2,30 @@
 include ("../includes/d/config.php");
 include ("../includes/con/sess.php");
 
-        include ("../includes/d/config.php");
-        if(isset($_POST["request"])) {
-            $supplier = $_POST["supplier"];
-            $item = $_POST["item"];
-            $required_amt = $_POST["required_quantity"];
-            $price = $_POST["price"];
-            $unit = $_POST["unit"];
-            $date_request = date('M d Y', strtotime($_POST["date_request"]));
+    include ("../includes/d/config.php");
+    if(isset($_POST["request"])) {
+        $supplier = $_POST["supplier"];
+        $item = $_POST["item"];
+        $required_amt = $_POST["required_quantity"];
+        $price = $_POST["price"];
+        $unit = $_POST["unit"];
+        $date_request = date('M d Y', strtotime($_POST["date_request"]));
 
-            $request_insert = "INSERT INTO `request`(`item`, `supplier`, `required_quantity`, `price`, `unit`, `date`, `date_request`) VALUES ('$item', '$supplier', '$required_amt', '$price', '$unit', current_timestamp(), '$date_request')";
+        $request_insert = "INSERT INTO `request`(`item`, `supplier`, `required_quantity`, `price`, `unit`, `date`, `date_request`) VALUES ('$item', '$supplier', '$required_amt', '$price', '$unit', current_timestamp(), '$date_request')";
 
-            $request_insert_query = mysqli_query($db_conn, $request_insert);
+        $request_insert_query = mysqli_query($db_conn, $request_insert);
 
-            if($request_insert_query)
-            {
-                header("location: RNA/K/Function.php?action=request");
-                echo '<script type="text/javascript"> alert("Done!") </script>';
-            }
-            else
-            {
-                header("location: RNA/K/Function.php?action=request");
-                echo '<script type="text/javascript"> alert("Information not updated") </script>';
-            }
+        if($request_insert_query)
+        {
+            header("location: RNA/K/Function.php?action=request");
+            echo '<script type="text/javascript"> alert("Done!") </script>';
         }
+        else
+        {
+            header("location: RNA/K/Function.php?action=request");
+            echo '<script type="text/javascript"> alert("Information not updated") </script>';
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -36,9 +36,10 @@ include ("../includes/con/sess.php");
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../S/css/update.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
+        <title>GSIS - Request</title>
     </head>
     <div class="createForm">
-            <form class="create-form" action="/RNA/F/user/request2.php" method="post">
+            <form class="create-form" action="./request2.php" method="post">
                 <h2 class="Main-title">Request Item</h2>
                 <h3 class="SMD">Administrator</h3>
                 <!-- Page 1 -->
@@ -48,13 +49,13 @@ include ("../includes/con/sess.php");
                     <div class="start-container" id="start-grid">
                         <!-- Supplier -->
                         <div class="input-container">
-                        <select type="text" class="input-main" id="supplier" name="supplier" required>
+                        <select type="text" id="supplier" name="supplier" required>
                             <option value="" disabled selected>Select Supplier</option>
                         <?php include ("../includes/D/config.php");
                             $list_item = "select distinct supplier from inventory";
                             $supplier_query = mysqli_query($db_conn, $list_item);
                             while ($supplier = mysqli_fetch_assoc($supplier_query)) {
-                                echo '<option value="'.$supplier['supplier'].'">'.$supplier['supplier'].'</option>';
+                                echo '<option id="'.$supplier['supplier'].'" value="'.$supplier['supplier'].'">'.$supplier['supplier'].'</option>';
                             }
                         ?>
                         </select>
@@ -188,9 +189,8 @@ include ("../includes/con/sess.php");
                     </div>
                 </div>
                 <div style="text-align:center;margin-top:40px;">
-                <span class="step"></span>
-                <span class="step"></span>
-                </div>
+
+                </div>1
 
             </form>
         </div>
@@ -199,8 +199,9 @@ include ("../includes/con/sess.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 <script>
-$('#supplier').change(function() {
-  var $options = $('#item')
+$('#supplier').chosen({width:"100%", "padding":"5px"}).change(function() {
+    jQuery("#supplier")
+  var $options = $('#item').chosen().change()
     .val('')
     .find('option')
     .show();

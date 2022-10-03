@@ -1,5 +1,7 @@
-
-
+<head>
+  <title>GSIS - Item Request Status</title>
+</head>
+<body>
 <div class="table-container">
         <div class="table-frame">
           <table class="table">
@@ -47,3 +49,4 @@
         </table>
       </div>
     </div>
+</body>

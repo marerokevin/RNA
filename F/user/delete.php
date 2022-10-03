@@ -5,7 +5,6 @@ include ("../includes/con/sess.php");
         include ("../includes/d/config.php");
 
             $_SESSION["department"] = $dept;
-            $list_item = "select * from inventory where department = '$dept'";
             $item_access = mysqli_query($conn, $list_item);
             $item_count = mysqli_num_rows($item_access);
             if($item_count > 0){
