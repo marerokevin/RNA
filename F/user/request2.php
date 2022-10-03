@@ -199,9 +199,9 @@ include ("../includes/con/sess.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 <script>
-$('#supplier').chosen({width:"100%", "padding":"5px"}).change(function() {
+$('#supplier').chosen({width: "100%"}).change(function() {
     jQuery("#supplier")
-  var $options = $('#item').chosen().change()
+  var $options = $('#item').change(function() {var $options = $('#unit')
     .val('')
     .find('option')
     .show();
@@ -210,9 +210,6 @@ $('#supplier').chosen({width:"100%", "padding":"5px"}).change(function() {
     .not('[data-val="' + this.value + '"],[data-val=""]')
     .hide();
 })
-
-$('#item').change(function() {
-  var $options = $('#unit')
     .val('')
     .find('option')
     .show();

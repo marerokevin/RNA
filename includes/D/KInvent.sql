@@ -43,6 +43,9 @@ CREATE TABLE inventory (
 	safety_stock int(25) not null,
 	total_forcast int(25) not null);
 
+###inventory load
+LOAD DATA LOCAL INFILE '/var/www/html/RNA/inventory2.csv' INTO TABLE inventory FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (id,supplier,item,description,unit,unit_price,initial_inventory,initial_inventory_amount,safety_stock,total_forcast);
+
 INSERT into itemaccess (admin, accounting, qa ,qc, dok, systemkaizen, prodsupport_stafftools, prodsupport_staffoffice, prodsupport_supplies, audittraining, prodmgt, impexcrating, fabrication, whreceiving, saitama, purchasing, prodtech, partsinspection, prod1dcmotor, prod1ud700yud, prod1sdrb260, prod1rbw10, prod1rbw100, prod1brm, prod1technician, prod1office, prod1partsprep, prod2rbw150, prod2glr100, prod2rbg, prod2technician, prod2partsprep, prod2packaging, prod2office, g200, rbw50, rbw100, sdrb100, item, description) VALUES (false,false,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,true,'KDDI','test');
 
 INSERT into inventory (supplier, item, description, unit, unit_price, initial_inventory, initial_inventory_amount, safety_stock, total_forcast) VALUES ('KDDI', 'CISCO', 'NETWORK SWITCH', 'pc', '50', '1', '200', '2', '3');
@@ -54,6 +57,8 @@ CREATE table inventory (
 	supplier varchar(255) NOT NULL,
 	item varchar(255) NOT NULL,
 	description varchar(255) NOT NULL,
+        price int(60) NOT NULL,
+        unit varchar(255) NOT NULL,
 	admin int(25) not null,
         accounting int(25) not null,
         qa int(25) not null,
@@ -196,7 +201,7 @@ working with 46 warnings,
 LOAD DATA LOCAL INFILE '/var/www/html/RNA/forcast.csv' INTO TABLE forcast FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (item,description,supplier,admin,accounting,qa,qc,dok,systemkaizen,prodsupport_stafftools,prodsupport_staffoffice,prodsupport_supplies,audittraining,prodmgt,impexcrating,molding,fabrication,whreceiving,saitama,purchasing,prodtech,partsinspection,prod1dcmotor,prod1ud700yud,prod1sdrb260,prod1rbw10,prod1brm,prod1technician,prod1office,prod1partsprep,prod2rbw150,prod2glr100,prod2rbg,prod2technician,prod2partsprep,prod2packaging,prod2office,g200,rbw50,rbw100,sdrb100);
 
 inventory load
-LOAD DATA LOCAL INFILE '/var/www/html/RNA/inventory.csv' INTO TABLE inventory FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (supplier,item,description,admin,accounting,qa,qc,dok,systemkaizen,prodsupport_stafftools,prodsupport_staffoffice,prodsupport_supplies,audittraining,prodmgt,impexcrating,molding,fabrication,whreceiving,saitama,purchasing,prodtech,partsinspection,prod1dcmotor,prod1ud700yud,prod1sdrb260,prod1rbw10,prod1brm,prod1technician,prod1office,prod1partsprep,prod2rbw150,prod2glr100,prod2rbg,prod2technician,prod2partsprep,prod2packaging,prod2office,g200,rbw50,rbw100,sdrb100);
+LOAD DATA LOCAL INFILE '/var/www/html/RNA/inventory2.csv' INTO TABLE inventory FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n' (supplier,item,description,admin,accounting,qa,qc,dok,systemkaizen,prodsupport_stafftools,prodsupport_staffoffice,prodsupport_supplies,audittraining,prodmgt,impexcrating,molding,fabrication,whreceiving,saitama,purchasing,prodtech,partsinspection,prod1dcmotor,prod1ud700yud,prod1sdrb260,prod1rbw10,prod1brm,prod1technician,prod1office,prod1partsprep,prod2rbw150,prod2glr100,prod2rbg,prod2technician,prod2partsprep,prod2packaging,prod2office,g200,rbw50,rbw100,sdrb100);
 
 CREATE TABLE incoming (
 	id int(20) PRIMARY KEY NOT NULL AUTO_INCREMENT,
