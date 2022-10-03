@@ -201,22 +201,22 @@ include ("../includes/con/sess.php");
 <script>
 $('#supplier').chosen({width: "100%"}).change(function() {
     jQuery("#supplier")
-  var $options = $('#item').change(function() {var $options = $('#unit')
-    .val('')
-    .find('option')
-    .show();
-  if (this.value != '0')
-    $options
-    .not('[data-val="' + this.value + '"],[data-val=""]')
-    .hide();
-})
-    .val('')
-    .find('option')
-    .show();
-  if (this.value != '0')
-    $options
-    .not('[data-val="' + this.value + '"],[data-val=""]')
-    .hide();
+    var $options = $('#item').change(function() {var $options = $('#unit')
+        .val('')
+        .find('option')
+        .show();
+    if (this.value != '0')
+        $options
+        .not('[data-val="' + this.value + '"],[data-val=""]')
+        .hide();
+    })
+        .val('')
+        .find('option')
+        .show();
+    if (this.value != '0')
+        $options
+        .not('[data-val="' + this.value + '"],[data-val=""]')
+        .hide();
 })
 
 function itemSelect(data) {
