@@ -34,7 +34,7 @@ include ("../includes/con/sess.php");
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../S/css/update.css?v=<?php echo time(); ?>">
+        <link rel="stylesheet" href="../S/css/request.css?v=<?php echo time(); ?>">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css"/>
         <title>GSIS - Request</title>
     </head>
@@ -49,7 +49,7 @@ include ("../includes/con/sess.php");
                     <div class="start-container" id="start-grid">
                         <!-- Supplier -->
                         <div class="input-container">
-                        <select type="text" id="supplier" name="supplier" required>
+                        <select type="text" class="input-main" id="supplier" name="supplier" required>
                             <option value="" disabled selected>Select Supplier</option>
                         <?php include ("../includes/D/config.php");
                             $list_item = "select distinct supplier from inventory";
@@ -190,7 +190,7 @@ include ("../includes/con/sess.php");
                 </div>
                 <div style="text-align:center;margin-top:40px;">
 
-                </div>1
+                </div>
 
             </form>
         </div>
@@ -199,7 +199,7 @@ include ("../includes/con/sess.php");
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
 <script>
-$('#supplier').chosen({width: "100%"}).change(function() {
+$('#supplier').change(function() {
     jQuery("#supplier")
     var $options = $('#item').change(function() {var $options = $('#unit')
         .val('')

@@ -7,7 +7,7 @@ body {
 }
 
 .main_content_wsb{
-    background: rgb(234, 233, 233);
+    background: rgb(255, 255, 255);
     width: calc(100% - 280px);
     height: 100%;
     float: right;
@@ -212,19 +212,19 @@ body {
                             white-space: nowrap;
                             text-align: left;
                         }
-chosen-container chosen-container-single
+
                         .input-main {
                             margin: 10px;
                             height: 100%;
                             width: 100%;
                             font-size: 15px;
-                            border: 2px solid #aeaeae;
-                            border-radius: 2px;
-                            transition:all .5s linear;
+                            border: 1px solid #c5c5c5;
+                            border-radius: 5px;
+                            transition:all .3s linear;
 
                             &:hover {
-                                border: 2px solid #525252;
-                                transition:all .5s linear;
+                                border: 1px solid #525252;
+                                transition:all .3s linear;
                                 background-color: #d8d8d8;
                             }
                         }
@@ -261,8 +261,8 @@ chosen-container chosen-container-single
                                 height: 100%;
                                 width: 100%;
                                 font-size: 15px;
-                                border: 2px solid #aeaeae;
-                                border-radius: 2px;
+                                border: 1px solid #c5c5c5;
+                                border-radius: 6px;
                                 transition:all .5s linear;
     
                                 &:hover {
@@ -305,7 +305,7 @@ chosen-container chosen-container-single
                                 height: 100%;
                                 width: 100%;
                                 font-size: 15px;
-                                border: 2px solid #aeaeae;
+                                border: 1px solid #c5c5c5;
                                 border-radius: 2px;
                                 transition:all .5s linear;
     
@@ -349,7 +349,7 @@ chosen-container chosen-container-single
                                 height: 100%;
                                 width: 100%;
                                 font-size: 15px;
-                                border: 2px solid #aeaeae;
+                                border: 1px solid #c5c5c5;
                                 border-radius: 2px;
                                 transition:all .5s linear;
     
