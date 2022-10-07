@@ -31,11 +31,11 @@ include ("../includes/D/config.php");
           <div class="tabContainer">
             <?php 
             if ( isset($_GET['action']) && $_GET['action']=="status") {
-                include('../F/user/status.php');
+                include('../K/user/status.php');
               } else if ( isset($_GET['action']) && $_GET['action']=="request") {
-                include('../F/user/request2.php');
+                include('../K/user/request2.php');
               } else if ( isset($_GET['action']) && $_GET['action']=="delete") {
-                include('../F/user/delete.php');
+                include('../K/user/delete.php');
               }
             ?>
           </div>
