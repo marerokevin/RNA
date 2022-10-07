@@ -8,7 +8,7 @@
         <title>GSIS - Request</title>
     </head>
     <div class="createForm">
-        <form class="create-form" action="/F/user/request.php" method="post">
+        <form class="create-form" action="/RNA/F/user/request.php" method="post">
             <h2 class="Main-title">Request Item</h2>
             <h3 class="SMD">Administrator</h3>
             <div class="page">
