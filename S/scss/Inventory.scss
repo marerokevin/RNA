@@ -11,7 +11,7 @@ body {
     height: calc(100% - 48px);
     float: right;
     margin-left: 280px;
-    margin-right: 20px;`
+    margin-right: 20px;
     margin-top: 48px;
     z-index: 1;
     transition:all .5s;
@@ -240,6 +240,7 @@ body {
                             .data-action {
                                 color:rgb(124, 39, 124);
                                 transition: color 1s linear;
+                                font-weight: 300;
 
                                 &:hover {
                                     color: #ffc400;

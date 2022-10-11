@@ -224,6 +224,7 @@ body {
 .main_content_wosb .table-container .table-frame .table .table-body-container .table-body-row .body-data .data-action {
   color: rgb(124, 39, 124);
   transition: color 1s linear;
+  font-weight: 300;
 }
 .main_content_wosb .table-container .table-frame .table .table-body-container .table-body-row .body-data .data-action:hover {
   color: #ffc400;

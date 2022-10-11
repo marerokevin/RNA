@@ -54,7 +54,7 @@ while ($rowData = mysqli_fetch_assoc($item_access)) {
               <td class="body-data"><?php echo $rowData['initial_inventory_amount']; ?></td>
               <td class="body-data"><?php echo $rowData['safety_stock']; ?></td>
               <td class="body-data"><?php echo $rowData['total_forcast']; ?></td>
-              <td class="body-data"><a class="data-action" href="../F/status.php">Pending</a></td>
+              <td class="body-data"><a class="data-action" href="../F/update.php">Update</a></td>
             </tr>
             <?php } ?>
           </tbody>
@@ -65,3 +65,37 @@ while ($rowData = mysqli_fetch_assoc($item_access)) {
 </html>
 <script src="/RNA/S/scripts/sidebar.js"></script>
 <script src="/RNA/S/scripts/searchbar.js"></script>
+
+<script>
+        function getInitials(firstName, lastName) {
+            return (firstName[0] + lastName[0]).toUpperCase()
+        }
+
+        function getYear() {
+            return (new Date).getFullYear() % 100
+        }
+
+        function paddedNumber(number) {
+            var result = ""
+            for(var i = 4 - number.toString().length; i > 0; i--) {
+            result += "0"
+            }
+            return result + number
+        }
+
+        function makeStudentID(firstName, lastName, studentNumber) {
+            return getInitials(firstName, lastName) + paddedNumber(studentNumber) + getYear()
+        }
+
+        var sequenceNumber = 1
+        function gatherDataAndOutput() {
+            var firstName = document.getElementById("disaster_desc").value
+            var lastName = document.getElementById("disaster_type").value
+            var outputElement = document.getElementById("dis_control_number")
+
+            outputElement.value = makeStudentID(firstName, lastName, sequenceNumber)
+
+            sequenceNumber++; // make a different ID for the next student.
+        }
+    
+    </script>

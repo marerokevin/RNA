@@ -47,6 +47,3 @@ include ("../includes/D/config.php");
 </html>
 <script src="/RNA/S/scripts/sidebar.js"></script>
 <script src="/RNA/S/scripts/searchbar.js"></script>
-<script src="/RNA/S/scripts/tablets.js"></script>
-<script src="/RNA/S/scripts/time2.js"></script>
-<script src="/RNA/S/scripts/step.js"></script>
