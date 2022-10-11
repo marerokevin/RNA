@@ -1,3 +1,7 @@
+<?php
+    include __DIR__ . "/F/user/request.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +12,7 @@
         <title>GSIS - Request</title>
     </head>
     <div class="createForm">
-        <form class="create-form" action="../F/user/request.php" method="post">
+        <form class="create-form" action="./item-request.php?action=request" method="post">
             <h2 class="Main-title">Request Item</h2>
             <h3 class="SMD">Administrator</h3>
             <div class="start-container" id="start-grid">
@@ -21,8 +25,8 @@
                     <div class="input-container">
                         <select type="text" class="input-main" id="supplier" name="supplier" required>
                             <option value="" disabled selected>Select Supplier</option>
-                            <?php include ("../includes/D/config.php");
-                                $list_item = "select distinct supplier from inventory";
+                            <?php include __DIR__ . "/includes/D/config.php";
+                                $list_item = "SELECT DISTINCT supplier FROM inventory";
                                 $supplier_query = mysqli_query($db_conn, $list_item);
                                 while ($supplier = mysqli_fetch_assoc($supplier_query)) {
                                     echo '<option id="'.$supplier['supplier'].'" value="'.$supplier['supplier'].'">'.$supplier['supplier'].'</option>';
@@ -59,7 +63,7 @@
 
                     <!-- Total Amount -->
                     <div class="start-container" id="start-grid">
-                    <label for="start-grid" class="input-label">Total Amount</label>
+                    <label for="start-grid" class="input-label">Unit Price</label>
                         <div class="input-container"> 
                             <input type="text" class="input-main" name="price" id="price" placeholder="Price" oninput="multiply()" readonly>
                         </div>
@@ -70,18 +74,18 @@
                 <label for="start-grid" class="input-label">Total Amount</label>
                 <div class="start-container" id="start-grid">
                     <div class="input-container">
-                        <span class="input-main" id="total_amt">Total Amount</span>
+                        <input class="input-main" id="total_amt" readonly>
                     </div>
                 </div>
 
                 <!-- Request_ID -->
-                <label for="start-grid" class="input-label">Request Number</label>
-                <div class="start-container" id="start-grid">
-                    <div class="input-container"> 
-                        <input type="text" class="input-main" id="request_id" placeholder="Request Number"
-                        name="request_id" required onblur="gatherDataAndOutput()" readonly autofocus="">
-                    </div>
-                </div>
+                <!-- <label for="start-grid" class="input-label">Request Number</label> -->
+                <!-- <div class="start-container" id="start-grid"> -->
+                    <!-- <div class="input-container">  -->
+                        <!-- <input type="text" class="input-main" id="request_id" placeholder="Request Number" -->
+                        <!-- name="request_id" required onblur="gatherDataAndOutput()" readonly autofocus=""> -->
+                    <!-- </div> -->
+                <!-- </div> -->
 
                 <!-- Encoded By -->      
                 <label for="start-grid" class="input-label">Encoded by</label>
@@ -133,7 +137,7 @@ function multiply() {
   const product = parseInt(multiplicand) * parseInt(multiplier);
   document.getElementById('price').innerHTML = multiplicand; 
   document.getElementById('required_amt').innerHTML = multiplier; 
-  document.getElementById('total_amt').innerHTML = product; 
+  document.getElementById('total_amt').value = product; 
 }
 </script>
 
