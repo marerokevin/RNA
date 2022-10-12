@@ -23,6 +23,26 @@ CREATE TABLE request (
 	request_id varchar(255) NOT NULL,
 	approval boolean not null);
 
+        MariaDB [KInvent]> desc request
+    -> ;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| id                | int(20)      | NO   | PRI | NULL    | auto_increment |
+| item              | varchar(255) | NO   |     | NULL    |                |
+| date_request      | varchar(30)  | NO   |     | NULL    |                |
+| required_quantity | varchar(255) | NO   |     | NULL    |                |
+| supplier          | varchar(255) | NO   |     | NULL    |                |
+| requestor         | varchar(255) | NO   |     | NULL    |                |
+| request_id        | varchar(255) | NO   |     | NULL    |                |
+| approval          | tinyint(1)   | NO   |     | NULL    |                |
+| price             | int(20)      | NO   |     | NULL    |                |
+| unit              | varchar(255) | NO   |     | NULL    |                |
+| date              | varchar(255) | NO   |     | NULL    |                |
+| status            | tinyint(1)   | NO   |     | NULL    |                |
+| unit_price        | varchar(255) | NO   |     | NULL    |                |
+
+
 CREATE TABLE outgoing (
 	id INT(20) PRIMARY KEY NOT null AUTO_INCREMENT,
 	date datetime not null,
