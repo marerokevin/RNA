@@ -20,24 +20,17 @@
           </tr>
         </thead>
         <tbody class="table-body-container">
-          <tr class="table-body-row"> 
-            <?php 
+          <?php 
+            include ("../includes/d/config.php");
+            $first_name = $_SESSION["first_name"];
+            $last_name = $_SESSION["last_name"];
+            $user = "$first_name $last_name";
               include ("../includes/d/config.php");
-              $userdept =  $_SESSION["department"];
-              $status_select = "SELECT status, approval from request";
-              $status_query = mysqli_query($db_conn, $status_select);
-              while ($status_fetch = mysqli_fetch_assoc($status_query)) {
-                $status = $status_fetch['status'];
-                $approval = $status_fetch['approval'];
-
-
-                  if ($status = true) { //false = waiting for receiving, true = received
-                    $status_print = "For receiving";
-                }else {
-                  $request_select = "SELECT * from request";
-                  $request_query = mysqli_query($db_conn, $request_select);
-                    while ($request = mysqli_fetch_assoc($request_query)) {
-              ?>
+              $request_select = "SELECT * from request where `requestor` = '$user'";
+                $request_query = mysqli_query($db_conn, $request_select);
+                  while ($request = mysqli_fetch_assoc($request_query)) {
+          ?>
+          <tr class="table-body-row"> 
               <td class="body-data"><?php echo $request['request_id']; ?></td>
               <td class="body-data"><?php echo $request['date_request']; ?></td>
               <td class="body-data"><?php echo $request['item']; ?></td>
@@ -45,15 +38,28 @@
               <td class="body-data"><?php echo $request['required_quantity']; ?></td>
               <td class="body-data"><?php echo $request['price']; ?></td>
               <td class="body-data"><?php echo $request['supplier']; ?></td>
-              <td class="body-data"><?php echo $request['requestor']; ?></td>
+              <td class="body-data"><?php echo $request['requestor'];?></td>
               <td class="body-data"><?php
-                              if ($approval = false){ //false = waiting for approval, true = approved
-                                $approval_print = "For Approval";
-                              }
-                              echo $approval_print; ?></td>
-              <td class="body-data"><a class="data-action" href="../F/status.php"><?php echo $status_print;?></a></td>
+                if ($request['approval'] = False) { //false = waiting for approval, true = approved
+                  echo "For approval";
+                } else {
+                  echo "Approved";
+                }
+              ?></td>
+              <td class="body-data">
+                <a class="data-action" href="../F/status.php">
+                  <?php
+                  if ($request['status'] = false && $request['approval'] == false) { //false = for receiving, true = received
+                    echo "Waiting for approval";
+                  } elseif ($request['status'] = false && $request['approval'] == true) {
+                    echo "For receiving";
+                  } elseif ($request['status'] = true && $request['approval'] == true) {
+                    echo "Received";
+                  }
+                  ?>
+                </a></td>
             </tr>
-          <?php }}} ?>
+            <?php } ?>
         </tbody>
       </table>
     </div>
