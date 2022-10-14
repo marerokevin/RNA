@@ -24,11 +24,13 @@
             include ("../includes/d/config.php");
             $first_name = $_SESSION["first_name"];
             $last_name = $_SESSION["last_name"];
-            $user = "$first_name $last_name";
+            $level = $_SESSION["user_level"];
+            $user = "$last_name $first_name";
               include ("../includes/d/config.php");
-              $request_select = "SELECT * from request where `requestor` = '$user'";
+              $request_select = "SELECT * from request where `requestor` = '$user'"; //select all requests from the requestor.
                 $request_query = mysqli_query($db_conn, $request_select);
                   while ($request = mysqli_fetch_assoc($request_query)) {
+                    //
           ?>
           <tr class="table-body-row"> 
               <td class="body-data"><?php echo $request['request_id']; ?></td>
@@ -39,25 +41,30 @@
               <td class="body-data"><?php echo $request['price']; ?></td>
               <td class="body-data"><?php echo $request['supplier']; ?></td>
               <td class="body-data"><?php echo $request['requestor'];?></td>
-              <td class="body-data"><?php
-                if ($request['approval'] = False) { //false = waiting for approval, true = approved
-                  echo "For approval";
-                } else {
-                  echo "Approved";
-                }
-              ?></td>
               <td class="body-data">
-                <a class="data-action" href="../F/status.php">
+                <?php
+                  if ($request['approval'] == False) { //waiting for approval
+                    if ($level == "Administrator") { //if administrator
+                      echo "<a class='data-action' href='#'>For Approval</a>"; //Move to Admin's approval page
+                    }else {
+                      echo "For approval"; //Display for approval on user
+                    }
+                  }else { //approved
+                    echo "Approved"; //after approval of admin
+                  }
+                ?>
+              </td>
+              <td class="body-data">
                   <?php
-                  if ($request['status'] = false && $request['approval'] == false) { //false = for receiving, true = received
-                    echo "Waiting for approval";
-                  } elseif ($request['status'] = false && $request['approval'] == true) {
-                    echo "For receiving";
-                  } elseif ($request['status'] = true && $request['approval'] == true) {
+                  if ($request['status'] == false && $request['approval'] == false) { //Waiting for approval from admin
+                    echo "<a class='data-action' href='#'>Waiting for approval</a>";
+                  }elseif ($request['status'] == false && $request['approval'] == true) { //for receiving of user.
+                    echo "<a class='data-action' href='#'>For receiving</a>";
+                  }elseif ($request['status'] == true && $request['approval'] == true) { //after receiving of user/admin
                     echo "Received";
                   }
                   ?>
-                </a></td>
+                </td>
             </tr>
             <?php } ?>
         </tbody>
