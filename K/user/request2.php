@@ -95,7 +95,7 @@ echo $generated;
                                 $list_supplier = "select unit, unit_price, description, item, supplier from inventory";
                                 $item_query = mysqli_query($db_conn, $list_supplier);
                                 while ($items = mysqli_fetch_assoc($item_query)) {
-                                    echo '<option data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item="'.$items["unit_price"].'" value="'.$items["item"].'">'.$items["item"].' - '.$items["description"].'</option>';
+                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item-price="'.$items["unit_price"].'" value="'.$items["item"].'">'.$items["item"].' - '.$items["description"].'</option>';
                                     $item = $items["item"];
                                 }
                             ?>
@@ -115,9 +115,9 @@ echo $generated;
 
                     <!-- Total Amount -->
                     <div class="start-container" id="start-grid">
-                        <label for="start-grid" class="input-label"><?php echo "$generated"; echo "$count_exist"; ?>Unit Price</label>
+                        <label for="start-grid" class="input-label">Unit Price</label>
                         <div class="input-container"> 
-                            <input type="text" class="input-main" name="price" id="price" placeholder="Price" oninput="multiply()" readonly>
+                            <input type="text" class="input-main" name="price" id="price" placeholder="Price" oninput="multiply()">
                         </div>
                     </div>
                 </div>
@@ -180,58 +180,17 @@ $('#supplier').change(function() {
 })
 
 function itemSelect(data) {
-document.getElementById("price").value = data.value;
+const pariah = document.getElementById(document.getElementById("item").value).dataset.itemPrice;
+document.getElementById("price").value = document.getElementById(document.getElementById("item").value).dataset.itemPrice;
 }
 
 function multiply() {
-    const multiplicand = document.getElementById('price').getAttribute('data-item') || 0;
+    const multiplicand = document.getElementById(document.getElementById("item").value).dataset.itemPrice || 0;
     const multiplier = document.getElementById('required_amt').value || 0;
-    const product = parseInt(multiplicand) + parseInt(multiplier);
+    const product = parseInt(multiplicand) * parseInt(multiplier);
     document.getElementById('price').innerHTML = multiplicand;
     document.getElementById('required_amt').innerHTML = multiplier;
     document.getElementById('total_amt').value = product;
-
-    console.log(parseInt(multiplicand));
+    console.log(multiplicand);
 }
 </script>
-
-<script>
-function disableItemSelect(){
-    
-}
-</script>
-<!-- <script>
-    function getInitials(firstName, lastName) {
-        return (firstName[0] + lastName[0])()
-    }
-
-    function getYear() {
-        return (new Date).getFullYear() % 100
-    }
-
-    function paddedNumber(number) {
-        var result = ""
-        for(var i = 4 - number.toString().length; i > 0; i--) {
-        result += "0"
-        }
-        return result + number
-    }
-
-    function makeStudentID(firstName, lastName, studentNumber) {
-        return getInitials(firstName, lastName) + paddedNumber(studentNumber) + getYear()
-    }
-
-    var sequenceNumber = 1
-    function gatherDataAndOutput() {
-        var firstName = document.getElementById("required_amt").value
-        var lastName = document.getElementById("price").value
-        var outputElement = document.getElementById("request_id")
-
-        outputElement.value = makeStudentID(firstName, lastName, sequenceNumber)
-
-        sequenceNumber++; // make a different ID for the next student.
-    }
-
-    console.log(firstName);
-
-</script> -->
