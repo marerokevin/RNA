@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  font-family: sans-serif;
+  background-color: #eee;
+}
+
+.wrap {
+  margin: auto;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 2em 3em;
+  text-align: center;
+  border-radius: 0.5em;
+  display: none;
+}
+.modal.is-active {
+  display: block;
+}
+
+.modal-image {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #48DB71;
+  padding: 11px 10px 2px;
+  margin-bottom: 2em;
+}
+
+h1 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 2em;
+  color: #666;
+}
+
+.btn-open {
+  display: none;
+}
+.btn-open.is-active {
+  display: block;
+}
+
+button {
+  font-size: 1.25em;
+  font-weight: bold;
+  background-color: #000;
+  border: none;
+  padding: 0.5em 1em;
+  color: #fff;
+  box-shadow: 0 0 0 2px #000 inset;
+  border-radius: 0.25em;
+  cursor: pointer;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+button:hover {
+  box-shadow: 0 0 0 2px #000 inset;
+  color: #000;
+  background-color: transparent;
+}/*# sourceMappingURL=approve.css.map */

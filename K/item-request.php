@@ -30,19 +30,17 @@ include ("../includes/D/config.php");
         <div class="bedsidetable">
           <div class="tabContainer">
             <?php 
-            if ( isset($_GET['action']) && $_GET['action']=="status") {
+              if ( isset($_GET['action']) && $_GET['action']=="status") {
                 include('../K/user/status.php');
               } else if ( isset($_GET['action']) && $_GET['action']=="request") {
-                include('../K/user/request2.php');
+                include('../K/user/request.php');
               } else if ( isset($_GET['action']) && $_GET['action']=="delete") {
                 include('../K/user/delete.php');
               }
             ?>
-          </div>
         </div>
       </div>
-
-      
+    </div>
   </body>
 </html>
 <script src="/RNA/S/scripts/sidebar.js"></script>
