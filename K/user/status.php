@@ -42,7 +42,7 @@
                 <?php
                   if ($request['approval'] == False) { //waiting for approval
                     if ($level == "Administrator") { //if administrator ?>
-                      <a class="data-action" onclick="modalview" href="#">For Approval</a> <?php //approval button(modal)
+                      <a class="data-action" " href="/K/admin/approve.php?">For Approval</a> <?php //approval button(modal)
                     }else { //Waiting for approval(as user)
                       echo "For approval"; //Display for approval on user
                     }
@@ -66,3 +66,19 @@
     </div>
   </div>
 </body>
+
+<script>
+  function lgbkSav3Btn(){
+            if(nameVal.value == ""){
+                swal ( "Oops" ,  "You have entered an invalid Employee Name!" ,  "error" );
+            }else if(empSel.selectedIndex === 0){
+                swal ( "Oops" ,  "You have selected an invalid Employer!" ,  "error" );
+            }else{
+                if(document.getElementById("lgbkFormTitle").innerHTML == "ADD"){
+                    document.getElementById("lgbkAdd").click();
+                }else if(document.getElementById("lgbkFormTitle").innerHTML == "EDIT"){
+                    document.getElementById("lgbkEdit").click();
+                }
+            }
+        }
+</script>
