@@ -41,6 +41,7 @@ include ("../includes/D/config.php");
         </div>
       </div>
     </div>
+    </div>
   </body>
 </html>
 <script src="/RNA/S/scripts/sidebar.js"></script>

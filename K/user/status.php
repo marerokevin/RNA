@@ -42,7 +42,7 @@
                 <?php
                   if ($request['approval'] == False) { //waiting for approval
                     if ($level == "Administrator") { //if administrator ?>
-                      <a class="data-action" " href="/K/admin/approve.php?">For Approval</a> <?php //approval button(modal)
+                      <a class="data-action" " href="/RNA/K/admin/approve.php?request=<?php echo $request['request_id']; ?>">For Approval</a> <?php //approval button(modal)
                     }else { //Waiting for approval(as user)
                       echo "For approval"; //Display for approval on user
                     }
