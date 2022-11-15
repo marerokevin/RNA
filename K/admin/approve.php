@@ -37,11 +37,20 @@ include "/var/www/html/RNA/includes/con/sess.php";
                   echo "<div class='detail_title'>Date requested: <div class='detail_print'>"; echo date('F d, Y', strtotime($request_specific['date_request'])); echo "</div></div>";
                 ?>
           </div>
-          <div class="actions">
-            <button class="accept">Accept</button>
-            <button class="cancel">Cancel</button>
-            <button class="edit">Edit</button>
-          </div>
+            <form class="actions" method="post">
+              <button name="accept" class="accept">Accept</button>
+              <button name="cancel" class="cancel">Cancel</button>
+              <button name="edit" class="edit">Edit</button>
+            </form>
+            <?php
+              if (isset($_POST['accept'])) {
+                  $update_status = "UPDATE request SET approval = true WHERE id='$request_id'";
+                  $request_query = mysqli_query($db_conn, $update_status);
+                  ?>
+                  <script>alert('Information updated successfully');</script>
+                  <?php
+              }
+          ?>
         </div>
       </div>
 <?php } ?>

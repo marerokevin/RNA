@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.7.4-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.7.6-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: KInvent
 -- ------------------------------------------------------
--- Server version	10.7.4-MariaDB
+-- Server version	10.7.6-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +36,7 @@ CREATE TABLE `accounts` (
   `section` varchar(256) NOT NULL,
   `department` varchar(256) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,8 @@ CREATE TABLE `accounts` (
 LOCK TABLES `accounts` WRITE;
 /*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
 INSERT INTO `accounts` VALUES
-(1,'2022-10-10 12:36:28','marerokevin','Kevin Roy','Marero','','$2y$10$SipVso5StD.vPmtm7rIfKOzgvozIxvKZGs9k0gzdSGlsAO/Z2nPWC',NULL,'Administrator','mis.support@glory.com.ph','MIS','admin');
+(1,'2022-10-10 12:36:28','marerokevin','Kevin Roy','Marero','','$2y$10$SipVso5StD.vPmtm7rIfKOzgvozIxvKZGs9k0gzdSGlsAO/Z2nPWC',NULL,'Administrator','mis.support@glory.com.ph','MIS','admin'),
+(2,'2022-11-09 08:23:21','PlayingGod','Kevin Roy','Marero','','$2y$10$YvxZEFO/Ze3U45aa41ZbNORbE0eMExxIagjHh9GlIU5VRgk/i.D8G',NULL,'Administrator','mis.support@glory.com.ph','MIS','admin');
 /*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1375,11 +1376,12 @@ CREATE TABLE `request` (
   `requestor` varchar(255) NOT NULL,
   `request_id` varchar(255) NOT NULL,
   `approval` tinyint(1) NOT NULL,
-  `unit` varchar(255) NOT NULL,
   `status` tinyint(1) NOT NULL,
   `total_price` varchar(255) NOT NULL,
+  `unit` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1389,51 +1391,15 @@ CREATE TABLE `request` (
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
 INSERT INTO `request` VALUES
-(1,'620','2022-10-14 13:43:52','1','SM','Kevin Roy Marero','GS10-1',0,'',0,'620'),
-(2,'620','2022-10-14 13:44:00','123','SM','Kevin Roy Marero','GS10-1',0,'',0,'76260'),
-(3,'75','2022-10-14 13:45:42','4','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'300'),
-(4,'75','2022-10-14 13:47:21','4','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'300'),
-(5,'Archfile','2022-10-14 13:47:28','24','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(6,'Archfile','2022-10-14 13:47:44','24','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(7,'Archfile','2022-10-14 13:48:05','24','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(8,'Canon Ink','2022-10-14 13:49:33','123','SM','Kevin Roy Marero','GS10-2',0,'',0,'NaN'),
-(9,'150','2022-10-14 13:50:30','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'150'),
-(10,'150','2022-10-14 13:50:50','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'150'),
-(11,'620','2022-10-14 13:50:57','123','SM','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(12,'200','2022-10-14 13:51:08','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(13,'75','2022-10-14 13:51:18','555','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(14,'150','2022-10-14 13:51:56','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(15,'150','2022-10-14 13:52:31','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(16,'620','2022-10-14 13:52:57','123','SM','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(17,'75','2022-10-14 13:53:30','4','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'300'),
-(18,'150','2022-10-14 13:54:35','5','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'750'),
-(19,'75','2022-10-14 13:57:08','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'75'),
-(20,'Archfile','2022-10-14 14:15:05','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(21,'620','2022-10-14 14:28:40','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'620'),
-(22,'620','2022-10-14 14:28:47','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'620'),
-(23,'620','2022-10-14 14:28:48','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'620'),
-(24,'620','2022-10-14 14:30:16','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'620'),
-(25,'620','2022-10-14 14:30:21','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'620'),
-(26,'620','2022-10-14 14:41:42','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'620'),
-(27,'6','2022-10-14 14:41:47','1','BENJ ENTERPRISES','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(28,'Canon Ink','2022-10-14 14:42:49','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'NaN'),
-(29,'6','2022-10-14 14:49:22','2','BENJ ENTERPRISES','Kevin Roy Marero','GS10-2',0,'',0,'12'),
-(30,'75','2022-10-14 14:55:00','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'9225'),
-(31,'75','2022-10-14 14:57:22','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'9225'),
-(32,'Archfile','2022-10-14 14:57:27','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(33,'Canon Ink','2022-10-14 15:04:22','12','SM','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(34,'Archfile','2022-10-14 15:06:00','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(35,'Ballpen','2022-10-14 15:08:14','2','BENJ ENTERPRISES','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(36,'Ballpen','2022-10-14 15:08:42','1','BENJ ENTERPRISES','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(37,'Ballpen','2022-10-14 15:11:39','1','BENJ ENTERPRISES','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(38,'Archfile','2022-10-14 15:24:22','1','BENJ ENTERPRISES','Kevin Roy Marero','GS10-2',0,'',0,''),
-(39,'75','2022-10-14 15:26:18','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(40,'','2022-10-14 15:36:03','1','SM','Kevin Roy Marero','GS10-2',0,'',0,''),
-(41,'','2022-10-14 15:36:33','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,''),
-(42,'Archfile','2022-10-14 15:36:51','1','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-2',0,'',0,''),
-(43,'Canon Ink','2022-10-14 15:37:43','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'0'),
-(44,'Ballpen','2022-10-14 15:40:41','1','BENJ ENTERPRISES','Kevin Roy Marero','GS10-2',0,'',0,'NaN'),
-(45,'Canon Ink','2022-10-14 15:41:10','1','SM','Kevin Roy Marero','GS10-2',0,'',0,'');
+(1,'Archfile','2022-10-17 14:57:53','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-1',0,0,'9225','',''),
+(2,'Canon Ink','2022-10-17 14:59:37','1234','SM','Kevin Roy Marero','GS10-0001',0,0,'765080','',''),
+(3,'Archfile','2022-10-17 15:15:14','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-FTvx',0,0,'9225','',''),
+(4,'Canon Ink','2022-10-17 15:15:22','123124','SM','Kevin Roy Marero','GS10-cAj2',0,0,'76336880','',''),
+(5,'Archfile','2022-10-17 15:59:11','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-Jiav',0,0,'9225','piece','75'),
+(6,'Archfile','2022-10-19 12:42:40','123','RLT 88 TRADING CO.','Kevin Roy Marero','GS10-W6sk',0,0,'9225','piece','75'),
+(7,'Canon Ink','2022-10-19 12:42:54','123123123123','SM','Kevin Roy Marero','GS10-yQcE',0,0,'76336336336260','box','620'),
+(8,'Ballpen','2022-10-26 14:40:39','1','BENJ ENTERPRISES','Marero Kevin Roy','GS10-TClO',0,0,'6','piece','6'),
+(9,'Ballpen','2022-11-09 08:23:42','1','BENJ ENTERPRISES','Kevin Roy Marero','GS11-MVDu',0,0,'6','piece','6');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1446,4 +1412,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-14 16:04:15
+-- Dump completed on 2022-11-15 16:01:31
