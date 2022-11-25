@@ -45,24 +45,7 @@ include "/var/www/html/RNA/includes/con/sess.php";
             </form>
           </div>
         </div>
-            <?php
-            $edit_link = 'location: ./edit.php?id=';
-              if (isset($_POST['accept'])) {
-                $update_status = "UPDATE request set approval = true, approver = '$approver' WHERE request_id ='$request_id'";
-                $request_query = mysqli_query($db_conn, $update_status);
-                ?>
-                <script>alert('Information updated successfully');</script>
-                <?php
-              }elseif (isset($_POST['edit'])) {
-                header("location: ./edit.php?id=$request_id");
-              }elseif (isset($_POST['cancel'])) {
-                $update_status = "UPDATE request set approval = true WHERE request_id ='$request_id'";
-                $request_query = mysqli_query($db_conn, $update_status);
-                header("location: ../item-request.php");
-                ?>
-                <script>alert('Information updated successfully');</script>
-                <?php } ?>
+
         </div>
       </div>
-<?php } ?>
   </body>

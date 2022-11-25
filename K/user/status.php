@@ -46,21 +46,25 @@
                 <td class="body-data"><?php echo $request['requestor'];?></td>
                 <td class="body-data">
 				<?php
-                    if ($request['approval'] == False) { //waiting for approval
+					if ($request['approval'] == False) { //waiting for approval
 						if ($_SESSION["user_level"] == "Administrator") { //Waiting for approval(as admin)
 							echo '<a class="data-action" href="/RNA/K/admin/approve.php?request='.$request['request_id'].'">For Approval of '. $request['approver'] .'</a>'; //approval button
-						}elseif ($_SESSION["user_level"] == "Head") {
-                        if ($user != $request['approver']) {//Waiting for approval(as Head) ?>
-                          	<a class="data-action" href="/RNA/K/head/approve.php?request=<?php echo $request['request_id']; ?>">For approval of <?php echo $request['approver']; ?></a> <?php
-                        }elseif ($user == $request['approver']) { ?>
-                          	<a class="data-action" href="/RNA/K/head/approve.php?request=<?php echo $request['request_id']; ?>">For your approval</a> <?php
-                        }
-					}elseif ($_SESSION["user_level"] == "User") {
-						echo "For approval of "; echo $request['approver']; //Display for approval on user
+						}elseif ($_SESSION["user_level"] == "head") {
+							if ($user != $request['approver']) {//Waiting for approval(as Head) ?>
+								<a class="data-action" href="/RNA/K/head/approve.php?request=<?php echo $request['request_id']; ?>">For approval of <?php echo $request['approver']; ?></a> <?php
+							}elseif ($user == $request['approver']) { ?>
+								<a class="data-action" href="/RNA/K/head/approve.php?request=<?php echo $request['request_id']; ?>">For your approval</a> <?php
+							}
+						}elseif ($_SESSION["user_level"] == "user") {
+							echo 'For approval of '; echo $request['approver']; //Display for approval on user
+						}
+					}elseif ($request['approval'] == True) {
+         				if ($request['status'] == True) {
+							echo 'Received';
+						}elseif ($request['status'] == False) {
+							echo '<a class="data-action" href="./user/F/receive.php?receive='.$request['request_id'].'">Ready for receiving</a>';
+						}
 					}
-				}elseif ($request['approval'] == True && $request['status'] == True) { //approved
-					echo "Approved"; //message if approval = true
-				}
                 ?>
               	</td>
           	</tr>
