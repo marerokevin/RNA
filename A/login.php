@@ -321,7 +321,7 @@ if(empty(trim($_POST["username"]))){
 <script>
     $('#department').change(function() {
         jQuery("#department")
-        var $options = $('#section')
+        var $options = $('#section').change(function() { var $options = $('#head')
             .val('')
             .find('option')
             .show();
@@ -329,13 +329,7 @@ if(empty(trim($_POST["username"]))){
             $options
             .not('[data-val="' + this.value + '"],[data-val=""]')
             .hide();
-    })
-</script>
-
-<script>
-    $('#section').change(function() {
-        jQuery("#section")
-        var $options = $('#head')
+        })
             .val('')
             .find('option')
             .show();
