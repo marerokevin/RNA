@@ -177,46 +177,43 @@ if(empty(trim($_POST["username"]))){
         <form class="signup-container" action="login.php" method="POST">
         <h1 class="title">Sign Up</h1> 
             <div class="input-container"> 
-            <label class="input-label" for="Password">ID Number *</label>
+            <label class="input-label" for="Password">ID Number <a class="required">*</a></label>
             <input type="text" class="input-main" id="user_uid"
                 name="user_uid" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
             </div>
             <div class="input-container"> 
-            <label class="input-label" for="Password">User Designation *</label>
-                <select type="text" class="input-main"
+            <label class="input-label" for="Password">User Designation <a class="required">*</a></label>
+                <select type="text" class="select-main"
                 id="user_level" name="user_level" onkeyup="stoppedTyping()" required>
                     <option value="" disabled selected>Select user level</option>
-                    <option value="Administrator">Administrator</option>
                     <option value="Head">Head</option>
                     <option value="User">User</option>
                 </select>
             </div>
             <div class="full-name-container">
-                <div class="input-first-name-container"> 
-            <label class="input-label" for="Password">First Name *</label>
-                <input type="text" class="input-name-main" id="first_name"
-                    name="first_name" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
-                </div>
+                    <div class="input-first-name-container"> 
+                        <label class="input-label" for="Password">First Name <a class="required">*</a></label>
+                        <input type="text" class="input-first-name-main" id="first_name" name="first_name" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
+                    </div>
 
-                <div class="input-last-name-container"> 
-            <label class="input-label" for="Password">Last Name *</label>
-                <input type="text" class="input-name-main" id="last_name"
-                    name="last_name" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
-                </div>
+                    <div class="input-last-name-container"> 
+                <label class="input-label" for="Password">Last Name <a class="required">*</a></label>
+                    <input type="text" class="input-last-name-main" id="last_name"
+                        name="last_name" aria-describedby="emailHelp" onkeyup="stoppedTyping()" required>    
+                    </div>
 
-                <div class="input-suffix-name-container"> 
-            <label class="input-label" for="Password">Suffix</label>
-                <input type="text" class="input-name-main" id="suffix"
-                    name="suffix" aria-describedby="emailHelp" onkeyup="stoppedTyping()">    
-                </div>
+                    <div class="input-suffix-name-container"> 
+                <label class="input-label" for="Password">Suffix <a class="required">*</a></label>
+                    <input type="text" class="input-suffix-main" id="suffix"
+                        name="suffix" aria-describedby="emailHelp" onkeyup="stoppedTyping()">    
+                    </div>
             </div>
 
             <div class="input-container"> 
-                <label class="input-label" for="Password">Department *</label>
-                <select type="text" class="input-main" id="department"
-                    name="department" aria-describedby="emailHelp" onkeyup="stoppedTyping()">
+                <label class="input-label" for="Password">Department <a class="required">*</a></label>
+                <select type="text" class="select-main" id="department" name="department">
                     <option value="" disabled selected>Select user level</option>
-                    <option value="admin">Administration</option>
+                    <option id="admin" value="admin">Administration</option>
                     <option value="accounting">Accounting</option>
                     <option value="qa">Quality Assurance</option>
                     <option value="qc">Quality Control</option>
@@ -258,42 +255,53 @@ if(empty(trim($_POST["username"]))){
             </div>
 
             <div class="input-container"> 
-            <label class="input-label" for="Password">Section *</label>
-            <input type="text" class="input-main" id="section" name="section" aria-describedby="emailHelp" onkeyup="stoppedTyping()">
+                <label class="input-label" for="Password">Section <a class="required">*</a></label>
+                <select type="text" class="select-main" id="section" name="section">
+                    <option value="" disabled selected>Select your section</option>
+                    <option data-val="admin" value="mis">MIS</option>
+                    <option data-val="admin" value="fem">FEM</option>
+                    <option data-val="admin" value="wh">Warehouse</option>
+                    <option data-val="admin" value="hb">Health Benefits</option>
+                    <option data-val="qa" value="eosh">EOSH</option>
+                    <option data-val="admin" value="gs">General Services</option>
+                    <option data-val="admin" value="hr">Human Resources</option>
+                    <option data-val="impexcrating"value="pm">Production Management</option>
+                    <option data-val="prodmgt" value="impex">Import/Export</option>
+                    <option data-val="audittraining" value="audittraining">Audit & Training</option>
+                </select>
             </div>
 
             <div class="input-container">
-            <label for="item" class="input-label">Head</label>
-                <select type="text" class="input-main" id="item" name="item" onchange="itemSelect(this)" required>
-                    <option value="" disabled selected>Select your head</option>
+                <label for="head" class="input-label">Head <a class="required">*</a></label>
+                <select type="text" class="select-main" id="head" name="head">
+                    <option value="" disabled selected>Select your head </option>
                     <?php
                         $list_head = "SELECT * FROM accounts WHERE user_level = 'Head'";
                         $head_query = mysqli_query($db_conn, $list_head);
                         while ($head = mysqli_fetch_assoc($head_query)) {
-                            echo '<option id="'.$head["user_uid"].'" value="'.$head["user_uid"].'">'.$head["first_name"].' '.$head["last_name"].'</option>';
+                            echo '<option data-val="'.$head["section"].'" value="'.$head["user_uid"].'">'.$head["first_name"].' '.$head["last_name"].'</option>';
                         }
                     ?>
                 </select>
             </div>
 
             <div class="input-container">
-            <label class="input-label" for="Password">E-mail Address</label>
+                <label class="input-label" for="Password">E-mail Address <a class="required">*</a></label>
                 <input type="text" class="input-main"
                 id="email_address" name="email_address" onkeyup="stoppedTyping()" required> 
             </div>
 
             <div class="input-container"> 
-            <label class="input-label" for="Password">Password *</label>
+                <label class="input-label" for="Password">Password <a class="required">*</a></label>
                 <input type="password" class="input-main"
                 id="user_pwd" name="user_pwd" onkeyup="stoppedTyping()" required> 
             </div>
 
             <div class="input-container">
-            <label class="input-label" for="Password">Confirm Password *</label>
+                <label class="input-label" for="Password">Confirm Password <a class="required">*</a></label>
                 <input type="password" class="input-main"
                     id="user_cpwd" name="user_cpwd" onkeyup="stoppedTyping()" required>
             </div>
-
                 <small id="emailHelp" class="reminder">Make sure to fill up all fields properly <small>      
 
             <div>
@@ -309,24 +317,31 @@ if(empty(trim($_POST["username"]))){
 </html>
 <script src="/RNA/S/scripts/register-r_side.js"></script>
 <script src="/RNA/S/scripts/switch.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
-        $('#department').change(function() {
-            jQuery("#department")
-            var $options = $('#section').change(function() {var $options = $('#head')
-                .val('')
-                .find('option')
-                .show();
-            if (this.value != '0')
-                $options
-                .not('[data-val="' + this.value + '"],[data-val=""]')
-                .hide();
-            })
-                .val('')
-                .find('option')
-                .show();
-            if (this.value != '0')
-                $options
-                .not('[data-val="' + this.value + '"],[data-val=""]')
-                .hide();
-        })
+    $('#department').change(function() {
+        jQuery("#department")
+        var $options = $('#section')
+            .val('')
+            .find('option')
+            .show();
+        if (this.value != '0')
+            $options
+            .not('[data-val="' + this.value + '"],[data-val=""]')
+            .hide();
+    })
+</script>
+
+<script>
+    $('#section').change(function() {
+        jQuery("#section")
+        var $options = $('#head')
+            .val('')
+            .find('option')
+            .show();
+        if (this.value != '0')
+            $options
+            .not('[data-val="' + this.value + '"],[data-val=""]')
+            .hide();
+    })
 </script>
