@@ -82,7 +82,7 @@ if(isset($_POST["request"])) {
                                 $list_supplier = "select unit, unit_price, description, item, supplier from inventory";
                                 $item_query = mysqli_query($db_conn, $list_supplier);
                                 while ($items = mysqli_fetch_assoc($item_query)) {
-                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item-unit="'.$items["unit"].'" data-item-price="'.$items["unit_price"].'" value="'.$items["item"].'">'.$items["item"].' - '.$items["description"].'</option>';
+                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item-unit="'.$items["unit"].'" data-item-price="'.$items["unit_price"].'" value="'.$items["item"].', '.$items["description"].'">'.$items["item"].' - '.$items["description"].'</option>';
                                     $item = $items["item"];
                                 }
                             ?>

@@ -46,20 +46,19 @@ if(isset($_POST["edit"])) {
                                 <label for="supplier" class="input-label">Supplier</label>
                                 <div class="input-container">
                                     <select type="text" class="input-main" id="supplier" name="supplier" required>
-                                        <option value="" disabled selected>Select Supplier</option>
                                         <?php
                                             include "/var/www/html/RNA/includes/D/config.php";
-                                            $request_select = "SELECT item, supplier, required_quantity FROM request WHERE request_id = '$edit_id'";
+                                            $request_select = "SELECT item, supplier, required_quantity, price FROM request WHERE request_id = '$edit_id'";
                                             $request_query = mysqli_query($db_conn, $request_select);
                                             while ($request = mysqli_fetch_assoc($request_query)) {
                                                 $req_supplier = $request['supplier'];
                                                 echo '<option selected id="'.$request['supplier'].'" value="'.$request['supplier'].'">'.$request['supplier'].'</option>';
-                                            $list_item = "SELECT DISTINCT supplier FROM inventory WHERE supplier != '$req_supplier'";
-                                            $supplier_query = mysqli_query($db_conn, $list_item);
-                                            while ($supplier = mysqli_fetch_assoc($supplier_query)) {
-                                                echo '<option id="'.$supplier['supplier'].'" value="'.$supplier['supplier'].'">'.$supplier['supplier'].'</option>';
+                                                $list_item = "SELECT DISTINCT supplier FROM inventory WHERE supplier != '$req_supplier'";
+                                                $supplier_query = mysqli_query($db_conn, $list_item);
+                                                while ($supplier = mysqli_fetch_assoc($supplier_query)) {
+                                                    echo '<option id="'.$supplier['supplier'].'" value="'.$supplier['supplier'].'">'.$supplier['supplier'].'</option>';
+                                                }
                                             }
-                                        }
                                         ?>
                                     </select>
                                 </div>
@@ -68,17 +67,17 @@ if(isset($_POST["edit"])) {
                                 <label for="item" class="input-label">Item</label>
                                 <div class="input-container">
                                     <select type="text" class="input-main" id="item" name="item" onchange="itemSelect(this)" required>
-                                        <option value="" disabled selected>Select item</option>
                                         <?php
                                             include "/var/www/html/RNA/includes/D/config.php";
-                                            $request_select = "SELECT item, supplier, required_quantity FROM request WHERE request_id = '$edit_id'";
+                                            $request_select = "SELECT item, supplier, required_quantity, price FROM request WHERE request_id = '$edit_id'";
                                             $request_query = mysqli_query($db_conn, $request_select);
-                                            while ($request = mysqli_fetch_assoc($request_query)) {
-                                                $req_item = $request['item'];
-                                                echo '<option selected id="'.$request['item'].'" data-val="'.$request["supplier"].'" data-val="'.$request['item'].'" data-item-unit"'.request["unit"].'" data-item-price="'.$request["price"].'" value="'.$request['item'].'">'.$request['item'].'</option>';
-                                                $list_item = "SELECT unit, unit_price, description, item, supplier FROM inventory WHERE item != '$req_item'";
+                                            while ($request_item = mysqli_fetch_assoc($request_query)) {
+                                                echo '<option selected id="'.$request_item["item"].'" data-val="'.$request_item["supplier"].'" request_item-val="'.$request_item["item"].'" data-item-unit="'.$request_item["unit"].'" data-item-price="'.$request_item["price"].'" value="'.$request_item["item"].'">'.$request_item["item"].'</option>';
+                                                $req_item = $request_item['item'];
+                                                $req_supplier = $request_item['supplier'];
+                                                $list_item = "SELECT unit, unit_price, `description`, item, supplier FROM inventory WHERE item != '$req_item' AND supplier != '$req_supplier'";
                                                 $item_query = mysqli_query($db_conn, $list_item);
-                                                while ($supplier = mysqli_fetch_assoc($item_query)) {
+                                                while ($items = mysqli_fetch_assoc($item_query)) {
                                                     echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item-unit="'.$items["unit"].'" data-item-price="'.$items["unit_price"].'" value="'.$items["item"].'">'.$items["item"].' - '.$items["description"].'</option>';
                                                     $item = $items["item"];
                                                 }
