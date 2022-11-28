@@ -13,7 +13,7 @@ if(isset($_POST["request"])) {
     $item_exploded = $item_desc_explode[0];
     $desc_exploded = $item_desc_explode[1];
     $supplier = $_POST["supplier"];
-    $unit = $_POST["uniteam"];
+    $unit = $_POST["unit"];
     $price = $_POST["price"];
     $required_quantity = $_POST["required_amt"];
     $total = $_POST["total_amt"];
@@ -47,6 +47,7 @@ if(isset($_POST["request"])) {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="../S/css/request.css?v=<?php echo time(); ?>">
         <title>GSIS - Request</title>
     </head>
@@ -62,7 +63,8 @@ if(isset($_POST["request"])) {
                     <!-- Supplier -->
                     <label for="supplier" class="input-label">Supplier</label>
                     <div class="input-container">
-                        <select type="text" class="input-main" id="supplier" name="supplier" required>
+                    <!-- <select class="js-example-basic-single" id="supplier" name="supplier" required> -->
+                        <select class="input-main2" id="supplier" name="supplier" required>
                             <option value="" disabled selected>Select Supplier</option>
                             <?php include "/includes/D/config.php";
                                 $list_item = "SELECT DISTINCT supplier FROM inventory";
@@ -77,14 +79,28 @@ if(isset($_POST["request"])) {
                     <!-- Item Name -->
                     <label for="item" class="input-label">Item</label>
                     <div class="input-container">
-                        <select type="text" class="input-main" id="item" name="item" onchange="itemSelect(this)" required>
+                        <select type="text" class="input-main" id="item" name="item" required>
                             <option value="" disabled selected>Select item</option>
                             <?php
-                                $list_supplier = "select unit, unit_price, description, item, supplier from inventory";
+                                $list_supplier = "SELECT DISTINCT item FROM inventory";
                                 $item_query = mysqli_query($db_conn, $list_supplier);
                                 while ($items = mysqli_fetch_assoc($item_query)) {
-                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item-unit="'.$items["unit"].'" data-item-price="'.$items["unit_price"].'" value="'.$items["item"].'">'.$items["item"].' - '.$items["description"].'</option>';
-                                    $item = $items["item"];
+                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" "value="'.$items["item"].'">'.$items["item"].'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+
+                    <!-- Item Description -->
+                    <label for="desc" class="input-label">Description</label>
+                    <div class="input-container">
+                        <select type="text" class="input-main" id="desc" name="desc" required>
+                            <option value="" disabled selected>Select description</option>
+                            <?php
+                                $list_desc = "SELECT unit, unit_price, description, item, supplier FROM inventory";
+                                $desc_query = mysqli_query($db_conn, $list_desc);
+                                while ($desc = mysqli_fetch_assoc($desc_query)) {
+                                    echo '<option id="'.$desc["description"].'" data-val="'.$desc["item"].'" data-val="'.$desc["supplier"].'" data-val="'.$desc["description"].'" data-desc-unit="'.$desc["unit"].'" data-desc-price="'.$desc["unit_price"].'" value="'.$desc["description"].'">'.$desc["description"].'</option>';
                                 }
                             ?>
                         </select>
@@ -106,7 +122,7 @@ if(isset($_POST["request"])) {
                         <label for="start-grid" class="input-label">Unit Price</label>
                         <div class="input-container"> 
                             <input type="text" class="input-main" name="price" id="price" placeholder="Price" oninput="multiply()"> / 
-                            <input type="text" class="input-main" name="uniteam" id="uniteam" placeholder="Unit">
+                            <input type="text" class="input-main" name="unit" id="unit" placeholder="Unit">
                         </div>
                     </div>
                 </div>
@@ -139,18 +155,32 @@ if(isset($_POST["request"])) {
 <script src="/RNA/S/scripts/control-number.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
 <script>
+$(document).ready(function() {
+    $('.input-main2').select2();
+});
+
 $('#supplier').change(function() {
     jQuery("#supplier")
-    var $options = $('#item').change(function() {var $options = $('#unit')
+    var $options = $('#item').select2(function() {
+        jQuery("#item")
+        var $options = $('#unit').chosen(function() {
+            .val('')
+            .find('option')
+            .show();
+        if (this.value != '0')
+            $options
+            .not('[data-val="' + this.value + '"],[data-val=""]')
+            .hide();
+        })
         .val('')
         .find('option')
         .show();
     if (this.value != '0')
         $options
-        .not('[data-val="' + this.value.split(",")[0] + '"],[data-val=""]')
+        .not('[data-val="' + this.value + '"],[data-val=""]')
         .hide();
-        // console.log(this.value.split(",")[0]);
     })
         .val('')
         .find('option')
@@ -160,11 +190,6 @@ $('#supplier').change(function() {
         .not('[data-val="' + this.value + '"],[data-val=""]')
         .hide();
 })
-
-function itemSelect(data) {
-    document.getElementById("price").value = document.getElementById(document.getElementById("item").value).dataset.itemPrice;
-    document.getElementById("uniteam").value = document.getElementById(document.getElementById("item").value).dataset.itemUnit;
-}
 
 function multiply() {
     const multiplicand = document.getElementById(document.getElementById("item").value).dataset.itemPrice || 0;
