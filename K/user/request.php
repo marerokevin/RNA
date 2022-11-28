@@ -9,7 +9,9 @@ if(isset($_POST["request"])) {
     $rand4 = substr(str_shuffle($String_b), 0, 4);
 
     $generated = "$code$get_month-$rand4";
-    $item = $_POST["item"];
+    $item_desc_explode = explode(",", $item = $_POST["item"]);
+    $item_exploded = $item_desc_explode[0];
+    $desc_exploded = $item_desc_explode[1];
     $supplier = $_POST["supplier"];
     $unit = $_POST["uniteam"];
     $price = $_POST["price"];
@@ -25,7 +27,7 @@ if(isset($_POST["request"])) {
     $count_exist = mysqli_num_rows($query_request_id);
 
     if ($count_exist == "0") {
-        $request_insert = "INSERT INTO request (`item`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated', false, false, '$total', '$dept', '$approver')";
+        $request_insert = "INSERT INTO request (`item`, `description`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item_exploded', '$desc_exploded', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated', false, false, '$total', '$dept', '$approver')";
         $request_insert_query = mysqli_query($db_conn, $request_insert);
     }else {
         $String_b='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -33,8 +35,7 @@ if(isset($_POST["request"])) {
         $get_month = date('m', strtotime("now"));
         $rand4 = substr(str_shuffle($String_b), 0, 4);
         $generated_repeat = "$code$get_month-$rand4";
-
-        $request_insert = "INSERT INTO request (`item`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated_repeat', false, false, '$total', '$dept', '$approver')";
+        $request_insert = "INSERT INTO request (`item`, `description`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item_exploded', '$desc_exploded', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated', false, false, '$total', '$dept', '$approver')";
         $request_insert_query = mysqli_query($db_conn, $request_insert);
     }
 }
@@ -82,7 +83,7 @@ if(isset($_POST["request"])) {
                                 $list_supplier = "select unit, unit_price, description, item, supplier from inventory";
                                 $item_query = mysqli_query($db_conn, $list_supplier);
                                 while ($items = mysqli_fetch_assoc($item_query)) {
-                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item-unit="'.$items["unit"].'" data-item-price="'.$items["unit_price"].'" value="'.$items["item"].', '.$items["description"].'">'.$items["item"].' - '.$items["description"].'</option>';
+                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" data-val="'.$items["item"].'" data-item-unit="'.$items["unit"].'" data-item-price="'.$items["unit_price"].'" value="'.$items["item"].'">'.$items["item"].' - '.$items["description"].'</option>';
                                     $item = $items["item"];
                                 }
                             ?>
@@ -147,8 +148,9 @@ $('#supplier').change(function() {
         .show();
     if (this.value != '0')
         $options
-        .not('[data-val="' + this.value + '"],[data-val=""]')
+        .not('[data-val="' + this.value.split(",")[0] + '"],[data-val=""]')
         .hide();
+        // console.log(this.value.split(",")[0]);
     })
         .val('')
         .find('option')
