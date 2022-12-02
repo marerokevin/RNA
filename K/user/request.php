@@ -96,9 +96,9 @@ if(isset($_POST["request"])) {
                             <option value="" disabled selected>Select Supplier</option>
                             <?php
                                 $select_supplier = "SELECT unit, unit_price, description, item, supplier FROM inventory";
-                                $desc_query = mysqli_query($db_conn, $list_desc);
-                                while ($desc = mysqli_fetch_assoc($desc_query)) {
-                                    echo '<option id="'.$desc["description"].'" data-val="'.$desc["description"].'" data-desc-unit="'.$desc["unit"].'" data-desc-price="'.$desc["unit_price"].'" value="'.$desc["description"].'">'.$desc["supplier"].'</option>';
+                                $supplier_query = mysqli_query($db_conn, $select_supplier);
+                                while ($supplier = mysqli_fetch_assoc($supplier_query)) {
+                                    echo '<option id="'.$supplier["description"].'" data-val="'.$supplier["description"].'" data-desc-unit="'.$supplier["unit"].'" data-desc-price="'.$supplier["unit_price"].'" value="'.$supplier["description"].'">'.$supplier["supplier"].'</option>';
                                 }
                             ?>
                         </select>
@@ -152,8 +152,6 @@ if(isset($_POST["request"])) {
     </div>
 <script src="/RNA/S/scripts/control-number.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
 <script>
 $('#supplier').change(function() {
   var $options = $('#item')
@@ -165,6 +163,18 @@ $('#supplier').change(function() {
     .not('[data-val="' + this.value + '"],[data-val=""]')
     .hide();
 })
+    
+$('#item').change(function() {
+  var $options = $('#')
+    .val('')
+    .find('option')
+    .show();
+  if (this.value != '0')
+    $options
+    .not('[data-val="' + this.value + '"],[data-val=""]')
+    .hide();
+})
+
 
 function multiply() {
     const multiplicand = document.getElementById(document.getElementById("item").value).dataset.itemPrice || 0;
