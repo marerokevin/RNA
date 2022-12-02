@@ -165,11 +165,11 @@ $('#supplier').change(function() {
 })
     
 $('#item').change(function() {
-  var $options = $('#')
+  var $options = $('#description')
     .val('')
     .find('option')
     .show();
-  if (this.value != '0')
+  if (this.data-val != '0')
     $options
     .not('[data-val="' + this.value + '"],[data-val=""]')
     .hide();
