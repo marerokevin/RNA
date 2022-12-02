@@ -60,47 +60,45 @@ if(isset($_POST["request"])) {
                 <span class="number">1</span>
                 <label for="start-grid" class="input-label">Item Description</label>
                 <div class="start-container" id="start-grid">
-                    <!-- Supplier -->
-                    <label for="supplier" class="input-label">Supplier</label>
-                    <div class="input-container">
-                    <!-- <select class="js-example-basic-single" id="supplier" name="supplier" required> -->
-                        <select class="input-main2" id="supplier" name="supplier" required>
-                            <option value="" disabled selected>Select Supplier</option>
-                            <?php include "/includes/D/config.php";
-                                $list_item = "SELECT DISTINCT supplier FROM inventory";
-                                $supplier_query = mysqli_query($db_conn, $list_item);
-                                while ($supplier = mysqli_fetch_assoc($supplier_query)) {
-                                    echo '<option id="'.$supplier['supplier'].'" value="'.$supplier['supplier'].'">'.$supplier['supplier'].'</option>';
-                                }
-                            ?>
-                        </select>
-                    </div>
-
-                    <!-- Item Name -->
+                    <!--Item -->
                     <label for="item" class="input-label">Item</label>
                     <div class="input-container">
+                        <select class="input-main" id="supplier" name="supplier" required>
+                            <option value="" disabled selected>Select Item</option>
+                            <?php include "/includes/D/config.php";
+                                $select_item = "SELECT DISTINCT item FROM inventory";
+                                $item_query = mysqli_query($db_conn, $select_item);
+                                while ($item = mysqli_fetch_assoc($item_query)) {
+                                    echo '<option id="'.$item['item'].'" value="'.$item['item'].'">'.$item['item'].'</option>';
+                                }
+                            ?>
+                        </select>
+                    </div>
+                    <!-- Item Description -->
+                    <label for="item" class="input-label">Description</label>
+                    <div class="input-container">
                         <select type="text" class="input-main" id="item" name="item" required>
-                            <option value="" disabled selected>Select item</option>
+                            <option value="" disabled selected>Select Description</option>
                             <?php
-                                $list_supplier = "SELECT DISTINCT item FROM inventory";
-                                $item_query = mysqli_query($db_conn, $list_supplier);
-                                while ($items = mysqli_fetch_assoc($item_query)) {
-                                    echo '<option id="'.$items["item"].'" data-val="'.$items["supplier"].'" "value="'.$items["item"].'">'.$items["item"].'</option>';
+                                $select_description = "SELECT item, description FROM inventory";
+                                $description_query = mysqli_query($db_conn, $select_description);
+                                while ($desc = mysqli_fetch_assoc($description_query)) {
+                                    echo '<option id="'.$desc["description"].'" data-val="'.$desc["item"].'" "value="'.$desc["description"].'">'.$desc["description"].'</option>';
                                 }
                             ?>
                         </select>
                     </div>
 
-                    <!-- Item Description -->
-                    <label for="desc" class="input-label">Description</label>
+                    <!-- Supplier -->
+                    <label for="desc" class="input-label">Supplier</label>
                     <div class="input-container">
                         <select type="text" class="input-main" id="desc" name="desc" required>
-                            <option value="" disabled selected>Select description</option>
+                            <option value="" disabled selected>Select Supplier</option>
                             <?php
-                                $list_desc = "SELECT unit, unit_price, description, item, supplier FROM inventory";
+                                $select_supplier = "SELECT unit, unit_price, description, item, supplier FROM inventory";
                                 $desc_query = mysqli_query($db_conn, $list_desc);
                                 while ($desc = mysqli_fetch_assoc($desc_query)) {
-                                    echo '<option id="'.$desc["description"].'" data-val="'.$desc["item"].'" data-val="'.$desc["supplier"].'" data-val="'.$desc["description"].'" data-desc-unit="'.$desc["unit"].'" data-desc-price="'.$desc["unit_price"].'" value="'.$desc["description"].'">'.$desc["description"].'</option>';
+                                    echo '<option id="'.$desc["supplier"].'" data-val="'.$desc["description"].'" data-desc-unit="'.$desc["unit"].'" data-desc-price="'.$desc["unit_price"].'" value="'.$desc["description"].'">'.$desc["supplier"].'</option>';
                                 }
                             ?>
                         </select>
@@ -154,41 +152,18 @@ if(isset($_POST["request"])) {
     </div>
 <script src="/RNA/S/scripts/control-number.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script> -->
 <script>
-$(document).ready(function() {
-    $('.input-main2').select2();
-});
-
 $('#supplier').change(function() {
-    jQuery("#supplier")
-    var $options = $('#item').select2(function() {
-        jQuery("#item")
-        var $options = $('#unit').chosen(function() {
-            .val('')
-            .find('option')
-            .show();
-        if (this.value != '0')
-            $options
-            .not('[data-val="' + this.value + '"],[data-val=""]')
-            .hide();
-        })
-        .val('')
-        .find('option')
-        .show();
-    if (this.value != '0')
-        $options
-        .not('[data-val="' + this.value + '"],[data-val=""]')
-        .hide();
-    })
-        .val('')
-        .find('option')
-        .show();
-    if (this.value != '0')
-        $options
-        .not('[data-val="' + this.value + '"],[data-val=""]')
-        .hide();
+  var $options = $('#item')
+    .val('')
+    .find('option')
+    .show();
+  if (this.value != '0')
+    $options
+    .not('[data-val="' + this.value + '"],[data-val=""]')
+    .hide();
 })
 
 function multiply() {

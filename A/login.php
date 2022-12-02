@@ -4,31 +4,28 @@ session_start();
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     header("location: ../K/index.php");
     exit;
-    
 }
+
 include_once ("../includes/D/config.php");
- 
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
  
 if(isset($_POST["login"])){
- 
-if(empty(trim($_POST["username"]))){
-    $username_err = "Please enter username.";
-    }else{
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Please enter username.";
+    }else {
         $username = trim($_POST["username"]);
     }
-    
-    if(empty(trim($_POST["password"]))){
+    if(empty(trim($_POST["password"]))) {
         $password_err = "Please enter your password.";
-    }else{
+    }else {
         $password = trim($_POST["password"]);
     }
     
-    if(empty($username_err) && empty($password_err)){
+    if(empty($username_err) && empty($password_err)) {
         $sql = "SELECT id, user_uid, user_pwd, first_name, last_name, user_level, email_address, department, section, head FROM accounts WHERE user_uid = ?";
         
-        if($stmt = mysqli_prepare($db_conn, $sql)){
+        if($stmt = mysqli_prepare($db_conn, $sql)) {
             mysqli_stmt_bind_param($stmt, "s", $param_username);
             
             $param_username = $username;
@@ -36,10 +33,10 @@ if(empty(trim($_POST["username"]))){
             if(mysqli_stmt_execute($stmt)){
                 mysqli_stmt_store_result($stmt);
                 
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                if(mysqli_stmt_num_rows($stmt) == 1) {                    
                     mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password, $last_name, $first_name, $user_level, $email_address, $department, $section, $head);
                     if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
+                        if(password_verify($password, $hashed_password)) {
                             session_start();
                             
                             $_SESSION["loggedin"] = true;
@@ -54,17 +51,16 @@ if(empty(trim($_POST["username"]))){
                             $_SESSION["section"] = $section;
                             $_SESSION["head"] = $head;
                             header("location: /RNA/K/index.php");
-                        }else{
+                        }else {
                             $login_err = "Invalid username or password.";
                         }
                     }
-                } else{
+                }else {
                     $login_err = "Invalid username or password.";
                 }
-            } else{
+            }else {
                 echo "Oops! Something went wrong. Please try again later.";
             }
-
             mysqli_stmt_close($stmt);
         }
     }
@@ -74,50 +70,48 @@ if(empty(trim($_POST["username"]))){
  
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Employee Directory</title>
-    <!--CSS-->
-    <link rel="stylesheet" type="text/css" href="../S/css/login.css?v=<?php echo time(); ?>">
-    <!--FONT-->
-</head>
-<body>
-<?php
-    include_once ("signup.php");
-?>
-
-<div class="notification-container" id="notification">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <title>Employee Directory</title>
+        <!--CSS-->
+        <link rel="stylesheet" type="text/css" href="../S/css/login.css?v=<?php echo time(); ?>">
+    </head>
+    <body>
     <?php
-        if($showAlert) {
-            
-            echo '<div class="alert-success" role="alert">
-            <button type="button" class="closebtn-success" data-dismiss="alert" aria-label="Close">
-                <strong>Success!</strong> Your account is 
-            now created and you can login.  
-                <span aria-hidden="true">×</span> 
-                <a class="link" href="/RNA/A/login.php"></a>
-                </button> 
-        </div>'; 
-        }
+        include_once ("signup.php");
+    ?>
 
-        if($showError) {
+        <div class="notification-container" id="notification">
+        <?php
+            if($showAlert) {
+                echo '
+                <div class="alert-success" role="alert">
+                    <button type="button" class="closebtn-success" data-dismiss="alert" aria-label="Close">
+                        <strong>Success!</strong> Your account is now created and you can login.  
+                        <span aria-hidden="true">×</span> 
+                        <a class="link" href="/RNA/A/login.php"></a>
+                    </button> 
+                </div>'; 
+            }
 
-            echo '<div class="alert-danger" role="alert"> 
-            <button type="button" class="closebtn-error" data-dismiss="alert" aria-label="Close">
-                <strong>Error!</strong> '. $showError.'
-                <span aria-hidden="true">×</span> 
-                <a class="link" href="/RNA/A/login.php"></a>
-            </button> 
-        </div>'; 
-        }
+            if($showError) {
+                echo '
+                <div class="alert-danger" role="alert"> 
+                    <button type="button" class="closebtn-error" data-dismiss="alert" aria-label="Close">
+                    <strong>Error!</strong> '. $showError.'
+                    <span aria-hidden="true">×</span> 
+                    <a class="link" href="/RNA/A/login.php"></a>
+                    </button> 
+                </div>'; 
+            }
             
-        if($exists) {
-            echo '<div class="alert-danger" role="alert">
-            <button  type="button" class="closebtn-error" 
-                data-dismiss="alert" aria-label="Close">
-                <strong>Error!</strong> '. $exists.' 
-                <span aria-hidden="true">×</span> 
+            if($exists) {
+                echo '
+                <div class="alert-danger" role="alert">
+                    <button  type="button" class="closebtn-error" data-dismiss="alert" aria-label="Close">
+                    <strong>Error!</strong> '. $exists.' 
+                    <span aria-hidden="true">×</span> 
                 <a class="link" href="/RNA/A/login.php"></a>
             </button>
         </div>'; 

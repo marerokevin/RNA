@@ -32,6 +32,13 @@ CREATE TABLE accounts (
     section varchar(256) not null,
     department varchar(256) not null);
 
+sudo dnf update
+sudo dnf upgrade --refresh
+sudo dnf install dnf-plugin-system-upgrade
+sudo dnf --refresh upgrade
+sudo dnf system-upgrade download --releasever=37
+sudo dnf system-upgrade reboot
+
     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
 
     t.ozawa@glory.com.ph
