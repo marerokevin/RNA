@@ -94,7 +94,7 @@ if(isset($_POST["request"])) {
                         <select type="text" class="input-main" id="item" name="desc" required>
                             <option value="" disabled selected>-- Supplier --</option>
                             <?php
-                                $select_supplier = "SELECT descri, supplier FROM inventory";
+                                $select_supplier = "SELECT DISTINCT descri, supplier FROM inventory";
                                 $supplier_query = mysqli_query($db_conn, $select_supplier);
                                 while ($supplier = mysqli_fetch_assoc($supplier_query)) {
                                     echo '<option data-group="'.$supplier["descri"].'" value="'.$supplier["supplier"].'">'.$supplier["supplier"].'</option>';
@@ -150,24 +150,14 @@ if(isset($_POST["request"])) {
         </form>
     </div>
 <script src="/RNA/S/scripts/control-number.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-<script src="/node_modules/chosen-js/chosen.jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 $("[data-child]").change(function() {
-  //store reference to current select
   var me = $(this);
-
-  //get selected group
   var group = me.find(":selected").val();
-
-  //get the child select by it's ID
   var child = $("#" + me.attr("data-child"));
-
-  //hide all child options except the ones for the current group, and get first item
   var newValue = child.find('option').hide().not('[data-group!="' + group + '"]').show().eq(0).val();
   child.trigger("change");
-
-  //set default value
   child.val(newValue);
 });
 
