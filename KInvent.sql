@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.7.6-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.9.4-MariaDB, for Linux (x86_64)
 --
 -- Host: localhost    Database: KInvent
 -- ------------------------------------------------------
--- Server version	10.7.6-MariaDB
+-- Server version	10.9.4-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,7 +36,7 @@ CREATE TABLE `accounts` (
   `head` varchar(255) DEFAULT NULL,
   `email_address` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1394 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1394 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -448,7 +448,7 @@ CREATE TABLE `forcast` (
   `rbw100` int(25) NOT NULL,
   `sdrb100` int(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=972 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=972 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1394,7 +1394,7 @@ CREATE TABLE `inventory` (
   `id` int(20) NOT NULL AUTO_INCREMENT,
   `supplier` varchar(255) NOT NULL,
   `item` varchar(255) NOT NULL,
-  `description` varchar(1250) NOT NULL,
+  `descri` varchar(255) DEFAULT NULL,
   `unit` varchar(255) NOT NULL,
   `unit_price` int(20) NOT NULL,
   `initial_inventory` int(25) NOT NULL,
@@ -1402,7 +1402,7 @@ CREATE TABLE `inventory` (
   `safety_stock` int(25) NOT NULL,
   `total_forcast` int(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=230 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=230 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1692,7 +1692,7 @@ CREATE TABLE `itemaccess` (
   `item` varchar(255) NOT NULL,
   `description` varchar(1250) NOT NULL,
   PRIMARY KEY (`item`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1728,8 +1728,9 @@ CREATE TABLE `request` (
   `price` varchar(255) NOT NULL,
   `approver` varchar(255) DEFAULT NULL,
   `department` varchar(255) NOT NULL,
+  `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1739,7 +1740,15 @@ CREATE TABLE `request` (
 LOCK TABLES `request` WRITE;
 /*!40000 ALTER TABLE `request` DISABLE KEYS */;
 INSERT INTO `request` VALUES
-(1,'Ballpen','2022-11-25 15:52:41','1','BENJ ENTERPRISES','Kevin Roy Marero','GS11-mnzP',0,0,'6','piece','6','Jonathan Nemedez','Administration');
+(1,'Ballpen','2022-11-25 15:52:41','1','BENJ ENTERPRISES','Kevin Roy Marero','GS11-mnzP',1,0,'6','piece','6','Jonathan Nemedez','Administration',NULL),
+(2,'Ballpen','2022-11-26 07:10:14','2','BENJ ENTERPRISES','Felmhar Vivo','GS11-xN6L',1,0,'12','piece','6','Jonathan Nemedez','Administration',NULL),
+(3,'Archfile','2022-11-26 07:10:31','32','RLT 88 TRADING CO.','Felmhar Vivo','GS11-poL6',0,0,'2400','piece','75','Jonathan Nemedez','Administration',NULL),
+(4,'Archfile','2022-11-28 10:19:50','2','RLT 88 TRADING CO.','Jonathan Nemedez','GS11-uhyn',0,0,'150','piece','75','Gemma Calalo','Administration',NULL),
+(5,'Canon Ink','2022-11-28 10:22:36','2','SM','Jonathan Nemedez','GS11-z8H7',0,0,'1240','box','620','Gemma Calalo','Administration',NULL),
+(6,'Canon Ink','2022-11-28 10:23:03','2','SM','Jonathan Nemedez','GS11-Bdkf',0,0,'1240','box','620','Gemma Calalo','Administration',NULL),
+(7,'Master Roll ','2022-11-28 10:23:12','3','COPYLANDIA','Jonathan Nemedez','GS11-7hcS',0,0,'10485','roll','3495','Gemma Calalo','Administration',NULL),
+(8,'Battery','2022-11-28 12:34:03','1','RLT 88 TRADING CO.','Jonathan Nemedez','GS11-3fis',0,0,'75','piece','29','Gemma Calalo','Administration',''),
+(9,'Archfile','2022-11-28 12:34:49','1','RLT 88 TRADING CO.','Jonathan Nemedez','GS11-Z9Kg',0,0,'75','piece','75','Gemma Calalo','Administration','');
 /*!40000 ALTER TABLE `request` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -1752,4 +1761,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-25 15:54:21
+-- Dump completed on 2022-12-05 16:04:01
