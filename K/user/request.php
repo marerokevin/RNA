@@ -94,10 +94,10 @@ if(isset($_POST["request"])) {
                         <select type="text" class="input-main" id="item" name="desc" required>
                             <option value="" disabled selected>-- Supplier --</option>
                             <?php
-                                $select_supplier = "SELECT DISTINCT descri, supplier FROM inventory";
+                                $select_supplier = "SELECT DISTINCT descri, supplier, unit, unit_price FROM inventory";
                                 $supplier_query = mysqli_query($db_conn, $select_supplier);
                                 while ($supplier = mysqli_fetch_assoc($supplier_query)) {
-                                    echo '<option data-group="'.$supplier["descri"].'" value="'.$supplier["supplier"].'">'.$supplier["supplier"].'</option>';
+                                    echo '<option data-group="'.$supplier["descri"].'" data-item-unit="'.$supplier["unit"].'" data-item-price="'.$supplier["unit_price"].'" value="'.$supplier["supplier"].'">'.$supplier["supplier"].'</option>';
                                 }
                             ?>
                         </select>
@@ -160,6 +160,11 @@ $("[data-child]").change(function() {
   child.trigger("change");
   child.val(newValue);
 });
+
+function itemSelect(data) {
+    document.getElementById("price").value = document.getElementById(document.getElementById("item").value).dataset.itemPrice;
+    document.getElementById("unit").value = document.getElementById(document.getElementById("item").value).dataset.itemUnit;
+}
 
 function multiply() {
     const multiplicand = document.getElementById(document.getElementById("item").value).dataset.itemPrice || 0;
