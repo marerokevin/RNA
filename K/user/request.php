@@ -9,9 +9,8 @@ if(isset($_POST["request"])) {
     $rand4 = substr(str_shuffle($String_b), 0, 4);
 
     $generated = "$code$get_month-$rand4";
-    $item_desc_explode = explode(",", $item = $_POST["item"]);
-    $item_exploded = $item_desc_explode[0];
-    $desc_exploded = $item_desc_explode[1];
+    $item = $_POST["item"];
+    $descri = $_POST["descri"];
     $supplier = $_POST["supplier"];
     $unit = $_POST["unit"];
     $price = $_POST["price"];
@@ -27,7 +26,7 @@ if(isset($_POST["request"])) {
     $count_exist = mysqli_num_rows($query_request_id);
 
     if ($count_exist == "0") {
-        $request_insert = "INSERT INTO request (`item`, `descri`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item_exploded', '$desc_exploded', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated', false, false, '$total', '$dept', '$approver')";
+        $request_insert = "INSERT INTO request (`item`, `descri`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item', '$descri', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated', false, false, '$total', '$dept', '$approver')";
         $request_insert_query = mysqli_query($db_conn, $request_insert);
     }else {
         $String_b='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -35,7 +34,7 @@ if(isset($_POST["request"])) {
         $get_month = date('m', strtotime("now"));
         $rand4 = substr(str_shuffle($String_b), 0, 4);
         $generated_repeat = "$code$get_month-$rand4";
-        $request_insert = "INSERT INTO request (`item`, `descri`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item_exploded', '$desc_exploded', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated', false, false, '$total', '$dept', '$approver')";
+        $request_insert = "INSERT INTO request (`item`, `descri`, `unit`, `price`, `supplier`, `required_quantity`, `requestor`, `date_request`, `request_id`, `approval`, `status`, `total_price`, `department`, `approver`) VALUES ('$item', '$descri', '$unit', '$price', '$supplier', '$required_quantity', '$requestor', current_timestamp(), '$generated', false, false, '$total', '$dept', '$approver')";
         $request_insert_query = mysqli_query($db_conn, $request_insert);
     }
 }
@@ -62,7 +61,7 @@ if(isset($_POST["request"])) {
                     <!--Item -->
                     <label for="item" class="input-label">Item</label>
                     <div class="input-container">
-                        <select class="input-main" id="catagory" name="supplier" data-child="family" required>
+                        <select class="input-main" id="item" name="item" data-child="desc" required>
                             <option value="" disabled selected>-- Item --</option>
                             <?php include "/includes/D/config.php";
                                 $select_item = "SELECT DISTINCT item FROM inventory";
@@ -76,7 +75,7 @@ if(isset($_POST["request"])) {
                     <!-- Item Description -->
                     <label for="item" class="input-label">Description</label>
                     <div class="input-container">
-                        <select class="input-main" id="family" name="item" data-child="item" >
+                        <select class="input-main" id="desc" name="desc" data-child="supplier" >
                             <option value="" disabled selected>-- Description --</option>
                             <?php
                                 $select_description = "SELECT item, descri FROM inventory";
@@ -91,7 +90,7 @@ if(isset($_POST["request"])) {
                     <!-- Supplier -->
                     <label for="desc" class="input-label">Supplier</label>
                     <div class="input-container">
-                        <select type="text" class="input-main" id="item" name="desc" required>
+                        <select type="text" class="input-main" id="supplier" name="supplier" required>
                             <option value="" disabled selected>-- Supplier --</option>
                             <?php
                                 $select_supplier = "SELECT DISTINCT descri, supplier, unit, unit_price FROM inventory";
@@ -162,8 +161,8 @@ $("[data-child]").change(function() {
 });
 
 function itemSelect(data) {
-    document.getElementById("price").value = document.getElementById(document.getElementById("item").value).dataset.itemPrice;
-    document.getElementById("unit").value = document.getElementById(document.getElementById("item").value).dataset.itemUnit;
+    document.getElementById("price").value = document.getElementById(document.getElementById("supplier").value).dataset.itemPrice;
+    document.getElementById("unit").value = document.getElementById(document.getElementById("supplier").value).dataset.itemUnit;
 }
 
 function multiply() {
