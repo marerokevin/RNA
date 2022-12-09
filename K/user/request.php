@@ -58,7 +58,7 @@ if(isset($_POST["request"])) {
                 <span class="number">1</span>
                 <label for="start-grid" class="input-label">Item Description</label>
                 <div class="start-container" id="start-grid">
-                    <!--Item -->
+                    <!--Item test-->
                     <label for="item" class="input-label">Item</label>
                     <div class="input-container">
                         <select class="input-main" id="item" name="item" data-child="desc" required>
